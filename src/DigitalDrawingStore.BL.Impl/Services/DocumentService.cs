@@ -93,9 +93,9 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Services
             return await _documentQuery.QueryAllTargetOfDocumentUsageAsync();
         }
 
-        public bool UpdateDocumentCategory(Guid id, string categoryName, bool isDesigned)
+        public async Task<bool> UpdateDocumentCategoryAsync(Guid id, string categoryName, bool isDesigned)
         {
-            return _updateDocumentCategoryCommand.UpdateDocumentCategory(id, categoryName, isDesigned);
+            return await _updateDocumentCategoryCommand.UpdateDocumentCategoryAsync(id, categoryName, isDesigned);
         }
 
         public async Task<bool> UpdateDocumentCategoryRelationAsync(Guid documentId, Guid newCategoryId)
@@ -108,9 +108,9 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Services
             return await _updateDocumentMetadataCommand.UpdateDocumentMetadata(documentId, metadataName, metadataValue, oldMetadataName);
         }
 
-        public bool UpdateDocumentCategoryEntities(Guid documentCategoryId, IDictionary<string, string> categoryEntities, IDictionary<Guid, string> metadataDefinitions)
+        public async Task<bool> UpdateDocumentCategoryEntitiesAsync(Guid documentCategoryId, IDictionary<string, string> categoryEntities, IDictionary<Guid, string> metadataDefinitions)
         {
-            return _updateDocumentCategoryEntitiesCommand.UpdateDocumentCategoryEntities(documentCategoryId, categoryEntities, metadataDefinitions);
+            return await _updateDocumentCategoryEntitiesCommand.UpdateDocumentCategoryEntitiesAsync(documentCategoryId, categoryEntities, metadataDefinitions);
         }
         public async Task<IPromise<IDocument>> GetDocumentByIdAsync(Guid documentId)
         {

@@ -51,7 +51,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
             }
         }
 
-        [Theory(Skip = "Need to implement SetDocumentCategoryEntity in MsSqlDocumentCategory.")]
+        [Theory(Skip = "Need to implement SetDocumentCategoryEntityAsync in MsSqlDocumentCategory.")]
         [MemberData(nameof(MSDC0031_GetTestParameters))]
         public async Task MSDC0031_Given_ValidDocumentCategories_When_GetAttributes_Then_ReturnsWithValidAttribute(
             string testNamespace,

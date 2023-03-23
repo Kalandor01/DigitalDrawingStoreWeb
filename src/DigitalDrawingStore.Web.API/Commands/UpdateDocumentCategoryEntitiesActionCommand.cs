@@ -64,7 +64,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 if (entityIdPromiseContainer.IsOkay)
                 {
                     var metadataDefinitions = entityIdPromiseContainer.ResponseObject;
-                    response = _documentService.UpdateDocumentCategoryEntities(usedEntities.CategoryId, categoryEntities, metadataDefinitions);
+                    response = await _documentService.UpdateDocumentCategoryEntitiesAsync(usedEntities.CategoryId, categoryEntities, metadataDefinitions);
                 }
             }
 

@@ -50,7 +50,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
             if (bool.TryParse(_isDesigned, out _))
             {
-                response = _documentService.UpdateDocumentCategory(_categoryId, _categoryName, Convert.ToBoolean(_isDesigned));
+                response = await _documentService.UpdateDocumentCategoryAsync(_categoryId, _categoryName, Convert.ToBoolean(_isDesigned));
             }
 
             ResolveAction(response);

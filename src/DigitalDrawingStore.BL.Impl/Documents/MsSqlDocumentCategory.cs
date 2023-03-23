@@ -59,14 +59,14 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
         #endregion
 
         #region IDocumentCategory members
-        public void SetDocumentCategoryEntity(Guid entityId)
+        public async void SetDocumentCategoryEntityAsync(Guid entityId)
         {
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@DocumentCategoryId", SqlDbType.UniqueIdentifier, Id)
                                 .ConfigureParameter("@DocumentMetadataDefinitionId", SqlDbType.UniqueIdentifier, entityId)
                                 .GetConfiguredParameters();
 
-            _ = _msSqlDataSource.PerformCommand(
+            _ = await _msSqlDataSource.PerformCommandAsync(
                 $" INSERT INTO {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORY_ENTITIES_TABLE_NAME_KEY]}" +
                 $" (DocumentCategoryId, DocumentMetadataDefinitionId)" +
                 $" VALUES (@DocumentCategoryId, @DocumentMetadataDefinitionId)", parameters);

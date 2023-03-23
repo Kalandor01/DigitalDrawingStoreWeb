@@ -12,6 +12,6 @@
         /// <param name="categoryName"></param>
         /// <param name="isDesigned"></param>
         /// <returns></returns>
-        bool UpdateDocumentCategory(Guid id, string categoryName, bool isDesigned);
+        Task<bool> UpdateDocumentCategoryAsync(Guid id, string categoryName, bool isDesigned);
     }
 }

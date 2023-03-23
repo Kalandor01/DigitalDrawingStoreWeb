@@ -190,7 +190,7 @@ updateCategoryEntities = (results, record) => {
 
 updateCategory = (result, record) => {
     requestInvoker
-        .executeUpdate('/Documents/UpdateCategory',
+        .executeUpdate('/Categories/UpdateCategory',
             {id: record.get('id'), categoryName: result.get('categories')})
         .then((response) => {
             let table = $('#categoriesContent');

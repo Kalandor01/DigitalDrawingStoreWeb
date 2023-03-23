@@ -4,7 +4,7 @@
     {
         Guid Id { get; }
         bool IsDesigned { get; }
-        void SetDocumentCategoryEntity(Guid entityId);
+        void SetDocumentCategoryEntityAsync(Guid entityId);
 
         Task<IDictionary<string, string>> GetAttributesAsync();
         Task<string> GetDisplayNameAsync();

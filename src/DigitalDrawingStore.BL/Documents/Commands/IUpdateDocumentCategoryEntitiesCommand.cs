@@ -11,6 +11,6 @@
         /// <param name="documentCategoryId"></param>
         /// <param name="categoryEntities"></param>
         /// <returns></returns>
-        bool UpdateDocumentCategoryEntities(Guid documentCategoryId, IDictionary<string, string> categoryEntities, IDictionary<Guid, string> metadataDefinitions);
+        Task<bool> UpdateDocumentCategoryEntitiesAsync(Guid documentCategoryId, IDictionary<string, string> categoryEntities, IDictionary<Guid, string> metadataDefinitions);
     }
 }

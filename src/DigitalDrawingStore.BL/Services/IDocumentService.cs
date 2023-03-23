@@ -52,11 +52,11 @@ namespace XperiCad.DigitalDrawingStore.BL.Services
         /// Queries all target of document usage tag
         /// </summary>
         Task<IPromise<IDictionary<Guid, string>>> QueryAllTargetOfDocumentUsageAsync();
-        
+
         /// <summary>
         /// Updates a document category with a given id in the database.
         /// </summary>
-        bool UpdateDocumentCategory(Guid id, string categoryName, bool isDesigned);
+        Task<bool> UpdateDocumentCategoryAsync(Guid id, string categoryName, bool isDesigned);
         /// <summary>
         /// Updates which category the document belongs to.
         /// </summary>
@@ -68,7 +68,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Services
         /// <summary>
         /// Updates which attributes are related to a document category with a given id.
         /// </summary>
-        bool UpdateDocumentCategoryEntities(Guid id, IDictionary<string, string> categoryEntities, IDictionary<Guid, string> metadataDefinitions);
+        Task<bool> UpdateDocumentCategoryEntitiesAsync(Guid id, IDictionary<string, string> categoryEntities, IDictionary<Guid, string> metadataDefinitions);
         
         /// <summary>
         /// Gets the document by Id.

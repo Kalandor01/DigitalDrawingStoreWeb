@@ -26,7 +26,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands
         #endregion
 
         #region IUpdateDocumentCategoryCommand members
-        public bool UpdateDocumentCategory(Guid id, string categoryName, bool isDesigned)
+        public async Task<bool> UpdateDocumentCategoryAsync(Guid id, string categoryName, bool isDesigned)
         {
             if (Equals(id, Guid.Empty) || string.IsNullOrWhiteSpace(categoryName))
             {
@@ -39,7 +39,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands
                                 .ConfigureParameter("@IsDesigned", SqlDbType.Bit, isDesigned)
                                 .GetConfiguredParameters();
 
-            _ = _msSqlDataSource.PerformCommand(
+            _ = await _msSqlDataSource.PerformCommandAsync(
                 $"   UPDATE {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}"
                 + $" SET DisplayName = @CategoryName ,"
                 + $" IsDesigned = @IsDesigned"
