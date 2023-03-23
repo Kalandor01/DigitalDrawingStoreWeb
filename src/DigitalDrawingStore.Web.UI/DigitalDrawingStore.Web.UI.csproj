@@ -7,10 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
-	  <PackageReference Include="Unity" Version="5.11.9" />
-	  <PackageReference Include="Unity.Abstractions" Version="5.11.6" />
-	  <PackageReference Include="Unity.Container" Version="5.11.10" />
+	  <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+	  <PackageReference Include="Unity" Version="5.11.10" />
+	  <PackageReference Include="Unity.Abstractions" Version="5.11.7" />
+	  <PackageReference Include="Unity.Container" Version="5.11.11" />
 	  <PackageReference Include="Unity.RegistrationByConvention" Version="5.11.1" />
 	</ItemGroup>
 
