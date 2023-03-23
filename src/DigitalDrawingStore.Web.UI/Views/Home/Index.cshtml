@@ -1,0 +1,23 @@
+﻿@using XperiCad.DigitalDrawingStore.Web.API.Extensions
+@using XperiCad.DigitalDrawingStore.Web.API.DTO
+@* TODO: Investigate the proper implementation *@
+@model object
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="search">
+    <div id="search-box">
+        <input id="search-txt" name="search-txt" type="text" placeholder="Keresés">
+        <button id="button-addon2">Keresés</button>
+    </div>
+    <small class="text-break">
+        A keresőmezőben a következő elemekre lehet keresni: <b>dokumentum-</b> és <b>kategória név</b>,
+        <b>tulajdonság</b> vagy <b>tartalom</b>
+    </small>
+</div>
+<hr class="full" />
+<div id="contentContainer" class="content-container"></div>
+
+<script src="~/js/home.js"></script>

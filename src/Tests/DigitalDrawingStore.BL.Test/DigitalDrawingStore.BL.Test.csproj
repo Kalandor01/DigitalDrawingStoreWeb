@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<AssemblyName>XperiCad.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>XperiCad.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- Supress "CS8625 - Cannot convert null literal to non-nullable reference type." because in this project we test object creation for null behaviour. -->
+		<NoWarn>CS8625</NoWarn>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+		<PackageReference Include="Moq" Version="4.18.2" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="3.1.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Unity" Version="5.11.9" />
+		<PackageReference Include="Unity.RegistrationByConvention" Version="5.11.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="XperiCad.Common.Infrastructure" Version="1.1.17" />
+		<PackageReference Include="XperiCad.Common.Core" Version="1.1.17" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\DigitalDrawingStore.BL.Impl\DigitalDrawingStore.BL.Impl.csproj" />
+		<ProjectReference Include="..\..\DigitalDrawingStore.BL\DigitalDrawingStore.BL.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Preferences\TestApplicationConfiguration.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Documents\ReferenceDocuments\SampleDocument-HelloWorld.pdf">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Resources\Documents\" />
+		<Folder Include="Resources\Documents\ReferenceDocuments\" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\..\Binaries\Debug</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\..\Binaries\Release</OutputPath>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+</Project>

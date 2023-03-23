@@ -1,0 +1,83 @@
+﻿@using XperiCad.DigitalDrawingStore.Web.API.Controllers;
+
+@{
+    ViewData["Title"] = "Beállítások";
+    var administrationController = new AdministrationController();
+    var documentResourceProperties = administrationController.documentResourceProperties;
+    string concat = "";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="~/js/settings.js"></script>
+<div id="contentContainer" class="content-container">
+    <p class="category-title">Alkalmazás konfiguráció</p>
+    @using (Html.BeginForm())
+    {
+        <div id="appConfig">
+            <div class="setting">
+                <label>Adatbázis csatlakozási szöveg</label>
+                <input name="DocumentDatabaseConnectionString" type="text" value="@documentResourceProperties.ResourcePath" />
+            </div>
+            <button id="saveChangesAppConfig" type="submit">Módosítások mentése</button>
+        </div>
+    }
+    <p class="category-title">Visszajelzés beállítások</p>
+    @using (Html.BeginForm())
+    {
+        <div id="feedback">
+            <div class="setting">
+                    <label>Küldő e-mail</label>
+
+                    <input name="SenderEmail" type="text" value="@administrationController.GetSenderEmail().Result.ResponseObject" />
+            </div>
+            <div class="setting align-m">
+                    <label>E-mail címzettek</label>
+                    @foreach (string email in (await administrationController.GetEmailRecipitents()).ResponseObject)
+                    {
+                        concat += String.Concat(email,"\n");
+                    }
+                    <textarea name="EmailRecipients" rows="3">@concat</textarea>
+            </div>
+            <div class="setting">
+                <label>Smtp Host</label>
+                <input name="SmtpHost" type="text" value="@administrationController.GetSmtpHost().Result.ResponseObject" />
+            </div>
+            <div class="setting">
+                <label>Smtp Port</label>
+                <input name="SmtpPort" type="text" value="@administrationController.GetSmtpPort().Result.ResponseObject" />
+            </div>
+            <div class="setting">
+                <label>Smtp felhasználónév</label>
+                <input name="SmtpUsername" type="text" value="@administrationController.GetSmtpUsername().Result.ResponseObject" />
+            </div>
+            <div class="setting">
+                <label>Smtp jelszó</label>
+                <input id="smtpPass" name="SmtpPassword" type="password" value="@administrationController.GetSmtpPassword().Result.ResponseObject" />
+            </div>
+            <button id="passReveal">Jelszó megjelenítés</button>
+            <div class="settingChb">
+                <label>Használja az alapértelmezett bizonyítványt</label>
+                @if (administrationController.GetIsUseDefaultCredentials().Result.ResponseObject)
+                {
+                    <input name="IsUseDefaultCredentials" type="checkbox" checked />
+                }
+                else
+                {
+                    <input name="IsUseDefaultCredentials" type="checkbox" />
+                }
+            </div>
+            <div class="settingChb">
+                <label>Ssl használata</label>
+                @if (administrationController.GetIsEnableSsl().Result.ResponseObject)
+                {
+                    <input name="IsEnableSsl" type="checkbox" checked />
+                }
+                else
+                {
+                    <input name="IsEnableSsl" type="checkbox" />
+                }
+            </div>
+            <button id="saveChangesFeedback" type="submit">Módosítások mentése</button>
+        </div>
+    }
+</div>
+

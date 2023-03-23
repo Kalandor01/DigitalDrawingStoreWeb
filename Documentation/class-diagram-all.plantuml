@@ -1,0 +1,384 @@
+@startuml DigitalDrawingStore
+
+package "DigitalDrawingStore.BL" {
+  ' IUserEventLogger
+  interface IUserEventsLogger
+  {
+      + LogInfo(string message) : void
+      + LogWarning(string message) : void
+      + LogError(string message) : void
+      + LogError(string message, Exception exception) : void
+      + LogFatal(string message, Exception exception) : void
+      + LogDebug(string message) : void
+  }
+
+  ' IDocumentService
+  interface IDocumentService
+  {
+    + QueryDocumentCategories(): IEnumerable<IDocumentCategory>
+    + QueryAllDocuments(): IEnumerable<IDocument>
+    + QueryDocuments(string searchText): IEnumerable<IDocument>
+    + QueryDocuments(Guid categoryId, string searchText): IEnumerable<IDocument>
+  }
+  class DocumentService
+  {
+    - _documentCategoryQuery: IDocumentCategoryQuery
+    - _documentQuery: IDocumentQuery
+  }
+
+  ' IDocument
+  interface IDocumentFactory
+  {
+    + CreatePdfDocument(Guid id, string path): IDocument
+  }
+  class DocumentFactory
+  {
+    + <inherited-members>
+    - _msSqlDataSource: IDataSource
+    - _dataParameterFactory: IDataParameterFactory
+    - _sqlTableNames: IDictionary<string, string>
+    - _documentExporters: IEnumerable<IDocumentExporter>
+  }
+  interface IDocument
+  {
+    + Guid Id { get; }
+    + string Path { get; }
+    + string Directory { get; }
+    + string Extension { get; }
+    + string Name { get; }
+
+    + ExportAs(string targetPath, IDocumentWatermark documentWatermark): void
+    + Download(IEnumerable<IDocumentWatermark> watermarks): string
+    + GetAttribute<T>(string attribute): T
+    + SetAttribute(string attribute, string value): void
+  }
+  class MsSqlPdfDocument {
+    + <inherited-members>
+    - _documentExporter: IDocumentExporter
+    - _msSqlDataSource: IDataSource
+    - _dataParameterFactory: IDataParameterFactory
+    - _sqlTableNames: IDictionary<string, string>
+    - _userEventLogger: IUserEventLogger
+  }
+
+  ' IDocumentQuery
+  interface IDocumentQuery
+  {
+    + QueryDocuments(string searchText): IEnumerable<IDocument>
+    + QueryDocuments(Guid documentCategoryId, string searchText): IEnumerable<IDocument> 
+  }
+  class MsSqlDocumentQuery
+  {
+    + <inherited-members>
+    - _msSqlDataSource: IDataSource
+    - _dataParameterFactory: IDataParameterFactory
+    - _sqlTableNames: IDictionary<string, string>
+    - _documentFactory: IDocumentFactory
+  }
+
+  ' IDocumentCategoryQuery
+  interface IDocumentCategoryQuery
+  {
+    + QueryDocumentCategories(): IEnumerable<IDocumentCategory>
+  }
+  class MsSqlDocumentCategoryQuery
+  {
+    - _msSqlDataSource: IDataSource
+    - _sqlTableNames: IDictionary<string, string>
+    - _documentCategoryFactory: IDocumentCategoryFactory
+  }
+
+  ' IDocumentCategory
+  interface IDocumentCategoryFactory
+  {
+    + CreateDocumentCategory(Guid id): IDocumentCategory
+  }
+  class DocumentCategoryFactory
+  {
+    - _msSqlDataSource: IDataSource
+    - _dataParameterFactory: IDataParameterFactory
+    - _sqlTableNames: IDictionary<string, string>
+  }
+
+  interface IDocumentCategory
+  {
+    + Guid Id { get; }
+    + string DisplayName { get; }
+    + void SetDocumentCategoryEntity(Guid entityId);
+    + IDictionary<string, string> Attributes { get; }
+  }
+  class MsSqlDocumentCategory
+  {
+    - _msSqlDataSource: IDataSource
+    - _dataParameterFactory: IDataParameterFactory
+    - _sqlTableNames: IDictionary<string, string>
+  }
+
+  ' IDocumentExporter
+  interface IDocumentExporter
+  {
+      + Export(string targetPath, IDocumentWatermark documentWatermark): void
+  }
+  class PdfDocumentExporter
+  {
+      + <inherited-members>
+  }
+
+  ' IDocumentWatermark
+  interface IDocumentWatermarkProvider
+  {
+    + ApplyWatermarksOnDocument(string documentPath,\n IEnumerable<IDocumentWatermark> watermarks): string
+  }
+  class PdfDocumentWatermarkProvider
+  { 
+  }
+
+  interface IDocumentWatermarkFactory
+  {
+    + CreateWatermark(string text, int fontSize, float opacity, int rotation,\n WatermarkVerticalPosition verticalPosition, WatermarkHorizontalPosition horizontalPosition)\n: IDocumentWatermark
+  }
+  class DocumentWatermarkFactory
+  {
+  }
+
+  interface IDocumentWatermark
+  {
+    + string Text { get; }
+    + int FontSizeInPt { get; }
+    + float OpacityInPercentage { get; }
+    + int RotationInDegree { get; }
+    + WatermarkVerticalPosition VerticalPosition { get; }
+    + WatermarkHorizontalPosition HorizontalPosition { get; }
+  }
+  enum WatermarkVerticalPosition
+  {
+    Top = -1,
+    Center = 0,
+    Bottom = 1
+  }
+  enum WatermarkHorizontalPosition
+  {
+    Left = -1,
+    Center = 0,
+    Right = 1
+  }
+  class DocumentWatermark
+  {
+  }
+
+  ' IApplicationProperties
+  interface IApplicationProperties
+  {
+    + IDocumentResourceProperties DocumentResourceProperties { get; }
+  }
+  interface IDocumentResourceProperties
+  {
+    + string ResourcePath { get; }
+    + string ResourceDirectory { get; }
+  }
+
+  ' IApplicationProperties relationships
+  IApplicationProperties *-- IDocumentResourceProperties
+
+  ' IDocumentService relationships
+  IDocumentService <|-- DocumentService
+  DocumentService *-- IDocumentQuery
+  DocumentService *-- IDocumentCategoryQuery
+
+  ' IDocumentQuery relationships
+  IDocumentQuery <|-- MsSqlDocumentQuery 
+  MsSqlDocumentQuery *-- IDocumentFactory
+  MsSqlDocumentQuery *-- IUserEventsLogger
+
+  ' IDocumentCategoryQuery relationships
+  IDocumentCategoryQuery <|-- MsSqlDocumentCategoryQuery
+  IDocumentCategoryFactory <|-- DocumentCategoryFactory
+  IDocumentCategory <|-- MsSqlDocumentCategory
+  MsSqlDocumentCategoryQuery *-- IDocumentCategoryFactory
+  DocumentCategoryFactory *-- IDocumentCategory
+
+  ' IDocument relationships
+  DocumentFactory -u-|> IDocumentFactory
+  IDocument <|-- MsSqlPdfDocument 
+  MsSqlPdfDocument *-- IUserEventsLogger
+  MsSqlPdfDocument *-- IDocumentExporter
+  MsSqlPdfDocument *-- IDocumentWatermark
+  MsSqlPdfDocument *-- IDocumentWatermarkProvider
+
+  ' IDocumentWatermark relationships
+  IDocumentWatermarkProvider <|-- PdfDocumentWatermarkProvider
+  IDocumentWatermarkFactory <|-- DocumentWatermarkFactory
+  IDocumentWatermark <|-- DocumentWatermark
+  DocumentWatermarkFactory *-- IDocumentWatermark
+  DocumentWatermark *-- WatermarkVerticalPosition
+  DocumentWatermark *-- WatermarkHorizontalPosition
+
+  ' IDocumentExporter relationships
+  IDocumentExporter <|-- PdfDocumentExporter
+}
+
+package "XperiCad.Common" {
+  interface IApplicationConfigurationService
+  {
+    + IApplicationConfigurationQuery Query { get; }
+    + IApplicationConfigurationCommand Command { get; }
+  }
+  
+  interface IDataSource
+  {
+    + PerformCommand(string command): int
+    + PerformCommand(string command, IEnumerable<IDataParameter> parameters): int
+    + PerformQuery(string command, params string[] attributes): IEnumerable<IEntity>
+    + PerformQuery(string command, IEnumerable<IDataParameter> parameters, params string[] attributes): IEnumerable<IEntity>
+  }
+}
+
+package "DigitalDrawingStore.Listener" {
+  together {
+    interface IRawDocumentFactory
+	{
+	  + CreatePdfDocument: IRawDocument
+	}
+	class RawDocumentFactory
+	{
+	  + <inherited-members>
+	}
+  }
+
+  together {
+    interface IRawDocument
+	{
+	  + GetAttribute(string): string
+	  + GetAllFreeText(): IDictionary<string, string>
+	}
+	class RawDocument
+	{
+	  + <inherited-members>
+	  + ctor(IDocumentData documentData, IDocumentExtractor documentExtractor)
+	  - _documentData: IDocumentData
+	  - _documentExtractor: IDocumentExtractor
+	}
+  }
+
+  together {
+    interface IListenerService
+    {
+      + void StartListening();
+	  + void StopListening();
+    }
+	class DocumentListenerService
+	{
+	  + <inherited-members>
+	  + ctor(IDocumentScout documentScout, IDocumentResource documentResource)
+	  - _documentScout: IDocumentScout
+	  - _documentResource: IDocumentResource
+	}
+  }
+  
+  together {
+    interface IListenerApplicationProperties
+	{
+	  + IEnumerable<string> ObservedPaths { get; }
+	  + string DocumentDropDirectory { get; }
+	}
+	class ApplicationProperties
+	{
+	  + <inherited-members>
+	  + ctor(IApplicationConfigurationService applicationConfigurationService)
+	  - _applicationConfigurationService: IApplicationConfigurationService
+	}
+  }
+  
+  together {
+    interface IDocumentData
+	{
+	  string DocumentPath { get; internal set; }
+	  string DocumentMetadataPath { get; }
+	}
+	class DocumentData
+	{
+	  + <inherited-members>
+	}
+  }
+  
+  together {
+    interface IDocumentScout
+	{
+	  + FindDocuments(): IEnumerable<IDocumentData>
+	}
+	class DocumentScout
+	{
+	  + <inherited-members>
+	  + ctor(IApplicationProperties applicationProperties)
+	  - _applicationProperties: IApplicationProperties
+	  - _documentFactory: IDocumentFactory
+	}
+  }
+  
+  together {
+    interface IDocumentExtractor
+    {
+      + IDictionary<string, string> ExtractFreeText(string documentPath);
+	  + <inherited-members>
+    }
+    class PdfDocumentExtractor
+    {
+      + <inherited-members>
+    }
+  }
+  
+  together {
+    interface IDocumentResource
+    {
+      + SaveDocument(IEnumerable<IRawDocument> documents);
+    }
+	class DocumentResourcePool
+	{
+	  + <inherited-members>
+	  - _documentResources: IEnumerable<IDocumentResource>
+	}
+    class MsSqlDocumentResource
+    {
+      + <inherited-members>
+	  + ctor(IDataSource msSqlDataSource)
+	  - _msSqlDataSource: IDataSource
+    }
+	class DropLocationDocumentResource
+	{
+	  + <inherited-members>
+	  + ctor(string dropDirectory)
+	}
+  }
+  
+  RawDocumentFactory -u-|> IRawDocumentFactory
+  
+  DocumentData -u-|> IDocumentData
+  
+  RawDocument -u-|> IRawDocument
+  RawDocument *-- IDocumentData
+  RawDocument *-- IDocumentExtractor
+  
+  ApplicationProperties -u-|> IListenerApplicationProperties
+  ApplicationProperties *-- IApplicationConfigurationService
+  
+  DocumentScout -u-|> IDocumentScout
+  DocumentScout *-- IRawDocumentFactory
+  DocumentScout *-- IListenerApplicationProperties
+  
+  DocumentListenerService -u-|> IListenerService
+  DocumentListenerService *-- IDocumentResource
+  DocumentListenerService *-- IDocumentScout
+  
+  DocumentResourcePool -u-|> IDocumentResource
+  DocumentResourcePool *-- IDocumentResource
+  
+  MsSqlDocumentResource -u-|> IDocumentResource
+  MsSqlDocumentResource *-- IDataSource
+  
+  DropLocationDocumentResource -u-|> IDocumentResource
+  DropLocationDocumentResource *-- IListenerApplicationProperties
+  
+  PdfDocumentExtractor -u-|> IDocumentExtractor
+}
+
+@enduml

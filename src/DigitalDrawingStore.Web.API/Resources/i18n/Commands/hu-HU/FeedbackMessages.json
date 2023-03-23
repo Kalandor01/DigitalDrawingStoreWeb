@@ -1,0 +1,57 @@
+﻿{
+  "CultureKey": "i18n-hu-HU",
+  "CultureElements": [
+    {
+      "Key": "Error_TargetOfDocumentUsageIsNull",
+      "Value": "A dokumentum felhasználási célja hiányzik!"
+    },
+    {
+      "Key": "Error_ClientUsernameIsNull",
+      "Value": "A dokumentumot kérelmező felhasználóneve hiányzik!"
+    },
+    {
+      "Key": "Error_ClientMachineNameIsNull",
+      "Value": "A dokumentumot kérelmező számítógépnév hiányzik!"
+    },
+    {
+      "Key": "Error_ClientIpIsNull",
+      "Value": "A dokumentumot kérelmező számítógép IP címe hiányzik!"
+    },
+    {
+      "Key": "Error_SideWatermarkPositionIsNull",
+      "Value": "A dokumentum oldal vízjele hiányzik!"
+    },
+    {
+      "Key": "Error_DocumentIdIsEmpty",
+      "Value": "A dokumentum azonosítója hiányzik!"
+    },
+    {
+      "Key": "Error_CategoryIdIsEmpty",
+      "Value": "A kategória azonosítója hiányzik!"
+    },
+    {
+      "Key": "Fatal_Wrong_Document_Database_Connection_String",
+      "Value": "Hibás adatbázis elérési útvonal!"
+    },
+    {
+      "Key": "Fatal_Wrong_Email_Format",
+      "Value": "Hibás e-mail formátum!"
+    },
+    {
+      "Key": "Fatal_Not_Number",
+      "Value": "Hibás port formátum!"
+    },
+    {
+      "Key": "Fatal_Port_Number_Not_In_Range",
+      "Value": "A port számnak 0 és 65535 közé kell esnie!"
+    },
+    {
+      "Key": "Information_Successfully_Modified",
+      "Value": "Sikeresen módosítva."
+    },
+    {
+      "Key": "Fatal_Couldnt_Modify",
+      "Value": "Nem sikerült módosítani!"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+@using XperiCad.DigitalDrawingStore.Web.API.Authorization;
+@* TODO: Investigate the proper implementation *@
+@model object;
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Digital Drawing Store</title>
+
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="~/lib/jquery-modal/jquery.modal.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <script src="~/lib/jquery/jQuery.3.6.3.min.js"></script>
+    <link rel="stylesheet" href="~/css/popup.css" asp-append-version="true"/>
+
+</head>
+<body>
+<script>
+        var baseUrl = '@Url.Content("~/")';
+    </script>
+<div id="pdfViewer" class="modal" style="width: 95%;">
+    <div>
+        <div>
+            <button type="button" class="editor-menu-toggle">Szerkesztő megnyitása</button>
+            <div class="editor-menu">
+                <table class="properties-selector">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <label for="sidedWatermarkPositionSelectMenu">Szélső vízjel pozíciója</label>
+                            <select name="sidedWatermarkPositionSelectMenu" id="sidedWatermarkPositionSelectMenu"></select>
+                        </td>
+                        <td colspan="2">
+                            <label for="targetOfDocumentUsageSelectMenu">Dokumentum használatának célja</label>
+                            <select name="targetOfDocumentUsageSelectMenu" id="targetOfDocumentUsageSelectMenu"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="centeredWatermarkHorizontalOffset">Középső vízjel horizontális eltolása</label>
+                            <input name="centeredWatermarkHorizontalOffset" id="centeredWatermarkHorizontalOffset" type="number" min="-100" max="100" value="0"/>
+                        </td>
+                        <td>
+                            <label for="centeredWatermarkVerticalOffset">Középső vízjel vertikális eltolása</label>
+                            <input name="centeredWatermarkVerticalOffset" id="centeredWatermarkVerticalOffset" type="number" min="-100" max="100" value="0"/>
+                        </td>
+                        <td>
+                            <label for="fontSize">Betűméret</label>
+                            <input name="fontSize" id="fontSize" type="number" min="14" max="72" value="40"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                <label for="watermarkOpacitySlider">Vízjel átlátszóság: <span id="sliderInputSpan">80</span></label>
+                            </p>
+                            <div name="watermarkOpacitySlider" id="watermarkOpacitySlider" class="slider">
+                                <div id="custom-handle" class="ui-slider-handle"></div>
+                            </div>
+                            <input id="sliderInput" type="hidden" value="80"/>
+                        </td>
+                        <td></td>
+                        <td>
+                            <button id="updateWatermarkButton" class="ui-button ui-corner-all ui-widget" style="display: inline;">Frissítés</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-wrapper">
+        <embed id="pdfPreview" style="width: 100%; height: 95%;"/>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="xpericad-header">
+        @if (Model != null && Model is DigitalDrawingStore.Web.UI.Views.Shared.SharedViewModel sharedViewModel)
+        {
+            if (sharedViewModel.SecurityFacade != null && sharedViewModel.SecurityFacade.IsInGroup(User, Constants.Autorization.Policies.ADMIN))
+            {
+                <nav>
+                    <div class="menu xpericad-dropdown-menu">
+                        <div id="menu" class="bar-container">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>
+                        </div>
+                        <div class="dropdown">
+                            <p>
+                                <a asp-controller="Home" asp-action="Index">Rajztár</a>
+                            </p>
+                            <hr/>
+                            <p>
+                                <a asp-controller="Administration" asp-action="Categories">Kategóriák</a>
+                            </p>
+                            <hr/>
+                            <p>
+                                <a asp-controller="Administration" asp-action="Documents">Dokumentumok</a>
+                            </p>
+                            <hr/>
+                            <p>
+                    			<a asp-controller="Administration" asp-action="Settings">Beállítások</a>
+                			</p>
+                			<hr/>
+                            <p>
+                                <a asp-controller="Home" asp-action="Index">Esemény logok</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="xpericad-fullsize-navcontent">
+                        <ul>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Rajztár</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Administration" asp-action="Categories">Kategóriák</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Administration" asp-action="Documents">Dokumentumok</a>
+                            </li>
+                            <li>
+                            	<a asp-controller="Administration" asp-action="Settings">Beállítások</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Index">Esemény logok</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            }
+        }
+        <span class="xpericad-header-title">Digitális Rajztár</span>
+    </div>
+
+    <div class="content-wrapper">
+        @RenderBody()
+        <div id="toast-container"></div>
+    </div>
+    <div class="xpericad-footer">
+        <p>XperiCAD &copy; 2022 Minden jog fenntartva.</p>
+    </div>
+</div>
+<script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+<script src="~/lib/jquery-modal/jquery.modal.min.js"></script>
+<script src="~/js/common.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/modal.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,219 @@
+﻿/* #region Custom modal class*/
+.pdf-modal {
+    display: flex;
+    vertical-align: middle;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 15px 30px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+    text-align: left;
+    overflow: hidden;
+}
+
+.pdf-modal a.close-modal[class*="icon-"] {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    background: #900;
+    display: inline-block;
+    border: 2px solid #fff;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.pdf-modal #updateWatermarkButton{
+    background-color: var(--light-blue);
+    border: none !important;
+    border-radius: unset !important;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    float: right;
+}
+
+.pdf-modal select {
+    width: 100%;
+    padding: 8px 20px;
+    border: none;
+    background-color: #f1f1f1;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.pdf-modal input[type=number] {
+    width: 100%;
+    padding: 8px 20px;
+    border: none;
+    background-color: #f1f1f1;
+    font-family: 'Raleway', sans-serif;
+}
+
+.pdf-modal #watermarkOpacitySlider {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    background-color: #f1f1f1;
+}
+
+.pdf-modal #custom-handle {
+    width: 40px;
+    margin-left: -20px;
+    top: 12px;
+    background-image: url('/img/pointer.png');
+    background-color: transparent !important;
+    background-repeat: no-repeat;
+    border: 0;
+}
+
+.pdf-modal .ui-slider .ui-slider-handle:focus {
+    outline: none !important;
+}
+
+.pdf-modal .properties-selector {
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.pdf-modal .properties-selector td {
+    border-width: 2px;
+    border-color: #ffcc00;
+    border-style: none;
+    padding: 3px;
+}
+
+.pdf-modal .editor-menu-toggle {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    font-variant: small-caps;
+    border-bottom: solid 3px var(--primary);
+}
+
+.pdf-modal .active,.pdf-modal .editor-menu-toggle:hover {
+  background-color: #ccc;
+}
+
+.pdf-modal .active{
+    border-bottom-color: transparent;
+}
+
+.pdf-modal .editor-menu {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.pdf-modal .pdf-wrapper{
+    height: 100%;
+}
+/* #endregion */
+
+/* #regin Custom dialog class*/
+
+.edit-dialog .ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
+.ui-widget.edit-dialog {
+    font-size: 1.1em;
+}
+
+.ui-widget-content.edit-dialog {
+    background-color: gainsboro;
+    color: #222222;
+}
+
+.ui-dialog.edit-dialog {
+    left: 0;
+    padding: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 400px !important;
+    border-radius: 0 0 .7rem .7rem;
+}
+
+.ui-dialog.edit-dialog .ui-dialog-content {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    overflow: auto;
+    position: relative;
+    padding: 0 !important;
+    margin: 0;
+    text-align: center;
+}
+
+.ui-dialog.edit-dialog .ui-dialog-content input[type=text] {
+    width: 95%;
+    padding: .6rem;
+    border: none;
+    background-color: var(--light-grey);
+    font-family: 'Raleway', sans-serif;
+}
+
+.ui-dialog.edit-dialog .ui-dialog-content label {
+    float: left;
+    padding: 10px;
+}
+
+.ui-dialog.edit-dialog .ui-widget-header {
+    background: var(--primary);
+    border: 0;
+    color: #fff;
+    font-weight: normal;
+    border-radius: unset;
+}
+
+.ui-dialog.edit-dialog .ui-dialog-titlebar {
+    padding: 0.1em .5em;
+    position: relative;
+    font-size: 1em;
+}
+
+.ui-dialog.edit-dialog .ui-dialog-buttonpane{
+    background-color: gainsboro;
+    border-top: 2px solid var(--primary);
+    color: #fff;
+    font-weight: normal;
+    border-radius: 0 0 .7rem .7rem;
+
+}
+
+.ui-dialog.edit-dialog .ui-dialog-buttonpane button{
+    background-color: var(--primary);
+    color: white;
+    margin: 0 .4rem;
+    padding: .2rem .4rem;
+    font-size: 1em;
+}
+
+.ui-dialog.edit-dialog .ui-dialog-buttonpane button:hover{
+    background-color: var(--da-blau-alt);
+    border: 1px solid var(--lime);
+}

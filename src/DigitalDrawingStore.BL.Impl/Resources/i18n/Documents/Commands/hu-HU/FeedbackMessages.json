@@ -1,0 +1,25 @@
+{
+  "CultureKey": "i18n-hu-HU",
+  "CultureElements": [
+    {
+      "Key": "Error_CouldNotUpdateBecauseGivenIdIsInvalid",
+      "Value": "Nem sikerült frissíteni az adatbázist, mert a megadott Guid helytelen volt."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseGivenMetadataNameIsInvalid",
+      "Value": "Nem sikerült frissíteni az adatbázist, mert a metaadat neve helytelen volt."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseCategoryEntitiesAreInvalid",
+      "Value": "Nem sikerült frissíteni az adatbázist, mert a kategóriához hozzárendelt elemek listája helytelen volt."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseMetadataDefinitionsAreInvalid",
+      "Value": "Nem sikerült frissíteni az adatbázist, mert a metaadat típusok listája helytelen volt."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseUnknown",
+      "Value": "Ismeretlen okok miatt nem sikerült frissíteni az adatbázist."
+    }
+  ]
+}

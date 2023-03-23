@@ -1,0 +1,737 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+:root {
+    --da-blau: #1e5082;
+    --da-blau-alt: #2e5883;
+    --lime: #cdd741;
+    --light-blue: #46c3f0;
+    --light-blue-alt: rgba(70, 195, 240, 0.45);
+
+    --light-grey: #ebedef;
+    --middle-grey: #b4b6b8;
+    --dark-grey: #46484a;
+
+    --white: #fff;
+    --black: #000;
+
+    --success: rgba(0, 232, 151, 0.9);
+    --on-succes: var(--black);
+
+    --info: rgba(73, 182, 211, 0.9);
+    --on-info: var(--black);
+
+    --warning: rgba(255, 205, 48, 0.85);
+    --on-warning: var(--black);
+
+    --error: rgba(250, 72, 31, 0.85);
+    --on-error: var(--white);
+
+    --primary: var(--da-blau);
+    --secondary: var(--lime);
+    --accent-1: var(--light-blue);
+    --accent-2: var(--da-blau-alt);
+    --accent-3: var(--light-blue-alt);
+
+    --background: var(--white);
+    --surface: var(--light-grey);
+
+    --on-primary: var(--white);
+    --on-secondary: var(--black);
+    --on-background: var(--black);
+    --on-surface: var(--black);
+
+    --on-hover-dropdown: #507397;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: .2rem 0;
+    font-size: 1em;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: var(--background);
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
+.content-wrapper {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.slider {
+    width: 30%;
+    display: inline-block;
+    margin-right: 10px;
+    align-self: center;
+}
+
+.xpericad-header {
+    background: var(--primary);
+    display: flex;
+    flex: 0 1 auto;
+    height: 80px;
+    justify-content: space-between;
+    text-align: center;
+    color: var(--on-primary);
+    padding-left: .7em;
+}
+
+.xpericad-fullsize-navcontent ul {
+    list-style-type: none;
+    height: 80px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+}
+
+.xpericad-fullsize-navcontent ul li {
+     padding: .2em;
+}
+
+.xpericad-fullsize-navcontent li a {
+    display: block;
+    text-align: center;
+    padding: .5em;
+    text-decoration: none;
+    color: var(--white);
+    font-variant: small-caps;
+    border-bottom: 3px solid transparent;
+}
+
+.xpericad-fullsize-navcontent li a:not(:first-child) {
+    margin-left: 10px;
+}
+
+.xpericad-fullsize-navcontent li a:hover {
+    border-bottom: 3px solid var(--secondary);
+}
+
+.xpericad-header-title {
+    display: flex;
+    justify-content: center;
+    margin: auto 0 auto 0;
+    font-size: 1.7em;
+}
+
+.xpericad-header h3 {
+    align-self: center;
+}
+
+.shadow-svg {
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    height: 100%;
+}
+
+.xpericad-header img {
+    display: flex;
+    justify-content: flex-end;
+    margin: auto 1rem auto 0;
+    height: 70px;
+}
+
+.xpericad-footer {
+    display: flex;
+    justify-content: center;
+    flex: 0 1 5vh;
+    width: 100vw;
+    background-color: var(--primary);
+    text-align: center;
+    font-size: 12px;
+    padding: 0.5rem;
+    position: fixed;
+    bottom: 0;
+}
+
+.xpericad-footer p {
+    color: var(--on-primary);
+    font-size: 1.2em;
+}
+
+/*#region Settings*/
+#feedback, #appConfig {
+    background: var(--surface);
+    border: var(--secondary) solid 1px;
+    border-radius: .5rem;
+    width: 100%;
+}
+
+.setting {
+    display: grid;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.settingChb {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+input[type=text], input[type=password], textarea {
+    border-radius: .4rem;
+    border: 1px solid gray;
+}
+
+textarea {
+    width: 100%;
+}
+
+input[type=text], input[type=password] {
+    height: 2.5rem;
+}
+
+
+#saveChangesAppConfig, #saveChangesFeedback {
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    padding: .5rem;
+}
+
+#appConfig, #feedback {
+    padding: .8rem;
+}
+
+.align-m *{
+    vertical-align: middle;
+}
+
+option, select, input, #saveChangesAppConfig, #saveChangesFeedback, .setting, textarea{
+    font-size: 1rem;
+}
+
+#passReveal {
+    display: grid;
+    width: 40%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+/*#endregion Settings*/
+
+/*#region Search*/
+.search {
+    display: flex;
+    width: 100vw;
+    padding: 1rem;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.search > * {
+    padding: .3rem;
+}
+
+.search input {
+    padding: .4rem;
+    width: 100vw;
+    margin: 0 .4rem;
+    background: var(--surface);
+    color: var(--on-surface);
+}
+
+.search div {
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.search button {
+    background-color: var(--primary);
+    border: none;
+    color: white;
+    margin: 0 .4rem;
+    padding: .2rem .4rem;
+    font-size: 1em;
+}
+
+.search button:hover {
+    box-shadow: inset 0 0 0 2px var(--secondary);
+}
+
+.search button:active {
+    border: none;
+}
+
+.search input[type=text] {
+    width: 100%;
+    padding: 8px 20px;
+    border: none;
+    background-color: var(--light-grey);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+/*#endregion Search*/
+
+.opacity-value {
+    color: var(--surface);
+}
+
+
+/*#region Main Div*/
+.content-container {
+    overflow: auto;
+    width: 100%;
+    padding: 1rem;
+}
+
+/*#endregion Main Div*/
+
+/*#region Theme specific*/
+a {
+    color: var(--primary);
+}
+
+a:visited {
+    color: var(--accent-1); /* TODO: Set up color alts*/
+}
+
+a:hover {
+    color: var(--secondary); /* TODO: Set up color alts*/
+}
+
+hr {
+    border: var(--primary) 2px solid;
+    align-self: center;
+}
+
+hr.full {
+    width: 85%;
+}
+
+hr.max {
+    border: var(--primary) 1px solid;
+    width: 100%;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/*#endregion Theme specific*/
+
+/*#region Categories*/
+.category-container {
+    padding: .5rem;
+    overflow: auto;
+    width: 100%;
+    height: 70vh;
+}
+
+.category-table {
+    padding: .4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--dark-grey);
+    margin: .5rem 0;
+}
+
+/*#endregion Categories*/
+
+/*#region Data Listing*/
+.table-wrapper {
+    padding: .5rem;
+    margin: .7rem .2rem;
+    border: var(--secondary) solid 1px;
+    background: var(--surface);
+    border-radius: 1rem;
+}
+
+td {
+    color: var(--on-background)
+}
+
+td.opened {
+    margin: 1rem .2rem;
+    border-radius: 1rem;
+    background: var(--accent-3);
+}
+
+td.opened div table tr:nth-child(1n + 2) :nth-last-child(1n+2):after {
+    content: "";
+    display: block;
+    padding-right: 1rem;
+    border-bottom: var(--middle-grey) solid 1px;
+}
+
+.table-wrapper td {
+    padding: .5rem;
+}
+
+.list-item:hover {
+    border-radius: 1rem;
+    background: var(--middle-grey);
+}
+
+.list-item td:nth-child(1):after {
+    content: "";
+    display: block;
+    width: 90%;
+    border-bottom: 1px solid var(--middle-grey);
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    /*margin-top: -10px;*/
+}
+
+.list-item td {
+    border: solid 0 transparent;
+    border-style: solid none;
+    padding: 10px;
+}
+
+.list-item td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.list-item td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table-wrapper td.empty {
+    padding: .7rem;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 1.1rem;
+}
+
+.table-wrapper table {
+    width: 100%;
+}
+
+.table-wrapper table th {
+    font-size: 1em;
+    color: var(--primary);
+    font-weight: bold;
+    padding: .2rem .5rem;
+}
+
+.table-wrapper th:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid var(--da-blau);
+}
+
+.attribute-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.attribute-wrapper > * {
+    flex: 1;
+}
+
+.category-title {
+    font-size: 1.2em;
+    color: var(--primary);
+    font-weight: bolder;
+    margin-top: .5rem;
+    margin-bottom: .8rem;
+}
+
+.attribute-wrapper .element {
+    margin-bottom: 0;
+    padding: .3rem;
+    display: flex;
+    border-bottom: 1px solid var(--middle-grey);
+    flex-direction: row;
+    width: 90%;
+}
+
+.subtitle {
+    font-size: 1em;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.generated_button {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 0 .4rem;
+    padding: .2rem .4rem;
+    font-size: 1em;
+}
+
+.generated_button:hover {
+    box-shadow: inset 0 0 0 2px var(--secondary);
+}
+
+.generated_button:active {
+    border: none;
+    background: var(--accent-2); /* TODO: Set up color alts*/
+}
+
+/*TODO: design table*/
+.category-table-column {
+    height: 100%
+}
+
+/*#endregion Data Listing*/
+
+/*#region Responsive Settings*/
+@media only screen and (max-width: 650px) {
+    .attribute {
+        margin-bottom: .5rem;
+    }
+
+    .xpericad-header h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .sub-attribute {
+        flex-direction: column;
+        margin-bottom: .3rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .xpericad-dropdown-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 595px) {
+    .xpericad-header-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .xpericad-fullsize-navcontent {
+        display: none;
+    }
+}
+
+/*#endregion Responsive Settings*/
+
+/*#region Dropdown Menu*/
+.menu {
+    width: 6rem;
+    cursor: pointer;
+    margin-top: 1.2rem;
+    transition: all .5s;
+}
+
+.menu.open {
+    width: 13rem;
+}
+
+.dropdown {
+    width: 100%;
+    background: var(--primary);
+    border-radius: 4px;
+    color: var(--on-secondary);
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .5s;
+    position: relative;
+    z-index: 1;
+}
+
+.down {
+    max-height: 300px;
+}
+
+.menu a, .menu p {
+    padding: 10px 14px;
+    margin: 0;
+    transition: all .1s;
+    text-decoration: none;
+    color: var(--on-primary);
+}
+
+.menu hr {
+    border-bottom: 2px solid var(--secondary);
+    margin: 0;
+    opacity: .6;
+}
+
+.menu p:hover {
+    background: var(--on-hover-dropdown);
+    -webkit-transform: scale(1.05);
+    color: var(--on-primary);
+    box-shadow: 0 0 30px -10px #000;
+}
+
+.menu a:hover {
+    color: var(--on-primary);
+}
+
+.bar-container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 1.5rem;
+    height: .1rem;
+    background-color: var(--on-primary);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, .45rem) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -.45rem) rotate(45deg);
+}
+
+/*#endregion Dropdown Menu*/
+
+/*#region Notification */
+.u-italic {
+    font-style: italic;
+}
+
+.notify-container {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.notify-container .close {
+    background: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.notify-container .close:hover {
+    background: rgba(255, 255, 255, 0.27);
+}
+
+.rectangle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 1rem;
+    width: 50px;
+    height: 50px;
+    transform: scale(0);
+    border-radius: 50%;
+    opacity: 0;
+    overflow: hidden;
+    animation: scale-in 0.3s ease-out forwards, expand 0.35s 0.25s ease-out forwards;
+}
+
+.rectangle.info {
+    background: var(--info);
+    color: var(--on-info);
+}
+
+.rectangle.success {
+    background: var(--success);
+    color: var(--on-succes);
+}
+
+.rectangle.warning {
+    background: var(--warning);
+    color: var(--on-warning);
+}
+
+.rectangle.error {
+    background: var(--error);
+    color: var(--on-error);
+}
+
+
+.notification-text {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 14px;
+    animation: fade-in 0.65s ease-in forwards;
+}
+
+#toast-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 2rem 1rem;
+    width: 100vw;
+}
+
+#toast-container > * {
+    margin: .3rem;
+}
+
+/*#endregion Notification*/
+
+/*#region Animation*/
+@keyframes scale-in {
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes expand {
+    50% {
+        width: 95%;
+        border-radius: 6px;
+    }
+    100% {
+        width: 85%;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 3px 3px -1px rgba(0, 0, 0, .12);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+/*#endregion Animation*/

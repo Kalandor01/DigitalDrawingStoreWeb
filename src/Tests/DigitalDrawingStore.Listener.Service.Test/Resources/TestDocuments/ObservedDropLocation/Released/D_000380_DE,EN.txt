@@ -1,0 +1,3 @@
+PDF_filepath;ChangeNumber;DocumentNumber;DocumentType;DrawingNumber;Language;Prefix;Title;Title_HU;TypeOfProductionOnDrawing
+"E:\PLM\PLMShare\Rajztar\D_000380_DE,EN.pdf";;"000380";"AN";;"DE,EN";"D";"AN Document";;
+

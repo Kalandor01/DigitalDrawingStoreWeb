@@ -1,0 +1,138 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<IsPackable>false</IsPackable>
+
+		<AssemblyName>XperiCad.$(MSBuildProjectName)</AssemblyName>
+
+		<RootNamespace>XperiCad.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="3.1.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\DigitalDrawingStore.Listener.Service\DigitalDrawingStore.Listener.Service.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Preferences\TestApplicationConfiguration.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\0000003180_-_A.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\0000003180_-_A.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\01.00.530085_-_E.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\01.00.530085_-_E.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\01258462.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\01258462.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\D_000380_DE,EN.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\D_000380_DE,EN.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\E_04.0124_DE,EN,FR,IT,ES.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Obsolete\E_04.0124_DE,EN,FR,IT,ES.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\0000003180_-_A.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\0000003180_-_A.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\01.00.530085_-_E.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\01.00.530085_-_E.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\01258462.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\01258462.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\D_000380_DE,EN.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\D_000380_DE,EN.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\E_04.0124_DE,EN,FR,IT,ES.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\PreReleased\E_04.0124_DE,EN,FR,IT,ES.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\0000003180_-_A.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\0000003180_-_A.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\01.00.530085_-_E.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\01.00.530085_-_E.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\01258462.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\01258462.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\D_000380_DE,EN.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\D_000380_DE,EN.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\E_04.0124_DE,EN,FR,IT,ES.pdf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\TestDocuments\ObservedDropLocation\Released\E_04.0124_DE,EN,FR,IT,ES.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\..\Binaries\Debug</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\..\Binaries\Release</OutputPath>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+</Project>

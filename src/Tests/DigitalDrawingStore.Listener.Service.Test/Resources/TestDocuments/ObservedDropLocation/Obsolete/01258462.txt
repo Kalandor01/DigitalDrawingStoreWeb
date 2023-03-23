@@ -1,0 +1,3 @@
+﻿PDF_filepath;ChangeNumber;DocumentNumber;DocumentType;DrawingNumber;Language;Prefix;Title;Title_HU;TypeOfProductionOnDrawing
+"E:\PLM\PLMShare\Rajztar\01258462.pdf";"01258462";"000381";"CHD";;"DE,HU";"E";"Dokumentálja a változást";"Dokumentálja a változást";
+

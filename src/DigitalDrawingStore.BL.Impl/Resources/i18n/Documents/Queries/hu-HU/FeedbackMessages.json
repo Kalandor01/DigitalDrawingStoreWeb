@@ -1,0 +1,45 @@
+{
+  "CultureKey": "i18n-hu-HU",
+  "CultureElements": [
+    {
+      "Key": "Error_NoSuchDocumentFoundInDatabase",
+      "Value": "Ilyen dokumentum nem található az adatbázisban."
+    },
+    {
+      "Key": "Error_NoSuchTableFoundInDatabase",
+      "Value": "A(z) {0} nevezetű táblázat nem található az adatbázisban."
+    },
+    {
+      "Key": "Error_NoTargetOfDocumentUsageFoundInDatabase",
+      "Value": "A dokumentum lehetséges használati céljai nem találhatók az adatbázisban."
+    },
+    {
+      "Key": "Error_CouldNotQueryBecauseOfInvalidGuid",
+      "Value": "A lekérést nem sikerült elvégezni, mivel a megadott Guid helytelen volt."
+    },
+    {
+      "Key": "Warning_DocumentCouldNotBeProcessed",
+      "Value": "Egy dokumentumot nem sikerült feldolgozni."
+    },
+    {
+      "Key": "Warning_TargetOfDocumentUsageCouldNotBeProcessed",
+      "Value": "A dokumentum egy lehetséges használati célját nem sikerült feldolgozni."
+    },
+    {
+      "Key": "Warning_DocumentMetadataCouldNotBeProcessed",
+      "Value": "A dokumentum egy metaadat értékét nem sikerült feldolgozni."
+    },
+    {
+      "Key": "Warning_DocumentCategoryCouldNotBeProcessed",
+      "Value": "A dokumentum kategóriát nem sikerült feldolgozni."
+    },
+    {
+      "Key": "Warning_DocumentMetadataDefinitionCouldNotBeProcessed",
+      "Value": "A kért dokumentum metaadatot nem sikerült feldolgozni."
+    },
+    {
+      "Key": "Error_CouldNotQueryParameter",
+      "Value": "A paraméter lekérdezését nem sikerült elvégezni."
+    }
+  ]
+}

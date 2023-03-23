@@ -1,0 +1,3 @@
+PDF_filepath;ChangeNumber;DocumentNumber;DocumentType;DrawingNumber;Language;Prefix;Title;Title_HU;TypeOfProductionOnDrawing
+"E:\PLM\PLMShare\Rajztar\E_04.0124_DE,EN,FR,IT,ES.pdf";;"04.0124";"TA";;"DE,EN,FR,IT,ES";"E";"Test TA Document";;
+

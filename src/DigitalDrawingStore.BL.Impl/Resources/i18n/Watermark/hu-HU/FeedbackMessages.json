@@ -1,0 +1,13 @@
+{
+  "CultureKey": "i18n-hu-HU",
+  "CultureElements": [
+    {
+      "Key": "Error_DocumentIsNotExists",
+      "Value": "Nem létezik a következő dokumentum: {0}."
+    },
+    {
+      "Key": "Error_DocumentExtensionIsNotSupported",
+      "Value": "A dokumentum típusa nem támogatott: {0}."
+    }
+  ]
+}
