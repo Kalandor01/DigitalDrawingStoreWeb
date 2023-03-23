@@ -11,19 +11,17 @@
 <script src="~/js/settings.js"></script>
 <div id="contentContainer" class="content-container">
     <p class="category-title">Alkalmazás konfiguráció</p>
-    @using (Html.BeginForm())
-    {
+    @{
         <div id="appConfig">
             <div class="setting">
                 <label>Adatbázis elérési útvonal</label>
                 <input name="DocumentDatabaseConnectionString" type="text" value="@documentResourceProperties.ResourcePath" />
             </div>
-            <button id="saveChangesAppConfig" type="submit">Módosítások mentése</button>
+            <button id="saveChangesAppConfig" onclick="updateConfigSettings()">Módosítások mentése</button>
         </div>
     }
     <p class="category-title">Visszajelzés beállítások</p>
-    @using (Html.BeginForm())
-    {
+    @{
         <div id="feedback">
             <div class="setting">
                 <label>Küldő e-mail</label>
@@ -75,7 +73,7 @@
                     <input name="IsEnableSsl" type="checkbox" />
                 }
             </div>
-            <button id="saveChangesFeedback" type="submit">Módosítások mentése</button>
+            <button id="saveChangesFeedback" onclick="updateEmailSettings()">Módosítások mentése</button>
         </div>
     }
 </div>

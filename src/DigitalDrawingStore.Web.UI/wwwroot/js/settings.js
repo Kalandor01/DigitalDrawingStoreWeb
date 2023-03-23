@@ -4,16 +4,7 @@ var feedbackFormChanged = false;
 
 $(document).ready(function () {
 
-    const togglePassword = $('#togglePassword');
-
-    togglePassword.on("click", (e) => {
-        togglePasswordHidden(e)
-        togglePassword.toggleClass("fa-eye fa-eye-slash");
-    });
-
-
-    $("#passReveal").on("click", togglePasswordHidden);
-    $("form").on("submit", clickFormSubmit);
+    $('#togglePassword').on("click", togglePasswordHidden);
 
      $(window).on("beforeunload", unsavedChangesPopup);
 
@@ -31,7 +22,7 @@ function unsavedChangesPopup()
 
 function togglePasswordHidden(evt)
 {
-    evt.preventDefault();
+    $(evt.target).toggleClass("fa-eye fa-eye-slash");
 
     if (passRevealed)
     {
@@ -68,23 +59,6 @@ function startCheckingFeedbackMod()
     $("#feedback *").on("input", modFeedbackForm);
 }
 
-function clickFormSubmit(evt)
-{
-    evt.preventDefault();
-
-    let eventForm = $(evt.target);
-    if (eventForm.children("#appConfig").length == 1)
-    {
-        let values = getFormValues("#appConfig");
-        updateConfigSettings(values);
-    }
-    else
-    {
-        let values = getFormValues("#feedback");
-        updateEmailSettings(values);
-    }
-}
-
 function getFormValues(formDivName)
 {
 
@@ -106,15 +80,17 @@ function getFormValues(formDivName)
     return configParamatersObject;
 }
 
-function updateConfigSettings(configParamatersObject)
+function updateConfigSettings()
 {
+    let configParamatersObject = getFormValues("#appConfig");
     requestInvoker
         .executeUpdate('/Administration/UpdateApplicationConfigurationSettings', configParamatersObject);
     startCheckingAppConfigMod();
 }
 
-function updateEmailSettings(configParamatersObject)
+function updateEmailSettings()
 {
+    let configParamatersObject = getFormValues("#feedback");
     requestInvoker
         .executeUpdate('/Administration/UpdateFeedbackEmailSettings', configParamatersObject);
     startCheckingFeedbackMod();

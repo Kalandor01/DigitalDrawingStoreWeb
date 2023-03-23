@@ -96,12 +96,12 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Test.Controllers
                 await feedbackProperies.UpdateIsUseDefaultCredentialsAsync(isUseDefaultSmtpCredentials);
                 await feedbackProperies.UpdateIsEnableSslAsync(isEnableSsl);
 
-                var nse = (await feedbackProperies.GetSenderEmailAsync()).ResponseObject;
+                var nse = (await feedbackProperies.GetSenderEmailAsync());
                 var ner = await feedbackProperies.GetEmailRecipientsAsync();
-                var nsh = (await feedbackProperies.GetSmtpHostAsync()).ResponseObject;
+                var nsh = (await feedbackProperies.GetSmtpHostAsync());
                 var nsp = await feedbackProperies.GetSmtpPortAsync();
-                var nsu = (await feedbackProperies.GetSmtpUsernameAsync()).ResponseObject;
-                var nsa = (await feedbackProperies.GetSmtpPasswordAsync()).ResponseObject;
+                var nsu = (await feedbackProperies.GetSmtpUsernameAsync());
+                var nsa = (await feedbackProperies.GetSmtpPasswordAsync());
                 var niu = await feedbackProperies.GetIsUseDefaultCredentialsAsync();
                 var nie = await feedbackProperies.GetIsEnableSslAsync();
 
