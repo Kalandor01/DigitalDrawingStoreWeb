@@ -89,14 +89,14 @@ function getFormValues(formDivName)
 {
 
     let configParamatersObject = {}
-    $(`${formDivName}>.setting>:not(label)`).each(function () {
+    $(`${formDivName}>.setting input, ${formDivName}>.setting textarea`).each(function () {
         let name = this.name;
         let value = this.value;
 
         configParamatersObject[name] = value;
     });
 
-    $(`${formDivName}>.settingChb>:not(label)`).each(function () {
+    $(`${formDivName}>.settingChb input`).each(function () {
         let name = this.name;
         let value = this.checked;
 

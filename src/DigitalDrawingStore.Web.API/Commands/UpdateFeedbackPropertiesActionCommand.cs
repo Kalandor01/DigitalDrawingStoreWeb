@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using XperiCad.Common.Core.Behaviours.Commands;
+﻿using XperiCad.Common.Core.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
@@ -7,6 +6,7 @@ using XperiCad.Common.Infrastructure.Feedback;
 using Unity;
 using XperiCad.Common.Infrastructure.Application;
 using XperiCad.DigitalDrawingStore.Web.API.Resources.i18n;
+using System.Text.RegularExpressions;
 
 namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 {
@@ -187,15 +187,16 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         #region Private members
         private bool IsEmailAddressValid(string email)
         {
-            try
+            string expression = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+
+            if (Regex.IsMatch(email, expression))
             {
-                new MailAddress(email);
-                return true;
+                if (Regex.Replace(email, expression, string.Empty).Length == 0)
+                {
+                    return true;
+                }
             }
-            catch (FormatException)
-            {
-                return false;
-            }
+            return false;
         }
 
         private JsonResponse<string> GetJsonResponse(List<FeedbackMessage> feedbackMessages)
