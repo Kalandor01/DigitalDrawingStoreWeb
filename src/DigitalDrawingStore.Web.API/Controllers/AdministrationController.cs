@@ -4,6 +4,7 @@ using XperiCad.Common.Infrastructure.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
+using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.Web.API.Commands;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using XperiCad.DigitalDrawingStore.Web.API.Extensions;
@@ -24,116 +25,21 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Controllers
         #endregion
 
         #region Public members
-        public async Task<JsonResponse<string>> GetSenderEmail()
+        public async Task<FeedbackEntities> GetFeedbackProperties()
         {
-            var container = new ContainerFactory().CreateContainer();
+            var feedbackService = new FeedbackPropertiesServiceFactory().CreateFeedbackPropertyService(Constants.Documents.Resources.APPLICATION_CONFIGURATION_FILE_PATH);
+            var feedbackProperties = new FeedbackProperties(feedbackService);
 
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<string>();
-
-            var command = new GetSenderEmailPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<IEnumerable<string>>> GetEmailRecipitents()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<IEnumerable<string>>();
-
-            var command = new GetEmailRecipientsPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<string>> GetSmtpHost()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<string>();
-
-            var command = new GetSmtpHostPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<int>> GetSmtpPort()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<int>();
-
-            var command = new GetSmtpPortPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<string>> GetSmtpUsername()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<string>();
-
-            var command = new GetSmtpUsernamePropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<string>> GetSmtpPassword()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<string>();
-
-            var command = new GetSmtpPasswordPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<bool>> GetIsUseDefaultCredentials()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<bool>();
-
-            var command = new GetUseDefaultSmtpCredentialsPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
-        }
-
-        public async Task<JsonResponse<bool>> GetIsEnableSsl()
-        {
-            var container = new ContainerFactory().CreateContainer();
-
-            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
-            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<bool>();
-
-            var command = new GetEnableSmtpSslPropertyActionCommand();
-            commandInvoker.AddCommand(command);
-            await commandInvoker.ExecuteAllAsync();
-
-            return commandInvoker.ActionResponse.ToJsonResponse();
+            return new FeedbackEntities(
+                await feedbackProperties.GetSenderEmailAsync(),
+                await feedbackProperties.GetEmailRecipientsAsync(),
+                await feedbackProperties.GetSmtpHostAsync(),
+                await feedbackProperties.GetSmtpPortAsync(),
+                await feedbackProperties.GetSmtpUsernameAsync(),
+                await feedbackProperties.GetSmtpPasswordAsync(),
+                await feedbackProperties.GetIsUseDefaultCredentialsAsync(),
+                await feedbackProperties.GetIsEnableSslAsync()
+            );
         }
 
         public async Task<JsonResponse<string>> UpdateApplicationConfiguration(

@@ -4,12 +4,12 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application
 {
     public interface IFeedbackProperties
     {
-        Task<IPromise<string>> GetSenderEmailAsync();
+        Task<string> GetSenderEmailAsync();
         Task<IEnumerable<string>> GetEmailRecipientsAsync();
-        Task<IPromise<string>> GetSmtpHostAsync();
+        Task<string> GetSmtpHostAsync();
         Task<int> GetSmtpPortAsync();
-        Task<IPromise<string>> GetSmtpUsernameAsync();
-        Task<IPromise<string>> GetSmtpPasswordAsync(); // TODO: secure string + encoding
+        Task<string> GetSmtpUsernameAsync();
+        Task<string> GetSmtpPasswordAsync(); // TODO: secure string + encoding
         Task<bool> GetIsUseDefaultCredentialsAsync();
         Task<bool> GetIsEnableSslAsync();
         Task<bool> UpdateSenderEmailAsync(string senderEmail);

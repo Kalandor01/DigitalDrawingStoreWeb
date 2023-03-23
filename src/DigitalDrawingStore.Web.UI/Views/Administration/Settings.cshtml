@@ -4,7 +4,7 @@
     ViewData["Title"] = "Beállítások";
     var administrationController = new AdministrationController();
     var documentResourceProperties = administrationController.documentResourceProperties;
-    string concat = "";
+    var feedbackEntities = await administrationController.GetFeedbackProperties();
 }
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -26,41 +26,36 @@
     {
         <div id="feedback">
             <div class="setting">
-                    <label>Küldő e-mail</label>
+                <label>Küldő e-mail</label>
 
-                    <input name="SenderEmail" type="text" value="@administrationController.GetSenderEmail().Result.ResponseObject" />
+                <input name="SenderEmail" type="text" value="@feedbackEntities.SenderEmail" />
             </div>
             <div class="setting align-m">
-                    <label>E-mail címzettek</label>
-                    @foreach (string email in (await administrationController.GetEmailRecipitents()).ResponseObject)
-                    {
-                        concat += String.Concat(email,"\n");
-                    }
-                    <textarea name="EmailRecipients" rows="5">@concat</textarea>
+                <label>E-mail címzettek</label>
+                <textarea name="EmailRecipients" rows="5">@feedbackEntities.EmailRecipients</textarea>
             </div>
             <div class="setting">
                 <label>Smtp Host</label>
-                <input name="SmtpHost" type="text" value="@administrationController.GetSmtpHost().Result.ResponseObject" />
+                <input name="SmtpHost" type="text" value="@feedbackEntities.SmtpHost" />
             </div>
             <div class="setting">
                 <label>Smtp Port</label>
-                <input name="SmtpPort" type="text" value="@administrationController.GetSmtpPort().Result.ResponseObject" />
+                <input name="SmtpPort" type="text" value="@feedbackEntities.SmtpPort" />
             </div>
             <div class="setting">
                 <label>Smtp felhasználónév</label>
-                <input name="SmtpUsername" type="text" value="@administrationController.GetSmtpUsername().Result.ResponseObject" />
+                <input name="SmtpUsername" type="text" value="@feedbackEntities.SmtpUsername" />
             </div>
             <div class="setting">
                 <label>Smtp jelszó</label>
                 <div id="passwordField">
-                    <input id="smtpPass" name="SmtpPassword" type="password" value="@administrationController.GetSmtpPassword().Result.ResponseObject" style="width: 100%" />
+                    <input id="smtpPass" name="SmtpPassword" type="password" value="@feedbackEntities.SmtpPassword" style="width: 100%" />
                     <i class="far fa-eye-slash" id="togglePassword"></i>
                 </div>
             </div>
-            @*<button id="passReveal">Jelszó megjelenítés</button>*@
             <div class="settingChb">
                 <label>Használja az alapértelmezett bizonyítványt</label>
-                @if (administrationController.GetIsUseDefaultCredentials().Result.ResponseObject)
+                @if (feedbackEntities.IsUseDefaultCredentials)
                 {
                     <input name="IsUseDefaultCredentials" type="checkbox" checked />
                 }
@@ -71,7 +66,7 @@
             </div>
             <div class="settingChb">
                 <label>Ssl használata</label>
-                @if (administrationController.GetIsEnableSsl().Result.ResponseObject)
+                @if (feedbackEntities.IsUseSsl)
                 {
                     <input name="IsEnableSsl" type="checkbox" checked />
                 }
@@ -84,4 +79,3 @@
         </div>
     }
 </div>
-

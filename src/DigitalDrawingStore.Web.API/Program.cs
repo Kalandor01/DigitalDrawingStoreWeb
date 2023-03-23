@@ -4,22 +4,6 @@ using XperiCad.DigitalDrawingStore.Web.API;
 
 namespace XperiCad.DigitalDrawingStore.Web.Api
 {
-    // TODO: implement DI for API module
-    //public class APIModule
-    //{
-    //    public IServiceCollection GetServices(Assembly startupAssembly)
-    //    {
-    //        var services = new ServiceCollection();
-
-    //        services
-    //            .AddControllers()
-    //            .AddApplicationPart(startupAssembly)
-    //            .AddControllersAsServices();
-
-    //        return services;
-    //    }
-    //}
-
     public static class Program
     {
         static void Main(string[] args)

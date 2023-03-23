@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using XperiCad.Common.Infrastructure.Behaviours.Queries;
 using XperiCad.DigitalDrawingStore.BL.Services;
 
 namespace XperiCad.DigitalDrawingStore.BL.Impl.Application
@@ -18,9 +17,9 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application
         #endregion
 
         #region Private members
-        public async Task<IPromise<string>> GetSenderEmailAsync()
+        public async Task<string> GetSenderEmailAsync()
         {
-            return await _feedbackPropertiesService.QuerySenderEmailAsync();
+            return (await _feedbackPropertiesService.QuerySenderEmailAsync()).ResponseObject;
         }
 
         public async Task<IEnumerable<string>> GetEmailRecipientsAsync()
@@ -38,9 +37,9 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application
             return new List<string>();
         }
 
-        public async Task<IPromise<string>> GetSmtpHostAsync()
+        public async Task<string> GetSmtpHostAsync()
         {
-            return await _feedbackPropertiesService.QuerySmtpHostAsync();
+            return (await _feedbackPropertiesService.QuerySmtpHostAsync()).ResponseObject;
         }
 
         public async Task<int> GetSmtpPortAsync()
@@ -58,14 +57,14 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application
             return default;
         }
 
-        public async Task<IPromise<string>> GetSmtpUsernameAsync()
+        public async Task<string> GetSmtpUsernameAsync()
         {
-            return await _feedbackPropertiesService.QuerySmtpUsernameAsync();
+            return (await _feedbackPropertiesService.QuerySmtpUsernameAsync()).ResponseObject;
         }
 
-        public async Task<IPromise<string>> GetSmtpPasswordAsync()
+        public async Task<string> GetSmtpPasswordAsync()
         {
-            return await _feedbackPropertiesService.QuerySmtpPasswordAsync();
+            return (await _feedbackPropertiesService.QuerySmtpPasswordAsync()).ResponseObject;
         }
 
         public async Task<bool> GetIsUseDefaultCredentialsAsync()

@@ -104,6 +104,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         {
             var responses = new List<FeedbackMessage>();
 
+            //Sender email
             if (IsEmailAddressValid(_senderEmail))
             {
                 responses.Add(GetFeedbackMessage(await _feedbackProperties.UpdateSenderEmailAsync(_senderEmail)));
@@ -113,6 +114,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 responses.Add(GetFeedbackMessage(Feedback.Fatal_Wrong_Email_Format));
             }
 
+            //Email recipients
             var emailRecipients = _emailRecipients.Replace("\n", ",");
             emailRecipients = emailRecipients.Replace(" ", "");
             var emailRecipientsList = emailRecipients.Split(EMAIL_RECIPIENTS_SEP_STRING);
@@ -145,8 +147,10 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 responses.Add(GetFeedbackMessage(Feedback.Fatal_Wrong_Email_Format));
             }
 
+            //Smtp host
             responses.Add(GetFeedbackMessage(await _feedbackProperties.UpdateSmtpHostAsync(_smtpHost)));
-            
+
+            //Smtp 
             var parsedPort = int.TryParse(_smtpPort, out int smtpPortParsed);
             if (parsedPort)
             {
@@ -164,12 +168,15 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 responses.Add(GetFeedbackMessage(Feedback.Fatal_Not_Number));
             }
 
+            //Smtp username / password
             responses.Add(GetFeedbackMessage(await _feedbackProperties.UpdateSmtpUsernameAsync(_smtpUsername)));
             responses.Add(GetFeedbackMessage(await _feedbackProperties.UpdateSmtpPasswordAsync(_smtpPassword)));
 
+            //use default credentials
             var useDefaultCredentials = _isUseDefaultSmtpCredentials == "true";
             responses.Add(GetFeedbackMessage(await _feedbackProperties.UpdateIsUseDefaultCredentialsAsync(useDefaultCredentials)));
 
+            //eanble ssl
             var enableSsl = _isEnableSsl == "true";
             responses.Add(GetFeedbackMessage(await _feedbackProperties.UpdateIsEnableSslAsync(enableSsl)));
 
@@ -185,7 +192,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 new MailAddress(email);
                 return true;
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 return false;
             }
