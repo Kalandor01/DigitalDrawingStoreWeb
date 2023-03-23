@@ -7,6 +7,7 @@
     string concat = "";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <script src="~/js/settings.js"></script>
 <div id="contentContainer" class="content-container">
     <p class="category-title">Alkalmazás konfiguráció</p>
@@ -35,7 +36,7 @@
                     {
                         concat += String.Concat(email,"\n");
                     }
-                    <textarea name="EmailRecipients" rows="3">@concat</textarea>
+                    <textarea name="EmailRecipients" rows="5">@concat</textarea>
             </div>
             <div class="setting">
                 <label>Smtp Host</label>
@@ -51,9 +52,12 @@
             </div>
             <div class="setting">
                 <label>Smtp jelszó</label>
-                <input id="smtpPass" name="SmtpPassword" type="password" value="@administrationController.GetSmtpPassword().Result.ResponseObject" />
+                <div id="passwordField">
+                    <input id="smtpPass" name="SmtpPassword" type="password" value="@administrationController.GetSmtpPassword().Result.ResponseObject" style="width: 100%" />
+                    <i class="far fa-eye-slash" id="togglePassword"></i>
+                </div>
             </div>
-            <button id="passReveal">Jelszó megjelenítés</button>
+            @*<button id="passReveal">Jelszó megjelenítés</button>*@
             <div class="settingChb">
                 <label>Használja az alapértelmezett bizonyítványt</label>
                 @if (administrationController.GetIsUseDefaultCredentials().Result.ResponseObject)

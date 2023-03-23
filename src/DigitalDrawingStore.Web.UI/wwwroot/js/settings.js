@@ -4,7 +4,15 @@ var feedbackFormChanged = false;
 
 $(document).ready(function () {
 
-    $("#passReveal").on("click", togglePassworgHidden);
+    const togglePassword = $('#togglePassword');
+
+    togglePassword.on("click", (e) => {
+        togglePasswordHidden(e)
+        togglePassword.toggleClass("fa-eye fa-eye-slash");
+    });
+
+
+    $("#passReveal").on("click", togglePasswordHidden);
     $("form").on("submit", clickFormSubmit);
 
      $(window).on("beforeunload", unsavedChangesPopup);
@@ -21,7 +29,7 @@ function unsavedChangesPopup()
     }
 }
 
-function togglePassworgHidden(evt)
+function togglePasswordHidden(evt)
 {
     evt.preventDefault();
 
@@ -111,3 +119,5 @@ function updateEmailSettings(configParamatersObject)
         .executeUpdate('/Administration/UpdateFeedbackEmailSettings', configParamatersObject);
     startCheckingFeedbackMod();
 }
+
+
