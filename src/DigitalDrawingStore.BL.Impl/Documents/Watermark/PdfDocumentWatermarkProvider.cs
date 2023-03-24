@@ -15,6 +15,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark
 {
     internal class PdfDocumentWatermarkProvider : IDocumentWatermarkProvider
     {
+        private readonly string FONT_PATH = $"{Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.System))}\\Fonts\\times.ttf";
+
         public byte[] ApplyWatermarksOnDocument(string documentPath, IEnumerable<IDocumentWatermark> watermarks)
         {
             if (!File.Exists(documentPath))
@@ -61,7 +63,15 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark
             opacityInPercentage /= 100;
 
             var rotationInRads = rotationInDegree * Math.PI / 180;
-            var pdfFont = PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN, PdfEncodings.CP1250, PdfFontFactory.EmbeddingStrategy.PREFER_EMBEDDED, false);
+            PdfFont pdfFont;
+            if (File.Exists(FONT_PATH))
+            {
+                pdfFont = PdfFontFactory.CreateFont(FONT_PATH, PdfEncodings.IDENTITY_H, PdfFontFactory.EmbeddingStrategy.PREFER_EMBEDDED, false);
+            }
+            else
+            {
+                pdfFont = PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN, PdfEncodings.CP1250, PdfFontFactory.EmbeddingStrategy.PREFER_EMBEDDED, false);
+            }
 
             for (var i = 1; i <= pdfDoc.GetNumberOfPages(); i++)
             {
