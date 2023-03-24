@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.Commands.UpdateFeedbackPropertiesCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAQAAIAAI=</HashCode>
+      <FileName>Application\Commands\UpdateFeedbackPropertiesCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories.DocumentResourceProperiesFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\Factories\DocumentResourceProperiesFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.Queries.FeedbackPropertyQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAIAAAAAAAAAAAAIAAAAAgAAAAIAAI=</HashCode>
+      <FileName>Application\Queries\FeedbackPropertyQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.ApplicationProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAIAAAAQgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\ApplicationProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.ContainerFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Application\ContainerFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.DdswGeneralApplicationProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAEAAAAAAAAAAAEAQAAgAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Application\DdswGeneralApplicationProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.DocumentResourceProperies" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Application\DocumentResourceProperies.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.FeedbackProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAEACAkgBBAIAAAAAACCAAAAAABAgBAAAAABgI=</HashCode>
+      <FileName>Application\FeedbackProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.UserEventLoggingProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAAAAACAAEAAAAAAAAAAAAAAIAAAAAAAQAAIAAI=</HashCode>
+      <FileName>Application\UserEventLoggingProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands.MsSqlUpdateDocumentCategoryCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAACAAAAIAAI=</HashCode>
+      <FileName>Documents\Commands\MsSqlUpdateDocumentCategoryCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands.MsSqlUpdateDocumentCategoryEntitiesCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAEAAAAAAAAAAABAAIAAAAAAAAAAIAAI=</HashCode>
+      <FileName>Documents\Commands\MsSqlUpdateDocumentCategoryEntitiesCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands.MsSqlUpdateDocumentCategoryRelationCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAIAAI=</HashCode>
+      <FileName>Documents\Commands\MsSqlUpdateDocumentCategoryRelationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands.MsSqlUpdateDocumentMetadataCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAIAAI=</HashCode>
+      <FileName>Documents\Commands\MsSqlUpdateDocumentMetadataCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Exporters.PdfDocumentExporter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Exporters\PdfDocumentExporter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories.DocumentCategoryFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAAAAAAAIAAI=</HashCode>
+      <FileName>Documents\Factories\DocumentCategoryFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories.DocumentFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAAAAAIACI=</HashCode>
+      <FileName>Documents\Factories\DocumentFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries.MsSqlDocumentCategoryQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAkAAAAAAAAAACAAAIAAAAAgAAAAIAAI=</HashCode>
+      <FileName>Documents\Queries\MsSqlDocumentCategoryQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries.MsSqlDocumentCategoryEntitiesQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAkAACAACAAAAgAAAIAAAAAgAAAAIACI=</HashCode>
+      <FileName>Documents\Queries\MsSqlDocumentMetadataDefinitionQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Documents.Queries.MsSqlDocumentQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABACAAABAAACgAAACAAACAAAACAIAAAgAgAAAAIAAI=</HashCode>
+      <FileName>Documents\Queries\MsSqlDocumentQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.Factories.DocumentWatermarkFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Watermark\Factories\DocumentWatermarkFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Watermark.DocumentWatermark" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAABEAAAAAADAAAAAiAAACAA=</HashCode>
+      <FileName>Documents\Watermark\DocumentWatermark.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.PdfDocumentWatermarkProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAAAAAAAAAAAAAAAAAAAAAARAEAAAAAAAAAAo=</HashCode>
+      <FileName>Documents\Watermark\PdfDocumentWatermarkProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.MsSqlDocumentCategory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAAAAAAAAAACAAAAAAAIAAAAAAQgAAIABI=</HashCode>
+      <FileName>Documents\MsSqlDocumentCategory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.MsSqlPdfDocument" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACABAAACACAAIgAAABBAUAAAAAYQIEAAEAAAAIAAI=</HashCode>
+      <FileName>Documents\MsSqlPdfDocument.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Extensions.IDictionaryExtensions" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IDictionaryExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Logging.MsSqlUserEventsLogger" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAIAABEAAAAAAAAAAAAwAIAAAAAIAAAAIAAI=</HashCode>
+      <FileName>Logging\MsSqlUserEventsLogger.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n.Feedback" Collapsed="true">
+    <Position X="1.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAEBAQAAASQGEAABAAFACiABVkAQAECUkQEBACAAI=</HashCode>
+      <FileName>Resources\i18n\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories.DocumentServiceFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Factories\DocumentServiceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories.FeedbackPropertiesServiceFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Factories\FeedbackPropertiesServiceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Services.DocumentService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAQAQAAAACAAAGCAIACABmAAAAAACggCAAAAAAAA=</HashCode>
+      <FileName>Services\DocumentService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Services.FeedbackPropertiesService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACAAAgAkgQBAAAQAAAQCAICgAAABAAAAIAAAAAI=</HashCode>
+      <FileName>Services\FeedbackPropertiesService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.BL.Impl.Constants" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories._Interfaces.IDocumentResourceProperiesFactory" Collapsed="true">
+    <Position X="4.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\Factories\_Interfaces\IDocumentResourceProperiesFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories.IDocumentCategoryFactory" Collapsed="true">
+    <Position X="1.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Documents\Factories\_Interfaces\IDocumentCategoryFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories.IDocumentFactory" Collapsed="true">
+    <Position X="3" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Documents\Factories\_Interfaces\IDocumentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Queries.IDocumentCategoryQuery" Collapsed="true">
+    <Position X="6.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Application.IUserEventLoggingProperties" Collapsed="true">
+    <Position X="1.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Commands.IUpdateFeedbackPropertiesCommand" Collapsed="true">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.IDocumentWatermarkProvider" Collapsed="true">
+    <Position X="4.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Exporters.IDocumentExporter" Collapsed="true">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Logging.IUserEventsLogger" Collapsed="true">
+    <Position X="1.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Commands.IUpdateDocumentMetadataCommand" Collapsed="true">
+    <Position X="3" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Commands.IUpdateDocumentCategoryRelationCommand" Collapsed="true">
+    <Position X="8.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Commands.IUpdateDocumentCategoryEntitiesCommand" Collapsed="true">
+    <Position X="4.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Commands.IUpdateDocumentCategoryCommand" Collapsed="true">
+    <Position X="6.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.IDocument" Collapsed="true">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Queries.IDocumentQuery" Collapsed="true">
+    <Position X="1.25" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Queries.IDocumentMetadataDefinitionQuery" Collapsed="true">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.IDocumentCategory" Collapsed="true">
+    <Position X="3" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Queries.IFeedbackPropertyQuery" Collapsed="true">
+    <Position X="10" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Services.Factories.IFeedbackPropertiesServiceFactory" Collapsed="true">
+    <Position X="4.75" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Services.IFeedbackPropertiesService" Collapsed="true">
+    <Position X="8.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.Factories.IDocumentWatermarkFactory" Collapsed="true">
+    <Position X="6.5" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Impl.Application.IFeedbackProperties" Collapsed="true">
+    <Position X="8.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Documents.IDocumentWatermark" Collapsed="true">
+    <Position X="8.25" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Application.IDocumentResourceProperties" Collapsed="true">
+    <Position X="10" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Application.IApplicationProperties" Collapsed="true">
+    <Position X="1.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Services.IDocumentService" Collapsed="true">
+    <Position X="3" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Application.IContainerFactory" Collapsed="true">
+    <Position X="4.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.DigitalDrawingStore.BL.Services.Factories.IDocumentServiceFactory" Collapsed="true">
+    <Position X="6.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.Application.IGeneralApplicationProperties" Collapsed="true">
+    <Position X="8.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

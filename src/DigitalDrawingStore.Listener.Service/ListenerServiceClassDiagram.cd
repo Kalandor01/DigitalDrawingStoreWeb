@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DigitalDrawingStore.Listener.Service.Application.ApplicationProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAIAAAAAAAAAAAAAAAACAAAARYAAAAA=</HashCode>
+      <FileName>Application\ApplicationProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Application.DocumentResourceProperies" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Application\DocumentResourceProperies.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Application.FeedbackProperties" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECABAAAQBAIAAgAABAAAAAACAAACIgAAAQAQBAAIEAM=</HashCode>
+      <FileName>Application\FeedbackProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.Application.DataSource.ApplicationConfigurationService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\DataSource\ApplicationConfigurationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.Application.DataSource.ApplicationConfigurationServiceFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Application\DataSource\ApplicationConfigurationServiceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.Application.DataSource.XmlApplicationConfigurationCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAACAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Application\DataSource\XmlApplicationConfigurationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.Application.DataSource.XmlApplicationConfigurationQuery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAADAIAAAAAQAAAAIAAAiAACAAQAACAA=</HashCode>
+      <FileName>Application\DataSource\XmlApplicationConfigurationQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Constants" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.ddswListener" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEACAAABCAAAAAAAAAEAAAAAIAAA=</HashCode>
+      <FileName>DDSWListenerService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.DDSWServiceInstaller" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAECAAAAAAAACAAAACAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DDSWServiceInstaller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Program" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.Common.Core.DataSource.DataParameterFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACAEAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\DataParameterFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.DataSource.DataSourceFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Core\DataSource\DataSourceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.DataSource.Entity" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\Entity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.DataSource.MsSqlDataSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\MsSqlDataSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="XperiCad.Common.Core.DataSource.SqlTypeLengthConstants" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\SqlTypeLengthConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.DocumentData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\DocumentData.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.RawDocument" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAEAAAAACAAAAAAgAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\RawDocument.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Extractors.PdfDocumentExtractor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\Extractors\PdfDocumentExtractor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Factories.RawDocumentFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAACA=</HashCode>
+      <FileName>Document\Factories\RawDocumentFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Resources.DocumentResourcePool" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Document\Resources\DocumentResourcePool.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Resources.DropLocationDocumentResource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\Resources\DropLocationDocumentResource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Resources.MsSqlDocumentResource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABAkAAAAAAAAAAABAAAAAAAAYAAAAAAAAAAIAAo=</HashCode>
+      <FileName>Document\Resources\MsSqlDocumentResource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Resources.Validator.DocumentResourceValidator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAgAIAAAAAAAAAAgAAAAAQAIAAAAAAIAAAIAAI=</HashCode>
+      <FileName>Document\Resources\Validator\DocumentResourceValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Resources.Validator.ValidationFeedback" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Document\Resources\Validator\ValidationFeedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Document.Scout.DocumentScout" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Document\Scout\DocumentScout.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Services.DocumentListenerService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABAAQAAAAAAAAAAAACAAAAAAAAAAAAIAIEAAAAIA=</HashCode>
+      <FileName>Services\DocumentListenerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitalDrawingStore.Listener.Service.Services.Factories.ListenerServiceFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Factories\ListenerServiceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Application.IApplicationProperties" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAIAAAAAAAAAAAAAAAACAAAAAQAAAAA=</HashCode>
+      <FileName>Application\_Interfaces\IApplicationProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Application.IDocumentResourceProperies" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\_Interfaces\IDocumentResourceProperies.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Application.IFeedbackProperties" Collapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABAAAQBAIAAAAAAAAAAAACAAAAAAAAAAAQAAAAEAA=</HashCode>
+      <FileName>Application\_Interfaces\IFeedbackProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.Application.DataSource.IApplicationConfigurationCommand" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\DataSource\_Interfaces\IApplicationConfigurationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.Application.DataSource.IApplicationConfigurationQuery" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAQAAAAIAAAAAAAAAQAACAA=</HashCode>
+      <FileName>Application\DataSource\_Interfaces\IApplicationConfigurationQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.Application.DataSource.IApplicationConfigurationService" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\DataSource\_Interfaces\IApplicationConfigurationService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.Application.DataSource.IApplicationConfigurationServiceFactory" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Application\DataSource\_Interfaces\IApplicationConfigurationServiceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.DataSource.IDataParameterFactory" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\_Interfaces\IDataParameterFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.DataSource.IDataSource" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\_Interfaces\IDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.DataSource.IDataSourceFactory" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Core\DataSource\_Interfaces\IDataSourceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="XperiCad.Common.Infrastructure.DataSource.IEntity" Collapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DataSource\_Interfaces\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Document.IDocumentData" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\_Interfaces\IDocumentData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Document.IRawDocument" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAgAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\_Interfaces\IRawDocument.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Document.Extractors.IDocumentExtractor" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\Extractors\_Interfaces\IDocumentExtractor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Document.Factories.IRawDocumentFactory" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Document\Factories\_Interfaces\IRawDocumentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Document.Resources.IDocumentResource" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Document\Resources\_Interfaces\IDocumentResource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Document.Scout.IDocumentScout" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Document\Scout\_Interfaces\IDocumentScout.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Services.IListenerService" Collapsed="true">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIA=</HashCode>
+      <FileName>Services\_Interfaces\IListenerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitalDrawingStore.Listener.Service.Services.Factories.IListenerServiceFactory" Collapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Factories\_Interfaces\IListenerServiceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

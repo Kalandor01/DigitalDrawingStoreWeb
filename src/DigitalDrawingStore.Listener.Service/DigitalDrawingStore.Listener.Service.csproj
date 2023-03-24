@@ -299,6 +299,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="ListenerServiceClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Preferences\ApplicationConfiguration.xml">

@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalDrawingStore.Web.UI"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalDrawingStore.Listener.Service", "..\DigitalDrawingStore.Listener.Service\DigitalDrawingStore.Listener.Service.csproj", "{C6C2C674-47DA-4267-A2FC-F1848D26C712}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalDrawingStore.Listener.Service.Test", "..\Tests\DigitalDrawingStore.Listener.Service.Test\DigitalDrawingStore.Listener.Service.Test.csproj", "{DF1B4E17-6A45-42F2-9A2D-3BFBDC037EEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalDrawingStore.Listener.Service.Test", "..\Tests\DigitalDrawingStore.Listener.Service.Test\DigitalDrawingStore.Listener.Service.Test.csproj", "{DF1B4E17-6A45-42F2-9A2D-3BFBDC037EEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

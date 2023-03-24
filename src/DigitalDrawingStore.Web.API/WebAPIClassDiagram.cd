@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Authorization.ClaimsTransformer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Authorization\ClaimsTransformer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Authorization.SecurityFacade" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\SecurityFacade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.292" />
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.DownloadPreviewActionCommand" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAUAAAAQAAOAAAAAIAAgAAAACAKAAAAQAAEA=</HashCode>
+      <FileName>Commands\DownloadPreviewActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.GetDocumentByIdActionCommand" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQAAEAAAAAAIAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\GetDocumentByIdActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.GetDocumentCategoriesActionCommand" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQAAGAAAAAAAAAAAAAAAAAAAAIAAEA=</HashCode>
+      <FileName>Commands\GetDocumentCategoriesActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.GetDocumentCategoryEntitiesActionCommand" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAQAAEAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\GetDocumentCategoryEntitiesActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.GetDocumentMetadataActionCommand" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQAAEAAAAAAIAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\GetDocumentMetadataActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.GetDocumentsActionCommand" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAIAAEA=</HashCode>
+      <FileName>Commands\GetDocumentsActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.GetTargetOfDocumentUsageListCommand" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\GetTargetOfDocumentUsageListCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.UpdateDocumentCategoryAttributesActionCommand" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAABAgAQAAEAAAAAAAAAAAAAAEAAAAAAAAEA=</HashCode>
+      <FileName>Commands\UpdateDocumentCategoryAttributesActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.UpdateDocumentCategoryEntitiesActionCommand" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAgAAAAEA=</HashCode>
+      <FileName>Commands\UpdateDocumentCategoryEntitiesActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.UpdateDocumentCategoryRelationCommand" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAQAAEAAAAAAIAAAAAAEAAgAAAAAAEA=</HashCode>
+      <FileName>Commands\UpdateDocumentCategoryRelationCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.UpdateDocumentDatabaseConnectionStringActionCommand" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAAAQAAEAAAAAAAEAAAAACAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\UpdateDocumentDatabaseConnectionStringActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.UpdateDocumentMetadataActionCommand" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASBAAAAAAAAAAQAAkAAAAAAIAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Commands\UpdateDocumentMetadataActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Commands.UpdateFeedbackPropertiesActionCommand" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABgAAAAAAgAAQAAEQAIAAAAEAAAAAAIQAABCAgAMg=</HashCode>
+      <FileName>Commands\UpdateFeedbackPropertiesActionCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Controllers.AdministrationController" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAIAAAAAAIAAAAAAAAEAAAA=</HashCode>
+      <FileName>Controllers\AdministrationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Controllers.CategoriesController" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEAAg=</HashCode>
+      <FileName>Controllers\CategoriesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Controllers.DocumentsController" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAQAAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAEAAA=</HashCode>
+      <FileName>Controllers\DocumentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Core.DdsWebApiModule" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\DdsWebApiModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.Document" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAgAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Document.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.DocumentCategory" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\DocumentCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.DocumentCategoryEntities" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\DocumentCategoryEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.DocumentCategoryUsedEntities" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAACAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>DTO\DocumentCategoryUsedEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.DocumentWithPath" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIgAAAAAAAQAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>DTO\DocumentWithPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.FeedbackEntities" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAQBAIBAAAAgAAAAAACAAAAAAAAAAAQAAAAEAA=</HashCode>
+      <FileName>DTO\FeedbackEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.FeedbackMessage" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAA=</HashCode>
+      <FileName>DTO\FeedbackMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.JsonResponse&lt;T&gt;" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAgAAAAAAAABA=</HashCode>
+      <FileName>DTO\JsonResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.DTO.SimpleDocumentCategory" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAQACAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>DTO\SimpleDocumentCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Extensions.IActionResponseExtensions" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IActionResponseExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Resources.i18n.Feedback" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEMAAIEAIACIAAIAACCAQQMEAAAQEYBAIAAAgEAM=</HashCode>
+      <FileName>Resources\i18n\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.API.Constants" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XperiCad.DigitalDrawingStore.Web.Api.Program" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="XperiCad.DigitalDrawingStore.Web.API.Authorization.ISecurityFacade" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\_Interfaces\ISecurityFacade.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.AspNetCore.Authentication.IClaimsTransformation" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
