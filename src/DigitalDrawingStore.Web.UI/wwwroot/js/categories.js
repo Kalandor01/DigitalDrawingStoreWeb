@@ -63,7 +63,8 @@ populatePage = () => {
 
 editCategory = (record, columns) => {
     let values = new Map();
-    values.set('categories', {type: 'text', title: columns.get('categories')});
+    values.set('categories', { type: 'text', title: columns.get('categories') });
+    values.set('isDesigned', { type: 'checkbox', title: columns.get('isDesigned') });
 
     editDialogBuilder.createDialog(values, record, updateCategory).dialog('open');
 }
@@ -191,7 +192,7 @@ updateCategoryEntities = (results, record) => {
 updateCategory = (result, record) => {
     requestInvoker
         .executeUpdate('/Categories/UpdateCategory',
-            {id: record.get('id'), categoryName: result.get('categories')})
+            { categoryId: record.get('id'), categoryName: record.get('categories'), isDesigned: record.get('isDesigned') === "Igen" })
         .then((response) => {
             let table = $('#categoriesContent');
             table.remove();
