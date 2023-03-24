@@ -75,7 +75,6 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
             _clientMachineName = clientMachineName;
             _clientIp = clientIp;
             _sideWatermarkPosition = sideWatermarkPosition;
-            _fontSize = fontSize;
         }
         #endregion
 
@@ -110,7 +109,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
             var watermarks = new List<IDocumentWatermark>
             {
-                _documentWatermarkFactory.CreateWatermark($"{_targetOfDocumentUsage}", _fontSize,
+                _documentWatermarkFactory.CreateWatermark(_targetOfDocumentUsage, _fontSize,
                     _watermarkOpacityInPercentage, 60,
                     _centralWatermarkHorizontalOffset, _centralWatermarkVerticalOffset,
                     WatermarkVerticalPosition.Center, WatermarkHorizontalPosition.Center), // TODO: Implement new requirement

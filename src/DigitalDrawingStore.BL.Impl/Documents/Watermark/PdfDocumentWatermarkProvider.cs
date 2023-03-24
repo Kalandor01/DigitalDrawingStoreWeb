@@ -1,4 +1,5 @@
-﻿using iText.IO.Font.Constants;
+﻿using iText.IO.Font;
+using iText.IO.Font.Constants;
 using iText.Kernel.Colors;
 using iText.Kernel.Font;
 using iText.Kernel.Geom;
@@ -20,7 +21,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark
             {
                 // TODO: fix parameter issue
                 var documentName = System.IO.Path.GetFileName(documentPath);
-                var feedbackResource = new FeedbackResource(Resources.i18n.Feedback.Error_DocumentIsNotExists.Severity, Resources.i18n.Feedback.Error_DocumentIsNotExists.CultureResource, documentName);
+                var feedbackResource = new FeedbackResource(Feedback.Error_DocumentIsNotExists.Severity, Feedback.Error_DocumentIsNotExists.CultureResource, documentName);
                 throw new FeedbackException($"Error during applying watermark on document. The target file is not exists: {documentPath}.", feedbackResource);
             }
 
@@ -30,7 +31,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark
             {
                 // TODO: fix parameter issue
                 var documentName = System.IO.Path.GetFileName(documentPath);
-                var feedbackResource = new FeedbackResource(Resources.i18n.Feedback.Error_DocumentExtensionIsNotSupported.Severity, Resources.i18n.Feedback.Error_DocumentExtensionIsNotSupported.CultureResource, documentName);
+                var feedbackResource = new FeedbackResource(Feedback.Error_DocumentExtensionIsNotSupported.Severity, Feedback.Error_DocumentExtensionIsNotSupported.CultureResource, documentName);
                 throw new FeedbackException($"Error during applying watermark on document. The target file is not pdf format: {documentPath}.", feedbackResource);
             }
 
@@ -60,7 +61,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark
             opacityInPercentage /= 100;
 
             var rotationInRads = rotationInDegree * Math.PI / 180;
-            var pdfFont = PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN, "", PdfFontFactory.EmbeddingStrategy.PREFER_EMBEDDED, false);
+            var pdfFont = PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN, PdfEncodings.CP1250, PdfFontFactory.EmbeddingStrategy.PREFER_EMBEDDED, false);
 
             for (var i = 1; i <= pdfDoc.GetNumberOfPages(); i++)
             {
