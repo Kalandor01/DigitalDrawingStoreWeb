@@ -716,7 +716,7 @@ let createCombobox = (selectElement, values) => {
         optionElement.attr('value', value.key);
         optionElement.text(value.value);
         if (index == 0) {
-            optionElement.attr('selected', true);
+            optionElement.attr('selected', 'selected');
         }
 
         selectElement.append(optionElement);
