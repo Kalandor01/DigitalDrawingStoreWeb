@@ -24,47 +24,48 @@ populatePage = () => {
 
             $.each(categories, (index, category) => {
                 let tableContainerElement = $(document.createElement('div'));
+                if (category.isDesigned) {
+                    let tableName = category.categoryName;
 
-                let tableName = category.categoryName;
-
-                let columns = new Map();
-                columns.set('nameWithExtension', 'Név');
-                $.each(category.attributes, (index, categoryAttribute) => {
-                    columns.set(index, categoryAttribute);
-                });
-
-                let records = [];
-                $.each(category.documents, (index, document) => {
-                    let record = new Map();
-                    record.set('id', document.id)
-                    columns.forEach((columnTitle, columnKey) => {
-                        record.set(columnKey, document.attributes[columnKey]);
+                    let columns = new Map();
+                    columns.set('nameWithExtension', 'Név');
+                    $.each(category.attributes, (index, categoryAttribute) => {
+                        columns.set(index, categoryAttribute);
                     });
-                    record.set('nameWithExtension', document.nameWithExtension);
-                    record.set('documentPath', document.path);
 
-                    records.push(record);
-                });
+                    let records = [];
+                    $.each(category.documents, (index, document) => {
+                        let record = new Map();
+                        record.set('id', document.id)
+                        columns.forEach((columnTitle, columnKey) => {
+                            record.set(columnKey, document.attributes[columnKey]);
+                        });
+                        record.set('nameWithExtension', document.nameWithExtension);
+                        record.set('documentPath', document.path);
 
-                let table;
+                        records.push(record);
+                    });
 
-                let actions = {
-                    refresh: (newTable) => {
-                        table.remove();
-                        table = newTable;
-                        tableContainerElement.append(table);
-                    }
-                };
+                    let table;
 
-                let sortState = {
-                    sortBy: 'nameWithExtension',
-                    ascending: true
-                };
+                    let actions = {
+                        refresh: (newTable) => {
+                            table.remove();
+                            table = newTable;
+                            tableContainerElement.append(table);
+                        }
+                    };
 
-                table = documentTableBuilder.createTable(tableName, columns, documentTableBuilder.sortElements(records, sortState), actions, 1, sortState);
-                tableContainerElement.append(table);
+                    let sortState = {
+                        sortBy: 'nameWithExtension',
+                        ascending: true
+                    };
 
-                tableContainer.append(tableContainerElement);
+                    table = documentTableBuilder.createTable(tableName, columns, documentTableBuilder.sortElements(records, sortState), actions, 1, sortState);
+                    tableContainerElement.append(table);
+
+                    tableContainer.append(tableContainerElement);
+                }
             });
 
             contentContainerElement.append(tableContainer);

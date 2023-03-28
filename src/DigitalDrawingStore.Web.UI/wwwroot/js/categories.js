@@ -154,6 +154,7 @@ openDetails = (record, row, numParentColumns, columns, sortState) => {
 
     let saveButton = buttonBuilder.createButton('Mentés');
     saveButton.onclick = () => {
+        console.log("hello")
         if (openedRow.updated) {
             updateCategoryEntities(columns, record);
             openedRow.updated = false;
@@ -189,10 +190,10 @@ updateCategoryEntities = (results, record) => {
         });
 }
 
-updateCategory = (result, record) => {
+updateCategory = (results, record) => {
     requestInvoker
         .executeUpdate('/Categories/UpdateCategory',
-            { categoryId: record.get('id'), categoryName: record.get('categories'), isDesigned: record.get('isDesigned') === "Igen" })
+            { categoryId: record.get('id'), categoryName: results.get('categories'), isDesigned: results.get('isDesigned')})
         .then((response) => {
             let table = $('#categoriesContent');
             table.remove();
