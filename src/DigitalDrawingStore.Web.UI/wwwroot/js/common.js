@@ -617,6 +617,19 @@ const storageHandler = {
         return '';
     },
 
+    setFontSize: (fontSizeStr) => {
+        let minFnotValue = $("#fontSize").attr("min") * 1;
+        let maxFontValue = $("#fontSize").attr("max") * 1;
+        let fontSize = fontSizeStr * 1;
+        if (fontSize > maxFontValue) {
+            fontSize = maxFontValue;
+        }
+        if (fontSize < minFnotValue) {
+            fontSize = minFnotValue;
+        }
+        $("#fontSize").val(fontSize);
+    },
+
     applyWatermarkSettings: () => {
         let watermarkSettingsJSON = localStorage.getItem('watermarkSettings');
 
@@ -642,20 +655,13 @@ const storageHandler = {
             $("#targetOfDocumentUsageSelectMenu").val(watermarkSettings.targetOfDocumentUsage);
         }
         if (watermarkSettings.fontSize) {
-            let minFnotValue = $("#fontSize").attr("min") * 1;
-            let maxFontValue = $("#fontSize").attr("max") * 1;
-            let fontSize = watermarkSettings.fontSize * 1;
-            if (fontSize > maxFontValue) {
-                fontSize = maxFontValue;
-            }
-            if (fontSize < minFnotValue) {
-                fontSize = minFnotValue;
-            }
-            $("#fontSize").val(fontSize);
+            storageHandler.setFontSize(watermarkSettings.fontSize);
         }
     },
 
     saveWatermarkSettings: () => {
+        storageHandler.setFontSize($("#fontSize").val());
+
         let watermarkSettings = {
             watermarkOpacity: $("#sliderInput").val(),
             sideWatermarkPosition: $("#sidedWatermarkPositionSelectMenu").val(),
