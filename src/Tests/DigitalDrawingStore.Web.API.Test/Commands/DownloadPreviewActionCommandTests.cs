@@ -130,7 +130,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Test.Commands
                 { BL.Impl.Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_TABLE_NAME_KEY, "DocumentMetadata" },
                 { BL.Impl.Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY, "Documents" },
                 { BL.Impl.Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY, "ApplicationProperties" },
-                { BL.Impl.Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_DICTIONARY_TABLE_NAME_KEY, "ApplicationPropertiesDictionary" },
+                { BL.Impl.Constants.Documents.Resources.DatabaseTables.DOCUMENT_USAGES_TABLE_NAME_KEY, "DocumentUsages" },
             };
         }
 

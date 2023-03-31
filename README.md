@@ -1,36 +1,48 @@
+# Digital drawing store
+
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+DDSW
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+
 
 # Build and Test
 
-## Full script to create a prod environment with test data
+## Prod database
 
 ```
+CREATE DATABASE DDSW
+GO
+ALTER DATABASE DDSW COLLATE Hungarian_CI_AS
+GO
+USE DDSW
+GO
+
+
 CREATE TABLE DocumentCategories
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
   IsDesigned BIT DEFAULT 0,
-  DisplayName VARCHAR(MAX)
+  DisplayName NVARCHAR(MAX)
 );
+
+
 CREATE TABLE Documents
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
   DocumentCategoryId UNIQUEIDENTIFIER,
-  Path VARCHAR(MAX),
+  Path NVARCHAR(MAX),
   FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategories (Id)
 );
+
+
 CREATE TABLE DocumentMetadataDefinitions
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  ExtractedName VARCHAR(MAX)
+  ExtractedName NVARCHAR(MAX)
 );
+
+
 CREATE TABLE DocumentCategoryEntities
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -39,6 +51,9 @@ CREATE TABLE DocumentCategoryEntities
   FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategories (Id),
   FOREIGN KEY (DocumentMetadataDefinitionId) REFERENCES DocumentMetadataDefinitions (Id)
 );
+GO
+
+
 CREATE TABLE DocumentMetadata
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -48,48 +63,58 @@ CREATE TABLE DocumentMetadata
   FOREIGN KEY (DocumentId) REFERENCES Documents (Id),
   FOREIGN KEY (DocumentMetadataDefinitionId) REFERENCES DocumentMetadataDefinitions (Id)
 );
+
+
 CREATE TABLE ApplicationProperties
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  PropertyKey VARCHAR(MAX),
-  PropertyValue VARCHAR(MAX)
+  PropertyKey NVARCHAR(MAX),
+  PropertyValue NVARCHAR(MAX)
 );
-CREATE TABLE ApplicationPropertiesDictionary
+
+
+CREATE TABLE DocumentUsages
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  ApplicationPropertiesId UNIQUEIDENTIFIER,
-  PropertyValue VARCHAR(MAX),
-  FOREIGN KEY (ApplicationPropertiesId) REFERENCES ApplicationProperties (Id)
-);
+  UsageName NVARCHAR(MAX),
+)
+
+
 CREATE TABLE UserEventLogs
 (
-	Id UNIQUEIDENTIFIER NOT NULL,
-	EventId VARCHAR(max) NOT NULL,
+	Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+	EventName NVARCHAR(MAX) NOT NULL,
 	LoggedAt DateTime2 NOT NULL,
-	UserDomainName VARCHAR(max) NOT NULL,
-	MachineNumber VARCHAR(max) NOT NULL,
-	SourceIp VARCHAR(max) NOT NULL,
-	DocumentPath VARCHAR(max) NULL,
-	DocumentVersion VARCHAR(max) NULL, -- ???
-	TargetOfUsage VARCHAR(max) NULL,
-	DocumentDrawingNumber VARCHAR(max) NULL, -- ???
-	DocumentRevId VARCHAR(max) NULL, -- ???
-	DocumentTitle VARCHAR(max) NULL, -- ???
-	DocumentTypeOfPRoductOnDrawing VARCHAR(max) NULL,
-	DocumentPrefix VARCHAR(max) NULL,
-	WatermarkText VARCHAR(max) NULL,
-	WatermarkPosition VARCHAR(max) NULL,
-	WatermarkFontSizeInPt VARCHAR(max) NULL,
-	WatermarkRotationAngleInDegree VARCHAR(max) NULL,
-	OldPropertyName VARCHAR(max) NULL,
-	NewPropertyName VARCHAR(max) NULL,
+	UserDomainName NVARCHAR(MAX) NOT NULL,
+	MachineNumber NVARCHAR(MAX) NOT NULL,
+	SourceIp NVARCHAR(MAX) NOT NULL,
+	DocumentPath NVARCHAR(MAX) NULL,
+	DocumentVersion NVARCHAR(MAX) NULL,
+	TargetOfUsage NVARCHAR(MAX) NULL,
+	DocumentDrawingNumber NVARCHAR(MAX) NULL,
+	DocumentRevId NVARCHAR(MAX) NULL,
+	DocumentTitle NVARCHAR(MAX) NULL,
+	DocumentTypeOfPRoductOnDrawing NVARCHAR(MAX) NULL,
+	DocumentPrefix NVARCHAR(MAX) NULL,
+	WatermarkText NVARCHAR(MAX) NULL,
+	WatermarkPosition NVARCHAR(MAX) NULL,
+	WatermarkFontSizeInPt NVARCHAR(MAX) NULL,
+	WatermarkRotationAngleInDegree NVARCHAR(MAX) NULL,
+	WatermarkTransparencyInPercentage NVARCHAR(MAX) NULL,
+	OldPropertyName NVARCHAR(MAX) NULL,
+	NewPropertyName NVARCHAR(MAX) NULL,
 	DocumentCreatedAt DateTime2 NULL,
 	DocumentApprovedAt DateTime2 NULL
-
-	PRIMARY KEY(Id)
 );
+```
 
--- METADATA DEFINITIONS
+## Script to fill the prod environment with test data
+
+```
+USE DDSW
+
+
+-- METADATAS
 DECLARE @MetadataDefinitionId1 AS UNIQUEIDENTIFIER;
 SET @MetadataDefinitionId1 = NEWID();
 
@@ -116,6 +141,7 @@ INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (@MetadataDef
 INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (@MetadataDefinitionId6, 'ModifiedAt');
 INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (NEWID(), 'ModeOfUsage');
 INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (NEWID(), 'Freetext');
+
 
 -- CATEGORIES
 DECLARE @CategoryId1 AS UNIQUEIDENTIFIER;
@@ -146,7 +172,8 @@ INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1,
 INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes folyamat szabályozási terv');
 INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes folyamatábra');
 
--- CATEGORY ENTITIES
+
+-- CATEGORY METADATEA PAIRS
 INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDefinitionId) VALUES (NEWID(), @CategoryId1, @MetadataDefinitionId1);
 INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDefinitionId) VALUES (NEWID(), @CategoryId1, @MetadataDefinitionId2);
 INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDefinitionId) VALUES (NEWID(), @CategoryId1, @MetadataDefinitionId3);
@@ -163,8 +190,8 @@ INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDe
 INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDefinitionId) VALUES (NEWID(), @CategoryId5, @MetadataDefinitionId5);
 INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDefinitionId) VALUES (NEWID(), @CategoryId6, @MetadataDefinitionId1);
 
--- DOCUMENTS
 
+-- DOCUMENTS
 DECLARE @DodcumentId1 AS UNIQUEIDENTIFIER;
 SET @DodcumentId1 = NEWID();
 
@@ -183,6 +210,7 @@ INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryI
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId3, @CategoryId2, 'C:\TestDocuments\Test3.pdf');
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, 'C:\TestDocuments\Test4.pdf');
 
+
 -- METADATA
 INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId1, @MetadataDefinitionId1, 'DocumentNumberA');
 INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId1, @MetadataDefinitionId2, 'PartNumberA');
@@ -195,6 +223,7 @@ INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Valu
 INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId3, @MetadataDefinitionId2, 'PartNumberC');
 INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId3, @MetadataDefinitionId3, 'TestUserC');
 
+
 -- ApplicationProperties
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SenderEmail', '<sender-email>');
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('EmailRecipients', '<recipient-email>;<recipient-email>;<recipient-email>;');
@@ -205,130 +234,52 @@ INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpPass
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('UseDefaultSmtpCredentials', 'false');
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('EnableSmtpSsl', 'true');
 
--- Target of document usage
 
+-- Target of document usage
 DECLARE @TargetOfUsagePropertyId AS UNIQUEIDENTIFIER;
 SET @TargetOfUsagePropertyId = NEWID();
 
-INSERT INTO ApplicationProperties (Id, PropertyKey, PropertyValue) VALUES(@TargetOfUsagePropertyId, 'TargetOfUsage', NULL);
-
-INSERT INTO ApplicationPropertiesDictionary (Id, ApplicationPropertiesId, PropertyValue) VALUES (NEWID(), @TargetOfUsagePropertyId, 'Első cél');
-INSERT INTO ApplicationPropertiesDictionary (Id, ApplicationPropertiesId, PropertyValue) VALUES (NEWID(), @TargetOfUsagePropertyId, 'Második cél');
-INSERT INTO ApplicationPropertiesDictionary (Id, ApplicationPropertiesId, PropertyValue) VALUES (NEWID(), @TargetOfUsagePropertyId, 'Harmadik cél');
-
-SELECT * FROM DocumentMetadataDefinitions;
-SELECT * FROM DocumentCategories;
-SELECT * FROM DocumentCategoryEntities;
-SELECT * FROM Documents;
-SELECT * FROM DocumentMetadata;
-SELECT * FROM ApplicationProperties;
-SELECT * FROM ApplicationPropertiesDictionary;
-```
-
-## Prod database tables
-
-```
-CREATE TABLE DocumentCategories
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  IsDesigned BIT DEFAULT 0,
-  DisplayName VARCHAR(MAX)
-);
-CREATE TABLE Documents
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  DocumentCategoryId UNIQUEIDENTIFIER,
-  Path VARCHAR(MAX),
-  FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategories (Id)
-);
-CREATE TABLE DocumentMetadataDefinitions
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  ExtractedName VARCHAR(MAX)
-);
-CREATE TABLE DocumentCategoryEntities
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  DocumentCategoryId UNIQUEIDENTIFIER,
-  DocumentMetadataDefinitionId UNIQUEIDENTIFIER,
-  FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategories (Id),
-  FOREIGN KEY (DocumentMetadataDefinitionId) REFERENCES DocumentMetadataDefinitions (Id)
-);
-CREATE TABLE DocumentMetadata
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  DocumentId UNIQUEIDENTIFIER,
-  DocumentMetadataDefinitionId UNIQUEIDENTIFIER,
-  Value NVARCHAR(MAX),
-  FOREIGN KEY (DocumentId) REFERENCES Documents (Id),
-  FOREIGN KEY (DocumentMetadataDefinitionId) REFERENCES DocumentMetadataDefinitions (Id)
-);
-CREATE TABLE ApplicationProperties
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  PropertyKey VARCHAR(MAX),
-  PropertyValue VARCHAR(MAX)
-);
-CREATE TABLE ApplicationPropertiesDictionary
-(
-  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  ApplicationPropertiesId UNIQUEIDENTIFIER,
-  PropertyValue VARCHAR(MAX),
-  FOREIGN KEY (ApplicationPropertiesId) REFERENCES ApplicationProperties (Id)
-);
-CREATE TABLE UserEventLogs
-(
-	Id UNIQUEIDENTIFIER NOT NULL,
-	EventId VARCHAR(max) NOT NULL,
-	LoggedAt DateTime2 NOT NULL,
-	UserDomainName VARCHAR(max) NOT NULL,
-	MachineNumber VARCHAR(max) NOT NULL,
-	SourceIp VARCHAR(max) NOT NULL,
-	DocumentPath VARCHAR(max) NULL,
-	DocumentVersion VARCHAR(max) NULL,
-	TargetOfUsage VARCHAR(max) NULL,
-	DocumentDrawingNumber VARCHAR(max) NULL,
-	DocumentRevId VARCHAR(max) NULL,
-	DocumentTitle VARCHAR(max) NULL,
-	DocumentTypeOfPRoductOnDrawing VARCHAR(max) NULL,
-	DocumentPrefix VARCHAR(max) NULL,
-	WatermarkText VARCHAR(max) NULL,
-	WatermarkPosition VARCHAR(max) NULL,
-	WatermarkFontSizeInPt VARCHAR(max) NULL,
-	WatermarkRotationAngleInDegree VARCHAR(max) NULL,
-	OldPropertyName VARCHAR(max) NULL,
-	NewPropertyName VARCHAR(max) NULL,
-	DocumentCreatedAt DateTime2 NULL,
-	DocumentApprovedAt DateTime2 NULL
-
-	PRIMARY KEY(Id)
-);
+INSERT INTO DocumentUsages(Id, UsageName) VALUES (NEWID(), 'Első cél');
+INSERT INTO DocumentUsages(Id, UsageName) VALUES (NEWID(), 'Második cél');
+INSERT INTO DocumentUsages(Id, UsageName) VALUES (NEWID(), 'Harmadik cél');
 ```
 
 ## Test
-- Create the following database in your local machine: AutomatedTests
-  - use the following collate: LATIN1_GENERAL_100_CI_AS_SC_UTF8
-- Use the following script to create database tables:
+- Use the following script to create database:
 
 ```
+CREATE DATABASE DDSWAutomatedTests
+go
+ALTER DATABASE DDSWAutomatedTests COLLATE Hungarian_CI_AS
+GO
+use DDSWAutomatedTests
+go
+
+
 CREATE TABLE DocumentCategoriesTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
   IsDesigned BIT DEFAULT 0,
-  DisplayName VARCHAR(MAX)
+  DisplayName NVARCHAR(MAX)
 );
+
+
 CREATE TABLE DocumentsTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
   DocumentCategoryId UNIQUEIDENTIFIER,
-  Path VARCHAR(MAX),
+  Path NVARCHAR(MAX),
   FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategoriesTest (Id)
 );
+
+
 CREATE TABLE DocumentMetadataDefinitionsTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  ExtractedName VARCHAR(MAX)
+  ExtractedName NVARCHAR(MAX)
 );
+
+
 CREATE TABLE DocumentCategoryEntitiesTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -337,6 +288,9 @@ CREATE TABLE DocumentCategoryEntitiesTest
   FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategoriesTest (Id),
   FOREIGN KEY (DocumentMetadataDefinitionId) REFERENCES DocumentMetadataDefinitionsTest (Id)
 );
+GO
+
+
 CREATE TABLE DocumentMetadataTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
@@ -346,45 +300,48 @@ CREATE TABLE DocumentMetadataTest
   FOREIGN KEY (DocumentId) REFERENCES DocumentsTest (Id),
   FOREIGN KEY (DocumentMetadataDefinitionId) REFERENCES DocumentMetadataDefinitionsTest (Id)
 );
+
+
 CREATE TABLE ApplicationPropertiesTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  PropertyKey VARCHAR(MAX),
-  PropertyValue VARCHAR(MAX)
+  PropertyKey NVARCHAR(MAX),
+  PropertyValue NVARCHAR(MAX)
 );
-CREATE TABLE ApplicationPropertiesDictionaryTest
+
+
+CREATE TABLE DocumentUsagesTest
 (
   Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
-  ApplicationPropertiesId UNIQUEIDENTIFIER,
-  PropertyValue VARCHAR(MAX),
-  FOREIGN KEY (ApplicationPropertiesId) REFERENCES ApplicationPropertiesTest (Id)
-);
+  UsageName NVARCHAR(MAX),
+)
+
+
 CREATE TABLE UserEventLogsTest
 (
-	Id UNIQUEIDENTIFIER NOT NULL,
-	EventId VARCHAR(max) NOT NULL,
+	Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+	EventName NVARCHAR(MAX) NOT NULL,
 	LoggedAt DateTime2 NOT NULL,
-	UserDomainName VARCHAR(max) NOT NULL,
-	MachineNumber VARCHAR(max) NOT NULL,
-	SourceIp VARCHAR(max) NOT NULL,
-	DocumentPath VARCHAR(max) NULL,
-	DocumentVersion VARCHAR(max) NULL,
-	TargetOfUsage VARCHAR(max) NULL,
-	DocumentDrawingNumber VARCHAR(max) NULL,
-	DocumentRevId VARCHAR(max) NULL,
-	DocumentTitle VARCHAR(max) NULL,
-	DocumentTypeOfPRoductOnDrawing VARCHAR(max) NULL,
-	DocumentPrefix VARCHAR(max) NULL,
-	WatermarkText VARCHAR(max) NULL,
-	WatermarkPosition VARCHAR(max) NULL,
-	WatermarkFontSizeInPt VARCHAR(max) NULL,
-	WatermarkRotationAngleInDegree VARCHAR(max) NULL,
-	OldPropertyName VARCHAR(max) NULL,
-	NewPropertyName VARCHAR(max) NULL,
+	UserDomainName NVARCHAR(MAX) NOT NULL,
+	MachineNumber NVARCHAR(MAX) NOT NULL,
+	SourceIp NVARCHAR(MAX) NOT NULL,
+	DocumentPath NVARCHAR(MAX) NULL,
+	DocumentVersion NVARCHAR(MAX) NULL,
+	TargetOfUsage NVARCHAR(MAX) NULL,
+	DocumentDrawingNumber NVARCHAR(MAX) NULL,
+	DocumentRevId NVARCHAR(MAX) NULL,
+	DocumentTitle NVARCHAR(MAX) NULL,
+	DocumentTypeOfPRoductOnDrawing NVARCHAR(MAX) NULL,
+	DocumentPrefix NVARCHAR(MAX) NULL,
+	WatermarkText NVARCHAR(MAX) NULL,
+	WatermarkPosition NVARCHAR(MAX) NULL,
+	WatermarkFontSizeInPt NVARCHAR(MAX) NULL,
+	WatermarkRotationAngleInDegree NVARCHAR(MAX) NULL,
+	WatermarkTransparencyInPercentage NVARCHAR(MAX) NULL,
+	OldPropertyName NVARCHAR(MAX) NULL,
+	NewPropertyName NVARCHAR(MAX) NULL,
 	DocumentCreatedAt DateTime2 NULL,
 	DocumentApprovedAt DateTime2 NULL
-
-	PRIMARY KEY(Id)
 );
 ```
 
@@ -392,96 +349,48 @@ CREATE TABLE UserEventLogsTest
 
 Test data:
 ```
-DROP TABLE DocumentMetadataTest;
-DROP TABLE DocumentCategoryEntitiesTest;
-DROP TABLE DocumentMetadataDefinitionsTest;
-DROP TABLE DocumentsTest;
-DROP TABLE DocumentCategoriesTest;
-DROP TABLE ApplicationPropertiesDictionaryTest;
-DROP TABLE ApplicationPropertiesTest;
-DROP TABLE UserEventLogsTest;
+DROP TABLE DocumentMetadataTest
+DROP TABLE DocumentCategoryEntitiesTest
+DROP TABLE DocumentMetadataDefinitionsTest
+DROP TABLE DocumentsTest
+DROP TABLE DocumentCategoriesTest
+DROP TABLE UserEventLogsTest
+DROP TABLE ApplicationPropertiesTest
+DROP TABLE DocumentUsagesTest
 ```
 
 Prod:
 ```
-DROP TABLE DocumentMetadata;
-DROP TABLE DocumentCategoryEntities;
-DROP TABLE DocumentMetadataDefinitions;
-DROP TABLE Documents;
-DROP TABLE DocumentCategories;
-DROP TABLE ApplicationPropertiesDictionary;
-DROP TABLE ApplicationProperties;
-DROP TABLE UserEventLogs;
+DROP TABLE DocumentMetadata
+DROP TABLE DocumentCategoryEntities
+DROP TABLE DocumentMetadataDefinitions
+DROP TABLE Documents
+DROP TABLE DocumentCategories
+DROP TABLE UserEventLogs
+DROP TABLE ApplicationProperties
+DROP TABLE DocumentUsages
 ```
 
 - To select all data from all table, use the following script:
 Test data:
 ```
-SELECT * FROM DocumentMetadataTest;
-SELECT * FROM DocumentCategoryEntitiesTest;
-SELECT * FROM DocumentMetadataDefinitionsTest;
-SELECT * FROM DocumentsTest;
-SELECT * FROM DocumentCategoriesTest;
-SELECT * FROM ApplicationPropertiesDictionaryTest;
-SELECT * FROM ApplicationPropertiesTest;
-SELECT * FROM UserEventLogsTest;
+select * from DocumentCategoriesTest
+select * from DocumentsTest
+select * from DocumentMetadataDefinitionsTest
+select * from DocumentCategoryEntitiesTest
+select * from DocumentMetadataTest
+select * from UserEventLogsTest
+select * from ApplicationPropertiesTest
+select * from DocumentUsagesTest
 ```
 
 Prod:
 ```
 SELECT * FROM DocumentMetadataDefinitions;
-SELECT * FROM DocumentMetadata;
 SELECT * FROM DocumentCategories;
 SELECT * FROM DocumentCategoryEntities;
 SELECT * FROM Documents;
-SELECT * FROM ApplicationPropertiesDictionary;
+SELECT * FROM DocumentMetadata;
 SELECT * FROM ApplicationProperties;
-SELECT * FROM UserEventLogs;
+SELECT * FROM DocumentUsages;
 ```
-
-## Test data
-```
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Változások');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Szabványok');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes műveleti utasítások');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes kezelési és karbantartási utasítások');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes ellenőrzési utasítások / Minőségellenőrző kártyák');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes WPS lapok');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes PFMEA');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes folyamat szabályozási terv');
-INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (NEWID(), 1, 'Érvényes folyamatábra');
-
-DECLARE @Category1 AS UNIQUEIDENTIFIER;
-SET @Category1 = ( SELECT Id FROM (SELECT TOP 3 [Id], ROW_NUMBER() OVER(ORDER BY Id) AS RowNumber FROM DocumentCategories) As res WHERE RowNumber=3)
-
-DECLARE @Category2 AS UNIQUEIDENTIFIER;
-SET @Category2 = (SELECT Id FROM (SELECT TOP 2 [Id], ROW_NUMBER() OVER(ORDER BY Id) AS RowNumber FROM DocumentCategories) As res WHERE RowNumber=2)
-
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category1, 'C:\TestDocuments\Test.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category1, 'C:\TestDocuments\Test2.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category1, 'C:\TestDocuments\Test3.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category1, 'C:\TestDocuments\Test4.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category2, 'C:\TestDocuments\Test.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category2, 'C:\TestDocuments\Test2.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category2, 'C:\TestDocuments\Test3.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @Category2, 'C:\TestDocuments\Test4.pdf');
-
--- ApplicationProperties - target of document usage
-
-DECLARE @TargetOfUsagePropertyId AS UNIQUEIDENTIFIER;
-SET @TargetOfUsagePropertyId = NEWID();
-
-INSERT INTO ApplicationPropertiesTest (Id, PropertyKey, PropertyValue) VALUES(@TargetOfUsagePropertyId, 'TargetOfUsage', NULL);
-
-INSERT INTO ApplicationPropertiesDictionaryTest (Id, ApplicationPropertiesId, PropertyValue) VALUES (NEWID(), @TargetOfUsagePropertyId, 'Első cél');
-INSERT INTO ApplicationPropertiesDictionaryTest (Id, ApplicationPropertiesId, PropertyValue) VALUES (NEWID(), @TargetOfUsagePropertyId, 'Második cél');
-INSERT INTO ApplicationPropertiesDictionaryTest (Id, ApplicationPropertiesId, PropertyValue) VALUES (NEWID(), @TargetOfUsagePropertyId, 'Harmadik cél');
-```
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)

@@ -22,7 +22,7 @@
         {
             internal static class Resources
             {
-                internal const string DEFAULT_CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB;Database=DigitalDrawingStore;Trusted_Connection=True;";
+                internal const string DEFAULT_CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB;Database=DDSW;Trusted_Connection=True;";
 
                 internal static class DatabaseTables
                 {
@@ -32,7 +32,7 @@
                     internal const string DOCUMENT_CATEGORIES_TABLE_NAME_KEY = "DocumentCategories";
                     internal const string DOCUMENT_CATEGORY_ENTITIES_TABLE_NAME_KEY = "DocumentCategoryEntities";
                     internal const string APPLICATION_PROPERTIES_TABLE_NAME_KEY = "ApplicationPropertiesTable";
-                    internal const string APPLICATION_PROPERTIES_DICTIONARY_TABLE_NAME_KEY = "ApplicationPropertiesDictionaryTable";
+                    internal const string DOCUMENT_USAGES_TABLE_NAME_KEY = "DocumentUsagesTable";
                     internal const string USER_EVENT_LOGS_TABLE_NAME_KEY = "UserEventLogsTable";
                 }
             }

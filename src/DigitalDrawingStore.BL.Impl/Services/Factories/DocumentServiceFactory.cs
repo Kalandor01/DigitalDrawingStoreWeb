@@ -33,7 +33,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories
                 { Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_TABLE_NAME_KEY, "DocumentMetadata" },
                 { Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY, "Documents" },
                 { Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY, "ApplicationProperties" },
-                { Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_DICTIONARY_TABLE_NAME_KEY, "ApplicationPropertiesDictionary" },
+                { Constants.Documents.Resources.DatabaseTables.DOCUMENT_USAGES_TABLE_NAME_KEY, "DocumentUsages" },
                 { Constants.Documents.Resources.DatabaseTables.USER_EVENT_LOGS_TABLE_NAME_KEY, "UserEventLogs" },
             };
 

@@ -90,11 +90,10 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
             //TODO: use this feedback message if a table was not found and reject the promise
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
-            var sqlScript = $" SELECT Id, PropertyValue"
-                          + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_DICTIONARY_TABLE_NAME_KEY]} apd"
-                          + $" WHERE apd.ApplicationPropertiesId = (SELECT Id FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY]} WHERE PropertyKey = 'TargetOfUsage')";
+            var sqlScript = $" SELECT Id, UsageName"
+                          + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_USAGES_TABLE_NAME_KEY]}";
 
-            var responseEntities = await _msSqlDataSource.PerformQueryAsync(sqlScript, "PropertyValue");
+            var responseEntities = await _msSqlDataSource.PerformQueryAsync(sqlScript, "UsageName");
 
             IDictionary<Guid, string> result = new Dictionary<Guid, string>();
 
@@ -102,11 +101,11 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
             {
                 foreach (var responseEntity in responseEntities.ResponseObject)
                 {
-                    var propertyValue = responseEntity.Attributes["PropertyValue"].ToString() ?? string.Empty;
+                    var usageName = responseEntity.Attributes["UsageName"].ToString() ?? string.Empty;
 
-                    if (!string.IsNullOrEmpty(propertyValue))
+                    if (!string.IsNullOrEmpty(usageName))
                     {
-                        result.Add(responseEntity.Id, propertyValue);
+                        result.Add(responseEntity.Id, usageName);
                     }
                     else
                     {
