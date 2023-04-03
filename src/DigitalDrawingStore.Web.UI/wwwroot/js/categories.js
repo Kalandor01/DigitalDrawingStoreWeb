@@ -1,4 +1,6 @@
 let openedRow = null;
+let clickedRow = null;
+
 let mainTableSortState = {
     sortBy: 'categories',
     ascending: true
@@ -71,36 +73,46 @@ editCategory = (record, columns) => {
 
 
 getDetails = (record, row, numParentColumns) => {
-    requestInvoker
-        .executeQuery('/Categories/Metadata', { categoryId: record.get('id') })
-        .then((response) => {
-            let result = response.responseObject;
+    if (openedRow != null) {
+        documentTableBuilder.closeDropDownView(openedRow, false);
+        openedRow = null;
+    }
+    if (clickedRow != row) {
+        clickedRow = row;
+        requestInvoker
+            .executeQuery('/Categories/Metadata', { categoryId: record.get('id') })
+            .then((response) => {
+                let result = response.responseObject;
 
-            let usedEntities = [];
-            for (const [key, value] of Object.entries(result.usedEntities)) {
-                let map = new Map();
-                map.set('name', value);
-                map.set('id', key);
+                let usedEntities = [];
+                for (const [key, value] of Object.entries(result.usedEntities)) {
+                    let map = new Map();
+                    map.set('name', value);
+                    map.set('id', key);
 
-                usedEntities.push(map);
-            }
+                    usedEntities.push(map);
+                }
 
-            let unusedEntities = [];
-            for (const [key, value] of Object.entries(result.unusedEntities)) {
-                let map = new Map();
-                map.set('name', value);
-                map.set('id', key);
+                let unusedEntities = [];
+                for (const [key, value] of Object.entries(result.unusedEntities)) {
+                    let map = new Map();
+                    map.set('name', value);
+                    map.set('id', key);
 
-                unusedEntities.push(map);
-            }
+                    unusedEntities.push(map);
+                }
 
-            let columns = [
-                { title: 'Hozzáadott tulajdonság', content: usedEntities },
-                { title: 'Szabad tulajdonság', content: unusedEntities }
-            ]
+                let columns = [
+                    { title: 'Hozzáadott tulajdonság', content: usedEntities },
+                    { title: 'Szabad tulajdonság', content: unusedEntities }
+                ]
 
-            openDetails(record, row, numParentColumns, columns);
-        });
+                openDetails(record, row, numParentColumns, columns);
+            });
+    }
+    else {
+        clickedRow = null;
+    }
 }
 
 openDetails = (record, row, numParentColumns, columns, sortState) => {
@@ -147,8 +159,10 @@ openDetails = (record, row, numParentColumns, columns, sortState) => {
 
     let closeButton = buttonBuilder.createButton('Bezárás');
     closeButton.onclick = () => {
-        documentTableBuilder.closeDropDownView(openedRow, 'updated' in openedRow && openedRow.updated);
-        openedRow = null;
+        if (documentTableBuilder.closeDropDownView(openedRow, 'updated' in openedRow && openedRow.updated)) {
+            openedRow = null;
+            clickedRow = null;
+        }
     };
     detailsContainer.append(closeButton);
 

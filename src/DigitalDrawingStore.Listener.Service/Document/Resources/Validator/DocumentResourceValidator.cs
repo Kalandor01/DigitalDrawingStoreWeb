@@ -75,8 +75,9 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources.Validator
                                 .ConfigureParameter("@Path", SqlDbType.VarChar, documentName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                 .GetConfiguredParameters();
 
-            var sqlScript = $"SELECT Id FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_TABLE_NAME_KEY]} d"
-                        + $"  WHERE d.Path LIKE CONCAT('%', @Path, '%')";
+            var sqlScript = $"SELECT Id"
+                + $" FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_TABLE_NAME_KEY]}"
+                + $" WHERE Path LIKE CONCAT('%', @Path, '%')";
 
             var queryResult = _msSqlDataSource.PerformQuery(sqlScript, parameters);
 

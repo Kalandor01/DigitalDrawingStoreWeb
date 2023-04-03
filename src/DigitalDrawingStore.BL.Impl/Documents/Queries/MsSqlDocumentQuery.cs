@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using XperiCad.Common.Core.Behaviours.Queries;
 using XperiCad.Common.Core.DataSource;
-using XperiCad.Common.Core.Exceptions;
 using XperiCad.Common.Infrastructure.Behaviours.Queries;
 using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.Common.Infrastructure.Feedback;
@@ -69,14 +68,14 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
                                 .ConfigureParameter("@DocumentId", SqlDbType.UniqueIdentifier, documentId)
                                 .GetConfiguredParameters();
 
-            var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(
-                $"   SELECT dm.Id, Value, dmd.ExtractedName FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_TABLE_NAME_KEY]} dm"
+            var sqlScript = $" SELECT dm.Id, Value, dmd.ExtractedName"
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_TABLE_NAME_KEY]} dm"
                 + $" INNER JOIN {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY]} d"
-                + $"   ON d.Id = dm.DocumentId"
+                + $" ON d.Id = dm.DocumentId"
                 + $" INNER JOIN {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]} dmd"
-                + $"   ON dm.DocumentMetadataDefinitionId = dmd.Id"
-                + $" WHERE d.Id = @DocumentId",
-                parameters, "ExtractedName", "Value");
+                + $" ON dm.DocumentMetadataDefinitionId = dmd.Id"
+                + $" WHERE d.Id = @DocumentId";
+            var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "ExtractedName", "Value");
 
             var result = ConvertToDictionary(feedbackQueue, documentMetadataResult.ResponseObject);
             return ResolvePromise(result, feedbackQueue);
@@ -91,7 +90,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
             var sqlScript = $" SELECT Id, UsageName"
-                          + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_USAGES_TABLE_NAME_KEY]}";
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_USAGES_TABLE_NAME_KEY]}";
 
             var responseEntities = await _msSqlDataSource.PerformQueryAsync(sqlScript, "UsageName");
 
@@ -128,17 +127,14 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
             var feedbackQueue = GetFeedbackQueue();
 
             // TODO: conscheck for tables
-            var table = _sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY];
-            //var testScript = $"SELECT CASE WHEN OBJECT_ID('dbo.{table}', 'U') IS NOT NULL THEN 1 ELSE 0 END";
-            //var testRes = await _msSqlDataSource.PerformQuery(testScript);
+            var documentsTable = _sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY];
 
             //TODO: use this feedback message if a table was not found and reject the promise
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
-            var sqlScript =
-                            $" SELECT Id, Path"
-                          + $" FROM {table} d"
-                          + $" WHERE d.Id = @DocumentId";
+            var sqlScript = $" SELECT Id, Path"
+                + $" FROM {documentsTable}"
+                + $" WHERE Id = @DocumentId";
 
             _dataParameterFactory
                 .ConfigureParameter("@DocumentId", SqlDbType.UniqueIdentifier, documentId);
@@ -175,7 +171,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
             var sqlScript = $"SELECT TOP {MAX_DOCUMENTS_FROM_QUERY} Id, Path"
-                          + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY]} d";
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY]} d";
 
             var normalizedSearchText = searchText?.Replace(".", "") ?? string.Empty;
 

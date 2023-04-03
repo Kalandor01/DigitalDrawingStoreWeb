@@ -1,8 +1,11 @@
 ﻿let openedRow = null;
+let clickedRow = null;
+
 let mainTableSortState = {
     sortBy: 'nameWithExtension',
     ascending: true
 };
+
 let detailsTableSortState = {
     sortBy: 'metadataName',
     ascending: true
@@ -78,47 +81,53 @@ function populatePage() {
 }
 
 function onRowClick(record, row, numParentColumns) {
-    requestInvoker
-        .executeQuery('/Documents/Metadata', { documentId: record.get('id') })
-        .then((response) => {
-            let columns = new Map();
-            columns.set('metadataName', 'Metaadat neve');
-            columns.set('metadataValue', 'Értéke');
-            columns.set('actions', 'Műveletek');
+    if (openedRow != null) {
+        documentTableBuilder.closeDropDownView(openedRow, false);
+        openedRow = null;
+    }
+    if (clickedRow != row) {
+        clickedRow = row;
+        requestInvoker
+            .executeQuery('/Documents/Metadata', { documentId: record.get('id') })
+            .then((response) => {
+                let columns = new Map();
+                columns.set('metadataName', 'Metaadat neve');
+                columns.set('metadataValue', 'Értéke');
+                columns.set('actions', 'Műveletek');
 
-            let attributes = [];
+                let attributes = [];
 
-            $.each(response.responseObject, (key, value) => {
-                let attribute = new Map();
-                attribute.set('metadataName', key);
-                attribute.set('metadataValue', value);
-                attribute.set('documentId', record.get('id'));
+                $.each(response.responseObject, (key, value) => {
+                    let attribute = new Map();
+                    attribute.set('metadataName', key);
+                    attribute.set('metadataValue', value);
+                    attribute.set('documentId', record.get('id'));
 
-                let button = buttonBuilder.createButton('Szerkesztés');
-                button.onclick = (e) => {
-		            e.stopPropagation();
-                    editAttribute(attribute, columns, () => onRowClick(record, row, numParentColumns));
-		        };
-                attribute.set('actions', button);
+                    let button = buttonBuilder.createButton('Szerkesztés');
+                    button.onclick = (e) => {
+                        e.stopPropagation();
+                        editAttribute(attribute, columns, () => onRowClick(record, row, numParentColumns));
+                    };
+                    attribute.set('actions', button);
 
-                attributes.push(attribute);
+                    attributes.push(attribute);
+                });
+
+                openDetails(record, row, numParentColumns, {
+                    attributes: attributes,
+                    columns: columns
+                });
             });
-
-            openDetails(record, row, numParentColumns, {
-                attributes: attributes,
-                columns: columns
-            });
-        });
+    }
+    else {
+        clickedRow = null;
+    }
 }
 
 function openDetails(record, row, numParentColumns, details) {
-    if (openedRow) {
-        documentTableBuilder.closeDropDownView(openedRow, false);
-    }
-
     let detailsContainer = documentTableBuilder.generateDropDownView(numParentColumns);
     detailsContainer.addClass('opened');
-    
+
     let tableContainer = $(document.createElement('div'));
     let table;
 
@@ -139,7 +148,11 @@ function openDetails(record, row, numParentColumns, details) {
     detailsContainer.append(tableContainer);
 
     let closeButton = buttonBuilder.createButton('Bezárás');
-    closeButton.onclick = () => documentTableBuilder.closeDropDownView(openedRow, false);
+    closeButton.onclick = () => {
+        documentTableBuilder.closeDropDownView(openedRow, false);
+        openedRow = null;
+        clickedRow = null;
+    }
     detailsContainer.append(closeButton);
 
     row.after(detailsContainer.parent());

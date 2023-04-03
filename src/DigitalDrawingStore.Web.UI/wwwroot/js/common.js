@@ -385,8 +385,7 @@ const documentTableBuilder = {
 
     closeDropDownView: (openedRow, requireApprovement) => {
         if (requireApprovement && !confirm('Esetleges változtatások mentés nélkül elveszhetnek, folytatja?')) {
-                openedRow.updated = false;
-                return false;
+            return false;
         }
 
         openedRow.obj.remove();

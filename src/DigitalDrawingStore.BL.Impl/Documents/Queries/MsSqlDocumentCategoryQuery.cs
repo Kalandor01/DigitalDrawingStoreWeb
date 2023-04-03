@@ -65,8 +65,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
             var sqlScript = $"SELECT Id, IsDesigned"
-                         + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}"
-                         + ";";
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}";
 
             var response = await _msSqlDataSource.PerformQueryAsync(sqlScript, "IsDesigned");
 

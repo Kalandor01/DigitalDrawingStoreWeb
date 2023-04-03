@@ -32,8 +32,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application
         public async Task<bool> GetIsLoggingEnabledAsync()
         {
             var sqlScript = $"SELECT Id, PropertyValue"
-                                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY]} ap"
-                                + $" WHERE PropertyKey = 'IsLoggingEnabled'";
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY]}"
+                + $" WHERE PropertyKey = 'IsLoggingEnabled'";
             var response = await _msSqlDataSource.PerformQueryAsync(sqlScript, "PropertyValue");
 
             if (response != null && response.IsOkay)

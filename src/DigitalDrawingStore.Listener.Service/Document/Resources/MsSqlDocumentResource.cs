@@ -106,8 +106,9 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
                                 .ConfigureParameter("@DisplayName", SqlDbType.VarChar, categoryName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                 .GetConfiguredParameters();
 
-            var sqlScript = $"SELECT Id FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}"
-                        + $"  WHERE DisplayName = @DisplayName";
+            var sqlScript = $"SELECT Id"
+                + $" FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}"
+                + $" WHERE DisplayName = @DisplayName";
 
             var categoriesResult = _msSqlDataSource.PerformQuery(sqlScript, parameters);
             var categoryId = categoriesResult.FirstOrDefault()?.Id ?? Guid.Empty;
@@ -126,8 +127,9 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
                                 .ConfigureParameter("@ExtractedName", SqlDbType.VarChar, metadataName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                 .GetConfiguredParameters();
 
-            var sqlScript = $"SELECT Id FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY]}"
-                        + $"  WHERE ExtractedName = @ExtractedName";
+            var sqlScript = $"SELECT Id"
+                + $" FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY]}"
+                + $" WHERE ExtractedName = @ExtractedName";
 
             var queryResult = _msSqlDataSource.PerformQuery(sqlScript, parameters);
             var categoryId = queryResult.FirstOrDefault()?.Id ?? Guid.Empty;

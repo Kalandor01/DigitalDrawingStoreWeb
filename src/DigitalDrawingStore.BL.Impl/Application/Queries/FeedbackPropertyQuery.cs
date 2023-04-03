@@ -74,8 +74,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application.Queries
             }
 
             var sqlScript = $"SELECT Id, PropertyValue"
-                          + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY]}"
-                          + $" WHERE PropertyKey = @PropertyKey";
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY]}"
+                + $" WHERE PropertyKey = @PropertyKey";
 
             var parameters = _dataParameterFactory
                 .ConfigureParameter("@PropertyKey", SqlDbType.VarChar, propertyKey, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)

@@ -125,8 +125,9 @@ namespace DigitalDrawingStore.Listener.Service.Application
                                .ConfigureParameter("@PropertyKey", SqlDbType.VarChar, propertyKey, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                .GetConfiguredParameters();
 
-            var sqlScript = $"SELECT Id, PropertyValue FROM {_sqlTableNames[Constants.DocumentDatabase.APPLICATION_PROPERTIES_TABLE_NAME_KEY]}"
-                          + $"  WHERE PropertyKey = @PropertyKey";
+            var sqlScript = $"SELECT Id, PropertyValue"
+                + $" FROM {_sqlTableNames[Constants.DocumentDatabase.APPLICATION_PROPERTIES_TABLE_NAME_KEY]}"
+                + $" WHERE PropertyKey = @PropertyKey";
 
             var response = _msSqlDataSource.PerformQuery(sqlScript, parameters, "PropertyValue");
             var property = response.FirstOrDefault();

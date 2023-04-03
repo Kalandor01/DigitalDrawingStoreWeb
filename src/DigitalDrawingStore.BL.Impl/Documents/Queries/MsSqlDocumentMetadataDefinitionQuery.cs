@@ -93,11 +93,12 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
             //TODO: use this feedback message if a table was not found and reject the promise
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
+            var sqlScript = $" SELECT Id, ExtractedName"
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]}";
+
             var parameters = _dataParameterFactory.GetConfiguredParameters();
 
-            var documentMetadataDefinitions = await _msSqlDataSource.PerformQueryAsync(
-                $"   SELECT Id, ExtractedName FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]} dmd",
-                parameters, "ExtractedName");
+            var documentMetadataDefinitions = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "ExtractedName");
 
             return documentMetadataDefinitions.ResponseObject;
         }
@@ -109,11 +110,12 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
             //TODO: use this feedback message if a table was not found and reject the promise
             //feedbackQueue.Add(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.Error_NoSuchTableFoundInDatabase, "TODO: tableName"));
 
+            var sqlScript = $" SELECT Id, ExtractedName"
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]}";
+
             var parameters = _dataParameterFactory.GetConfiguredParameters();
 
-            var documentMetadataDefinitions = await _msSqlDataSource.PerformQueryAsync(
-                $"   SELECT Id, ExtractedName FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]} dmd",
-                parameters, "Id", "ExtractedName");
+            var documentMetadataDefinitions = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "Id", "ExtractedName");
 
             return documentMetadataDefinitions.ResponseObject;
         }

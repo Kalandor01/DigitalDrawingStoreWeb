@@ -102,15 +102,15 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                                 .ConfigureParameter("@Attribute", SqlDbType.VarChar, attribute, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                 .GetConfiguredParameters();
 
-            var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(
-                $"   SELECT dm.Id, Value FROM {documentMetadataTableName} dm"
+            var sqlScript = $" SELECT dm.Id, Value"
+                + $" FROM {documentMetadataTableName} dm"
                 + $" INNER JOIN {documentTableName} d"
-                + $"   ON d.Id = dm.DocumentId"
+                + $" ON d.Id = dm.DocumentId"
                 + $" INNER JOIN {documentMetadataDefinitionsTableName} dmd"
-                + $"   ON dm.DocumentMetadataDefinitionId = dmd.Id"
+                + $" ON dm.DocumentMetadataDefinitionId = dmd.Id"
                 + $" WHERE d.Id = @DocumentId"
-                + $"   AND dmd.ExtractedName = @Attribute",
-                parameters, "Value");
+                + $" AND dmd.ExtractedName = @Attribute";
+            var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "Value");
             
             
             if (documentMetadataResult.ResponseObject == null)
@@ -275,10 +275,9 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                                     .ConfigureParameter("@MetadataDefinitionName", SqlDbType.VarChar, metadataDefinitionName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                     .GetConfiguredParameters();
 
-                var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(
-                    $"   SELECT Id FROM {documentMetadataDefinitionsTableName}"
-                    + $"   WHERE ExtractedName = @MetadataDefinitionName",
-                    parameters, "Id");
+                var sqlScript = $" SELECT Id FROM {documentMetadataDefinitionsTableName}"
+                    + $" WHERE ExtractedName = @MetadataDefinitionName";
+                var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "Id");
 
                 var id = documentMetadataResult.ResponseObject.FirstOrDefault()?.Id.ToString();
 
@@ -317,11 +316,10 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                                     .ConfigureParameter("@DocumentMetadataDefinitionId", SqlDbType.UniqueIdentifier, metadataDefinition)
                                     .GetConfiguredParameters();
 
-                var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(
-                    $"   SELECT dm.Id FROM {documentMetadataTableName} dm"
-                    + $" WHERE dm.DocumentId = @DocumentId"
-                    + $"   AND dm.DocumentMetadataDefinitionId = @DocumentMetadataDefinitionId",
-                    parameters);
+                var sqlScript = $" SELECT Id FROM {documentMetadataTableName}"
+                    + $" WHERE DocumentId = @DocumentId"
+                    + $" AND DocumentMetadataDefinitionId = @DocumentMetadataDefinitionId";
+                var documentMetadataResult = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters);
 
                 var id = documentMetadataResult.ResponseObject.FirstOrDefault()?.Id.ToString();
 

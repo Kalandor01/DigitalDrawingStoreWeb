@@ -562,9 +562,12 @@ table {
 /*#region Dropdown Menu*/
 .menu {
     width: 6rem;
-    cursor: pointer;
     margin-top: 1.2rem;
     transition: all .5s;
+}
+
+#menu {
+    cursor: pointer;
 }
 
 .menu.open {
@@ -714,6 +717,7 @@ table {
     z-index: 2;
     padding: 2rem 1rem;
     width: 100vw;
+    pointer-events: none;
 }
 
 #toast-container > * {

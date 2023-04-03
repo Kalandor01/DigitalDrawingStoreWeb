@@ -85,10 +85,10 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                                 .ConfigureParameter("@CategoryId", SqlDbType.UniqueIdentifier, Id)
                                 .GetConfiguredParameters();
 
-            var documentCategoryEntities = await _msSqlDataSource.PerformQueryAsync(
-                $"   SELECT Id, DisplayName FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}"
-                + $" WHERE Id = @CategoryId",
-                parameters, "DisplayName");
+            var sqlScript = $" SELECT Id, DisplayName"
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]}"
+                + $" WHERE Id = @CategoryId";
+            var documentCategoryEntities = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "DisplayName");
 
             var displayName = documentCategoryEntities.ResponseObject?.FirstOrDefault()?.Attributes["DisplayName"]?.ToString();
             return displayName ?? string.Empty;
@@ -107,12 +107,12 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                                 .ConfigureParameter("@CategoryId", SqlDbType.UniqueIdentifier, Id)
                                 .GetConfiguredParameters();
 
-            var documentCategoryEntities = await _msSqlDataSource.PerformQueryAsync(
-                $"   SELECT dce.Id, dmd.ExtractedName FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORY_ENTITIES_TABLE_NAME_KEY]} dce"
+            var sqlScript = $" SELECT dce.Id, dmd.ExtractedName"
+                + $" FROM {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORY_ENTITIES_TABLE_NAME_KEY]} dce"
                 + $" INNER JOIN {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]} dmd"
-                + $"   ON dmd.Id = dce.DocumentMetadataDefinitionId"
-                + $" WHERE dce.DocumentCategoryId = @CategoryId",
-                parameters, "ExtractedName");
+                + $" ON dmd.Id = dce.DocumentMetadataDefinitionId"
+                + $" WHERE dce.DocumentCategoryId = @CategoryId";
+            var documentCategoryEntities = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "ExtractedName");
 
             if (documentCategoryEntities != null)
             {
