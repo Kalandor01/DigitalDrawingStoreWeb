@@ -4,7 +4,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories
 {
     internal interface IDocumentCategoryFactory
     {
-        IDocumentCategory CreateDocumentCategory(Guid id);
-        IDocumentCategory CreateDocumentCategory(Guid id, bool isDesigned);
+        Task<IDocumentCategory> CreateDocumentCategoryAsync(Guid id);
+        Task<IDocumentCategory> CreateDocumentCategoryAsync(Guid id, bool isDesigned);
     }
 }

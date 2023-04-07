@@ -28,7 +28,6 @@ populatePage = () => {
                     let tableName = category.categoryName;
 
                     let columns = new Map();
-                    columns.set('nameWithExtension', 'Név');
                     $.each(category.attributes, (index, categoryAttribute) => {
                         columns.set(index, categoryAttribute);
                     });

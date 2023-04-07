@@ -168,7 +168,6 @@ openDetails = (record, row, numParentColumns, columns, sortState) => {
 
     let saveButton = buttonBuilder.createButton('Mentés');
     saveButton.onclick = () => {
-        console.log("hello")
         if (openedRow.updated) {
             updateCategoryEntities(columns, record);
             openedRow.updated = false;
@@ -183,8 +182,8 @@ openDetails = (record, row, numParentColumns, columns, sortState) => {
 }
 
 updateCategoryEntities = (results, record) => {
-    console.log('results: ', results)
-    console.log('record: ', record)
+    console.log('results: ', results);
+    console.log('record: ', record);
 
     let keys = [];
     let values = [];

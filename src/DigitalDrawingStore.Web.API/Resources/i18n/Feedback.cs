@@ -47,5 +47,8 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Resources.i18n
 
         private static ICultureResource _fatal_Couldnt_Modify = new JsonCultureResource("Fatal_Couldnt_Modify", LANGUAGE_RESOURCES_PATH);
         internal static IFeedbackResource Fatal_Couldnt_Modify = new FeedbackResource(Severity.Fatal, _fatal_Couldnt_Modify);
+
+        private static ICultureResource _fatal_Empty_Field = new JsonCultureResource("Fatal_Empty_Field", LANGUAGE_RESOURCES_PATH);
+        internal static IFeedbackResource Fatal_Empty_Field = new FeedbackResource(Severity.Fatal, _fatal_Empty_Field);
     }
 }

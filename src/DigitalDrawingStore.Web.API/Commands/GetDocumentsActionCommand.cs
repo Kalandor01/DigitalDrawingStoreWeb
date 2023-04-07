@@ -1,4 +1,5 @@
 ﻿using XperiCad.Common.Core.Behaviours.Commands;
+using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.BL.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
@@ -45,10 +46,10 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                     var documentsPromise = await _documentService.QueryDocumentsAsync(documentCategory.Id, _searchText);
                     QueueFeedback(documentsPromise);
 
-                    var simpleDocumentCategory = new SimpleDocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), await documentCategory.GetAttributesAsync(), documentCategory.IsDesigned);
+                    var simpleDocumentCategory = new SimpleDocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), await documentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture()), documentCategory.IsDesigned);
 
                     var documentDtoCollection = new List<DocumentWithPath>();
-                    var documentCategoryAttributes = await documentCategory.GetAttributesAsync();
+                    var documentCategoryAttributes = await documentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture());
 
                     if (documentsPromise.ResponseObject != null)
                     {

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Unity;
+using XperiCad.Common.Infrastructure.Application;
 using XperiCad.Common.Infrastructure.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
+using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.Web.API.Commands;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using XperiCad.DigitalDrawingStore.Web.API.Extensions;
@@ -22,7 +24,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Controllers
             var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
             var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<IEnumerable<DocumentCategory>>();
 
-            var getDocumentsCommand = new GetDocumentCategoriesActionCommand(searchText);
+            var getDocumentsCommand = new GetDocumentCategoriesActionCommand(searchText, new CultureFactory().GetSelectedCulture());
             commandInvoker.AddCommand(getDocumentsCommand);
             await commandInvoker.ExecuteAllAsync();
 

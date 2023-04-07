@@ -202,17 +202,15 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         private JsonResponse<string> GetJsonResponse(List<FeedbackMessage> feedbackMessages)
         {
             var success = true;
-            var element = 0;
-            IFeedbackResource response;
-            for (; element < feedbackMessages.Count(); element++)
+            foreach (var feedbackMessage in feedbackMessages)
             {
-                if (feedbackMessages.ElementAt(element).Severity != Severity.Information)
+                if (feedbackMessage.Severity != Severity.Information)
                 {
                     success = false;
                     break;
                 }
             }
-            response = success ? Feedback.Information_Successfully_Modified : Feedback.Fatal_Couldnt_Modify;
+            var response = success ? Feedback.Information_Successfully_Modified : Feedback.Fatal_Couldnt_Modify;
             var responseMessage = response.CultureResource.GetCultureString(_selectedCulture).FirstOrDefault().Value;
             return new JsonResponse<string>(responseMessage, feedbackMessages, success);
         }

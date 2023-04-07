@@ -23,19 +23,19 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories
         }
 
         #region IDocumentCategoryFactory members
-        public IDocumentCategory CreateDocumentCategory(Guid id, bool isDesigned)
+        public async Task<IDocumentCategory> CreateDocumentCategoryAsync(Guid id, bool isDesigned)
         {
             if (id == Guid.Empty)
             {
                 throw new ArgumentException($"Attribute {nameof(id)} could not be empty Guid.");
             }
 
-            return new MsSqlDocumentCategory(id, _msSqlDataSource, _dataParameterFactory, _sqlTableNames, isDesigned);
+            return (IDocumentCategory)(await Task.FromResult(new MsSqlDocumentCategory(id, _msSqlDataSource, _dataParameterFactory, _sqlTableNames, isDesigned)));
         }
 
-        public IDocumentCategory CreateDocumentCategory(Guid id)
+        public async Task<IDocumentCategory> CreateDocumentCategoryAsync(Guid id)
         {
-            return CreateDocumentCategory(id, false);
+            return await CreateDocumentCategoryAsync(id, false);
         }
         #endregion
     }

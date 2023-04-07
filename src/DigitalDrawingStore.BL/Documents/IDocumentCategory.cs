@@ -6,7 +6,7 @@
         bool IsDesigned { get; }
         void SetDocumentCategoryEntityAsync(Guid entityId);
 
-        Task<IDictionary<string, string>> GetAttributesAsync();
+        Task<IDictionary<string, string>> GetAttributesAsync(string? selectedCulture);
         Task<string> GetDisplayNameAsync();
     }
 }

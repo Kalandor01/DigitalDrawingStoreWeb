@@ -19,12 +19,14 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\i18n\Documents\Commands\hu-HU\FeedbackMessages.json" />
+	  <None Remove="Resources\i18n\Documents\Properties\hu-HU\PropertyValues.json" />
 	  <None Remove="Resources\i18n\Documents\Queries\hu-HU\FeedbackMessages.json" />
 	  <None Remove="Resources\i18n\Watermark\hu-HU\FeedbackMessages.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\i18n\Documents\Commands\hu-HU\FeedbackMessages.json" />
+	  <EmbeddedResource Include="Resources\i18n\Documents\Properties\hu-HU\PropertyValues.json" />
 	  <EmbeddedResource Include="Resources\i18n\Documents\Queries\hu-HU\FeedbackMessages.json" />
 	  <EmbeddedResource Include="Resources\i18n\Watermark\hu-HU\FeedbackMessages.json" />
 	</ItemGroup>

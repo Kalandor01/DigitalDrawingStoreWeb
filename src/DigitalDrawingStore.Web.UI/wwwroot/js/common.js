@@ -50,7 +50,7 @@ const requestInvoker = {
             type: requestType,
             data: args,
             success: (response) => {
-                console.log('success: ', response)
+                console.log('response: ', response);
                 if (response && response.feedbackMessages && response.feedbackMessages.length > 0) {
                     let displayedFeedback = response.feedbackMessages[0];
                     for (const feedbackMessage of response.feedbackMessages) {
@@ -77,9 +77,9 @@ const requestInvoker = {
                 }
             },
             error: (xhr, status, error) => {
-                console.error('xhr: ', xhr)
-                console.error('status: ', status)
-                console.error('error: ', error)
+                console.error('xhr: ', xhr);
+                console.error('status: ', status);
+                console.error('error: ', error);
                 feedbackChannel.showError('Ismeretlen hiba', 'Ismeretlen hiba történt. Kérjük jelezze kapcsolattartóink felé.');
             },
         });
@@ -101,8 +101,12 @@ const b5toast = {
                 </div>
             </div>`;
         const toastElement = b5toast.htmlToElement(html);
-        document.getElementById("toast-container").appendChild(toastElement);
+        const toastContainer = document.getElementById("toast-container");
+        toastContainer.appendChild(toastElement);
         setTimeout(() => toastElement.remove(), b5toast.delayInMilliseconds);
+        if (toastContainer.childElementCount > maxToastCount) {
+            toastContainer.firstChild.remove();
+        }
     },
     delayInMilliseconds: 5000,
     htmlToElement: (html) => {
@@ -110,7 +114,8 @@ const b5toast = {
         html = html.trim();
         template.innerHTML = html;
         return template.content.firstChild;
-    }
+    },
+    maxToastCount: 5
 };
 
 const documentTableBuilder = {

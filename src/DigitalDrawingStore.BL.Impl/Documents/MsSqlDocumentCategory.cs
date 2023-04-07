@@ -1,6 +1,9 @@
 ﻿using System.Data;
+using XperiCad.Common.Infrastructure.Culture.Resource;
 using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.DigitalDrawingStore.BL.Documents;
+using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
+using XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n;
 
 namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
 {
@@ -71,9 +74,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                 $" (DocumentCategoryId, DocumentMetadataDefinitionId)" +
                 $" VALUES (@DocumentCategoryId, @DocumentMetadataDefinitionId)", parameters);
         }
-        #endregion
 
-        #region Private members
         public async Task<string> GetDisplayNameAsync()
         {
             if (!IsNecessaryTablesExists())
@@ -94,7 +95,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
             return displayName ?? string.Empty;
         }
 
-        public async Task<IDictionary<string, string>> GetAttributesAsync()
+        public async Task<IDictionary<string, string>> GetAttributesAsync(string? selectedCulture)
         {
             var result = new Dictionary<string, string>();
 
@@ -119,13 +120,32 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                 foreach (var documentCategoryEntity in documentCategoryEntities.ResponseObject)
                 {
                     var extractedName = documentCategoryEntity?.Attributes["ExtractedName"]?.ToString();
-                    result.Add(extractedName ?? Guid.NewGuid().ToString(), extractedName ?? string.Empty);
+                    var actualExtractedName = extractedName ?? string.Empty;
+                    string translatedName;
+                    if (string.IsNullOrWhiteSpace(selectedCulture))
+                    {
+                        translatedName = actualExtractedName;
+                    }
+                    else
+                    {
+                        translatedName = CultureFactory.GetPropertyNameTranslation(actualExtractedName, selectedCulture) ?? actualExtractedName;
+                    }
+                    result.Add(extractedName ?? Guid.NewGuid().ToString(), string.IsNullOrWhiteSpace(translatedName) ? actualExtractedName : translatedName);
                 }
             }
 
             return result;
         }
+        #endregion
 
+        #region Public members
+        public static string GetNameAttributeName(string selectedCulture)
+        {
+            return Property.Property_Name.GetCultureString(selectedCulture).FirstOrDefault().Value;
+        }
+        #endregion
+
+        #region Private members
         private bool IsNecessaryTablesExists()
         {
             var isDocumentCategoriesTableExists = _sqlTableNames.TryGetValue(Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY, out _);

@@ -2,6 +2,7 @@
 using XperiCad.DigitalDrawingStore.BL.Documents.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
+using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 
@@ -20,7 +21,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         #endregion
 
         #region ctor
-        public GetDocumentCategoriesActionCommand(string searchText)
+        public GetDocumentCategoriesActionCommand(string searchText, string selectedCulture)
         {
             var documentServiceFactory = new DocumentServiceFactory(); // TODO: inject
             _documentService = documentServiceFactory.CreateDocumentService(Constants.Documents.Resources.APPLICATION_CONFIGURATION_FILE_PATH);
@@ -44,6 +45,8 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
             if (documentCategoriesPromise.IsOkay)
             {
+                var selectedCulture = new CultureFactory().GetSelectedCulture();
+                var documentNameAttributeName = CultureFactory.GetPropertyNameTranslation("Name", selectedCulture) ?? "Név";
                 foreach (var documentCategory in documentCategoriesPromise.ResponseObject)
                 {
                     var documentsPromise = await _documentService.QueryDocumentsAsync(documentCategory.Id, _searchText);
@@ -56,7 +59,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                         foreach (var document in documentsPromise.ResponseObject)
                         {
                             var documentAttributes = new Dictionary<string, string?>();
-                            var documentCategoryAttributes = await documentCategory.GetAttributesAsync();
+                            var documentCategoryAttributes = await documentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture());
                             foreach (var documentCategoryAttribute in documentCategoryAttributes)
                             {
                                 documentAttributes.Add(documentCategoryAttribute.Key, document.GetAttribute<string?>(documentCategoryAttribute.Key).Result);
@@ -65,8 +68,9 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                             documentDtoCollection.Add(documentDto);
                         }
                     }
-
-                    response.Add(new DocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), await documentCategory.GetAttributesAsync(), documentDtoCollection, documentCategory.IsDesigned));
+                    var fullAttributesList = await documentCategory.GetAttributesAsync(selectedCulture);
+                    fullAttributesList.Add("nameWithExtension", documentNameAttributeName);
+                    response.Add(new DocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), fullAttributesList, documentDtoCollection, documentCategory.IsDesigned));
                 }
             }
 

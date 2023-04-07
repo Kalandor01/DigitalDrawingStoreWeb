@@ -1,6 +1,7 @@
 ﻿using Moq;
 using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.DigitalDrawingStore.BL.Documents;
+using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents;
 
 namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
@@ -73,8 +74,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                 }
 
 
-                Assert.NotEmpty(await targetDocumentCategory.GetAttributesAsync());
-                foreach (var attribute in await targetDocumentCategory.GetAttributesAsync())
+                Assert.NotEmpty(await targetDocumentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture()));
+                foreach (var attribute in await targetDocumentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture()))
                 {
                     var attributeValue = targetDocument.GetAttribute<string>(attribute.Key).Result;
 

@@ -54,7 +54,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands
                 throw new FeedbackException($"{nameof(metadataDefinitions)}", i18n.Feedback.Error_CouldNotUpdateBecauseMetadataDefinitionsAreInvalid);
             }
 
-            var documentCategory = _documentCategoryFactory.CreateDocumentCategory(documentCategoryId);
+            var documentCategory = await _documentCategoryFactory.CreateDocumentCategoryAsync(documentCategoryId);
 
             DeleteCurrentEntitiesAsync(documentCategoryId);
 

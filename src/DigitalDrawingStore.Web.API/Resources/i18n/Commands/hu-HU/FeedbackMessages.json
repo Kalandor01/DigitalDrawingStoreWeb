@@ -52,6 +52,10 @@
     {
       "Key": "Fatal_Couldnt_Modify",
       "Value": "Nem sikerült módosítani!"
+    },
+    {
+      "Key": "Fatal_Empty_Field",
+      "Value": "Mindegyik mezőt ki kell tölteni!"
     }
   ]
 }

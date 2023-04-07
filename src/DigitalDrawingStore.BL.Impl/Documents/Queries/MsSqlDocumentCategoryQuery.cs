@@ -50,7 +50,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
                 return RejectPromise<IEnumerable<IDocumentCategory>>(feedbackQueue);
             }
 
-            var categories = ConvertCategoryEntitiesToCategories(feedbackQueue, categoryEntities);
+            var categories = await ConvertCategoryEntitiesToCategoriesAsync(feedbackQueue, categoryEntities);
 
             return ResolvePromise(categories, feedbackQueue);
         }
@@ -73,7 +73,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
             return response.ResponseObject;
         }
 
-        private IEnumerable<IDocumentCategory> ConvertCategoryEntitiesToCategories(ICollection<IFeedbackMessage> feedbackQueue, IEnumerable<IEntity> categoryEntities)
+        private async Task<IEnumerable<IDocumentCategory>> ConvertCategoryEntitiesToCategoriesAsync(ICollection<IFeedbackMessage> feedbackQueue, IEnumerable<IEntity> categoryEntities)
         {
             var result = new List<IDocumentCategory>();
 
@@ -87,7 +87,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
 
                         if (categoryEntity.Id != Guid.Empty && isValueCorrect)
                         {
-                            var category = _documentCategoryFactory.CreateDocumentCategory(categoryEntity.Id, isDesigned);
+                            var category = await _documentCategoryFactory.CreateDocumentCategoryAsync(categoryEntity.Id, isDesigned);
                             result.Add(category);
                         }
                         else

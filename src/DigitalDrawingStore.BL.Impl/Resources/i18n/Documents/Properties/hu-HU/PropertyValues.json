@@ -1,0 +1,41 @@
+{
+  "CultureKey": "i18n-hu-HU",
+  "CultureElements": [
+    {
+      "Key": "Property_Name",
+      "Value": "Név"
+    },
+    {
+      "Key": "Property_Document_Number",
+      "Value": "Dokumentum szám"
+    },
+    {
+      "Key": "Property_Part_Number",
+      "Value": "Alkatrész szám"
+    },
+    {
+      "Key": "Property_Created_By",
+      "Value": "Készítette"
+    },
+    {
+      "Key": "Property_Created_At",
+      "Value": "Létrehozva"
+    },
+    {
+      "Key": "Property_Modified_By",
+      "Value": "Módosította"
+    },
+    {
+      "Key": "Property_Modified_At",
+      "Value": "Módosítva"
+    },
+    {
+      "Key": "Property_Mode_Of_Usage",
+      "Value": "Használati mód"
+    },
+    {
+      "Key": "Property_Freetext",
+      "Value": "Dokumentum szövege"
+    }
+  ]
+}
