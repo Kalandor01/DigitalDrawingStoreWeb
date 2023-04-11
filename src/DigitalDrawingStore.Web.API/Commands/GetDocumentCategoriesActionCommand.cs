@@ -68,8 +68,10 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                             documentDtoCollection.Add(documentDto);
                         }
                     }
-                    var fullAttributesList = await documentCategory.GetAttributesAsync(selectedCulture);
-                    fullAttributesList.Add("nameWithExtension", documentNameAttributeName);
+                    var attributesList = await documentCategory.GetAttributesAsync(selectedCulture);
+                    var nameAttributesList = new Dictionary<string, string> { ["nameWithExtension"] = documentNameAttributeName };
+                    var fullAttributesList = nameAttributesList.Concat(attributesList).GroupBy(d => d.Key)
+                        .ToDictionary(d => d.Key, d => d.First().Value);
                     response.Add(new DocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), fullAttributesList, documentDtoCollection, documentCategory.IsDesigned));
                 }
             }

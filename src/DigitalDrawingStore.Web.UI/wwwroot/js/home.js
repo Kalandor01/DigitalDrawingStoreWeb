@@ -36,10 +36,11 @@ populatePage = () => {
                     $.each(category.documents, (index, document) => {
                         let record = new Map();
                         record.set('id', document.id)
+
                         columns.forEach((columnTitle, columnKey) => {
                             record.set(columnKey, document.attributes[columnKey]);
                         });
-                        record.set('nameWithExtension', document.nameWithExtension);
+
                         record.set('documentPath', document.path);
 
                         records.push(record);

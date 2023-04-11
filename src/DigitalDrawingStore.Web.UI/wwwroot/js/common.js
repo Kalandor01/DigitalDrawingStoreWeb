@@ -88,6 +88,8 @@ const requestInvoker = {
     }
 };
 
+const maxToastCount = 5;
+
 const b5toast = {
     show: function (color, title, message) {
         title = title ? title : "";
@@ -114,8 +116,7 @@ const b5toast = {
         html = html.trim();
         template.innerHTML = html;
         return template.content.firstChild;
-    },
-    maxToastCount: 5
+    }
 };
 
 const documentTableBuilder = {
@@ -432,13 +433,13 @@ const documentTableBuilder = {
             let valA = a.get(sortState.sortBy);
             let valB = b.get(sortState.sortBy);
 
-            if (valA === null || valB === null) {
+            if (valA == null || valB == null) {
                 let result = 0;
 
-                if (valA === null) {
+                if (valA == null) {
                     result++;
                 }
-                if (valB === null) {
+                if (valB == null) {
                     result--;
                 }
 
