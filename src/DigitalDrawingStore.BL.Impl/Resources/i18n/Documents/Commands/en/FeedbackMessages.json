@@ -1,0 +1,25 @@
+{
+  "CultureKey": "i18n-en",
+  "CultureElements": [
+    {
+      "Key": "Error_CouldNotUpdateBecauseGivenIdIsInvalid",
+      "Value": "Could not update the database, because the given Guid was invalid."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseGivenMetadataNameIsInvalid",
+      "Value": "Could not update the database, because the metadata's name was invalid."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseCategoryEntitiesAreInvalid",
+      "Value": "Could not update the database, because the list of elements, connected to the category were invalid."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseMetadataDefinitionsAreInvalid",
+      "Value": "Could not update the database, because the list of  metadata types were invalid."
+    },
+    {
+      "Key": "Error_CouldNotUpdateBecauseUnknown",
+      "Value": "Could not update the database, because of unknown reasons."
+    }
+  ]
+}

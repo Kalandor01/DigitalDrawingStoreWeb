@@ -1,4 +1,5 @@
 @using XperiCad.DigitalDrawingStore.Web.API.Authorization;
+@using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 @* TODO: Investigate the proper implementation *@
 @model object;
 
@@ -7,7 +8,11 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Digital Drawing Store</title>
+    @{
+        var appName = CultureService.GetPropertyNameTranslation(CultureProperty.APPLICATION_NAME, CultureService.GetSelectedCulture()) ?? "[Digitális Rajztár]";
+        var pageTitle = ViewData.Keys.Contains("Title") ? ViewData["Title"] : "[Oldal]";
+    }
+    <title>@pageTitle - @appName</title>
 
     <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css"/>
     <link rel="stylesheet" href="~/lib/jquery-modal/jquery.modal.min.css"/>
@@ -82,6 +87,13 @@
         {
             if (sharedViewModel.SecurityFacade != null && sharedViewModel.SecurityFacade.IsInGroup(User, Constants.Autorization.Policies.ADMIN))
             {
+                var selectedCulture = CultureService.GetSelectedCulture();
+                var mainPageTitle = CultureService.GetPropertyNameTranslation(CultureProperty.HOME_PAGE_NAME, selectedCulture) ?? "[Főoldal]";
+                var categoriesPageTitle = CultureService.GetPropertyNameTranslation(CultureProperty.CATEGORIES_PAGE_NAME, selectedCulture) ?? "[Kategóriák]";
+                var documentsPageTitle = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENTS_PAGE_NAME, selectedCulture) ?? "[Dokumentumok]";
+                var settingsPageTitle = CultureService.GetPropertyNameTranslation(CultureProperty.SETTINGS_PAGE_NAME, selectedCulture) ?? "[Beállítások]";
+                var eventsPageTitle = CultureService.GetPropertyNameTranslation(CultureProperty.EVENTS_PAGE_NAME, selectedCulture) ?? "[Események]";
+
                 <nav>
                     <div id="xpericad-dropdown-menu" class="menu">
                         <div id="menu" class="bar-container">
@@ -91,36 +103,43 @@
                         </div>
                         <div class="dropdown">
                             <p>
-                                <a asp-controller="Home" asp-action="Index">Rajztár</a>
+                                <a asp-controller="Home" asp-action="Index">@mainPageTitle</a>
                             </p>
                             <hr/>
                             <p>
-                                <a asp-controller="Administration" asp-action="Categories">Kategóriák</a>
+                                <a asp-controller="Administration" asp-action="Categories">@categoriesPageTitle</a>
                             </p>
                             <hr/>
                             <p>
-                                <a asp-controller="Administration" asp-action="Documents">Dokumentumok</a>
+                                <a asp-controller="Administration" asp-action="Documents">@documentsPageTitle</a>
                             </p>
                             <hr/>
                             <p>
-                    			<a asp-controller="Administration" asp-action="Settings">Beállítások</a>
+                                <a asp-controller="Administration" asp-action="Settings">@settingsPageTitle</a>
                 			</p>
+                            @*<hr />
+                            <p>
+                                <a asp-controller="Administration" asp-action="EventLogs">@eventsPageTitle</a>
+                            </p>*@
                         </div>
                     </div>
                     <div class="xpericad-fullsize-navcontent">
                         <ul>
                             <li>
-                                <a asp-controller="Home" asp-action="Index">Rajztár</a>
+                                <a asp-controller="Home" asp-action="Index">@mainPageTitle</a>
                             </li>
                             <li>
-                                <a asp-controller="Administration" asp-action="Categories">Kategóriák</a>
+                                <a asp-controller="Administration" asp-action="Categories">@categoriesPageTitle</a>
                             </li>
                             <li>
-                                <a asp-controller="Administration" asp-action="Documents">Dokumentumok</a>
+                                <a asp-controller="Administration" asp-action="Documents">@documentsPageTitle</a>
                             </li>
                             <li>
-                            	<a asp-controller="Administration" asp-action="Settings">Beállítások</a>
+                                <a asp-controller="Administration" asp-action="Settings">@settingsPageTitle</a>
                             </li>
+                            @*<li>
+                                <a asp-controller="Administration" asp-action="EventLogs">@eventsPageTitle</a>
+                            </li>*@
                         </ul>
                     </div>
                 </nav>
@@ -136,11 +155,11 @@
                     </div>
                     <div class="dropdown">
                         <p>
-                                <a href="" class="changeLang" value="HU">Magyar</a>
+                            <a href="" class="changeLang" value="HU">Magyar</a>
                         </p>
                         <hr />
                         <p>
-                                <a href="" class="changeLang" value="EN">English</a>
+                            <a href="" class="changeLang" value="EN">English</a>
                         </p>
                     </div>
                 </div>

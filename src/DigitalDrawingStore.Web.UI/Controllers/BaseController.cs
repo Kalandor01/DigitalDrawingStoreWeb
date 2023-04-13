@@ -13,8 +13,9 @@ namespace DigitalDrawingStore.Web.UI.Controllers
 			SharedViewModel = new SharedViewModel(new SecurityFacade());
 		}
 
-		protected IActionResult SharedView()
+		protected IActionResult SharedView(string defaultTitle, string? translatedTitle = null)
 		{
+            ViewData["Title"] = translatedTitle ?? defaultTitle;
             return View(SharedViewModel);
 		}
     }

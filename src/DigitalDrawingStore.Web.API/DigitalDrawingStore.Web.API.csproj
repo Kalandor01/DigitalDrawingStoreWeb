@@ -37,7 +37,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="Resources\i18n\Commands\en\FeedbackMessages.json" />
 	  <Content Remove="Resources\i18n\Commands\hu-HU\FeedbackMessages.json" />
+	  <EmbeddedResource Include="Resources\i18n\Commands\en\FeedbackMessages.json" />
 	  <EmbeddedResource Include="Resources\i18n\Commands\hu-HU\FeedbackMessages.json" />
 	</ItemGroup>
 

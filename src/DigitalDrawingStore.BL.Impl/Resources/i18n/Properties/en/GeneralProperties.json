@@ -1,0 +1,41 @@
+{
+  "CultureKey": "i18n-en",
+  "CultureElements": [
+    {
+      "Key": "Application_Name",
+      "Value": "Digital Drawing Store"
+    },
+    {
+      "Key": "Home_Page_Name",
+      "Value": "Home page"
+    },
+    {
+      "Key": "Privacy_Page_Name",
+      "Value": "Privacy policy"
+    },
+    {
+      "Key": "Error_Page_Name",
+      "Value": "Error"
+    },
+    {
+      "Key": "Documents_Page_Name",
+      "Value": "Documents"
+    },
+    {
+      "Key": "Categories_Page_Name",
+      "Value": "Categories"
+    },
+    {
+      "Key": "Settings_Page_Name",
+      "Value": "Settings"
+    },
+    {
+      "Key": "Events_Page_Name",
+      "Value": "Event logs"
+    },
+    {
+      "Key": "Document_Name_Category_Name",
+      "Value": "Name"
+    }
+  ]
+}

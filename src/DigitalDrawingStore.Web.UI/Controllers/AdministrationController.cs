@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using AdministrationControllerApi = XperiCad.DigitalDrawingStore.Web.API.Controllers.AdministrationController;
 
@@ -50,17 +51,26 @@ namespace DigitalDrawingStore.Web.UI.Controllers
 
         public IActionResult Categories()
         {
-            return SharedView();
+            var title = CultureService.GetPropertyNameTranslation(CultureProperty.CATEGORIES_PAGE_NAME, CultureService.GetSelectedCulture());
+            return SharedView("[Kategóriák]", title);
         }
 
         public IActionResult Documents()
         {
-            return SharedView();
+            var title = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENTS_PAGE_NAME, CultureService.GetSelectedCulture());
+            return SharedView("[Dokumentumok]", title);
         }
 
         public IActionResult Settings()
         {
-            return SharedView();
+            var title = CultureService.GetPropertyNameTranslation(CultureProperty.SETTINGS_PAGE_NAME, CultureService.GetSelectedCulture());
+            return SharedView("[Beállítások]", title);
+        }
+
+        public IActionResult EventLogs()
+        {
+            var title = CultureService.GetPropertyNameTranslation(CultureProperty.EVENTS_PAGE_NAME, CultureService.GetSelectedCulture());
+            return SharedView("[Eseménynapló]", title);
         }
     }
 }

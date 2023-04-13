@@ -18,16 +18,24 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\i18n\Documents\Commands\en\FeedbackMessages.json" />
 	  <None Remove="Resources\i18n\Documents\Commands\hu-HU\FeedbackMessages.json" />
-	  <None Remove="Resources\i18n\Properties\hu-HU\DocumentProperties.json" />
+	  <None Remove="Resources\i18n\Documents\Queries\en\FeedbackMessages.json" />
 	  <None Remove="Resources\i18n\Documents\Queries\hu-HU\FeedbackMessages.json" />
+	  <None Remove="Resources\i18n\Properties\en\GeneralProperties.json" />
+	  <None Remove="Resources\i18n\Properties\hu-HU\GeneralProperties.json" />
+	  <None Remove="Resources\i18n\Watermark\en\FeedbackMessages.json" />
 	  <None Remove="Resources\i18n\Watermark\hu-HU\FeedbackMessages.json" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Resources\i18n\Documents\Commands\en\FeedbackMessages.json" />
 	  <EmbeddedResource Include="Resources\i18n\Documents\Commands\hu-HU\FeedbackMessages.json" />
-	  <EmbeddedResource Include="Resources\i18n\Properties\hu-HU\DocumentProperties.json" />
+	  <EmbeddedResource Include="Resources\i18n\Documents\Queries\en\FeedbackMessages.json" />
+	  <EmbeddedResource Include="Resources\i18n\Properties\en\GeneralProperties.json" />
+	  <EmbeddedResource Include="Resources\i18n\Properties\hu-HU\GeneralProperties.json" />
 	  <EmbeddedResource Include="Resources\i18n\Documents\Queries\hu-HU\FeedbackMessages.json" />
+	  <EmbeddedResource Include="Resources\i18n\Watermark\en\FeedbackMessages.json" />
 	  <EmbeddedResource Include="Resources\i18n\Watermark\hu-HU\FeedbackMessages.json" />
 	</ItemGroup>
 

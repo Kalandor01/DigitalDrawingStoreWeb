@@ -1,0 +1,45 @@
+{
+  "CultureKey": "i18n-en",
+  "CultureElements": [
+    {
+      "Key": "Error_NoSuchDocumentFoundInDatabase",
+      "Value": "No such document found in database."
+    },
+    {
+      "Key": "Error_NoSuchTableFoundInDatabase",
+      "Value": "The table, named {0} cannot be found in the database."
+    },
+    {
+      "Key": "Error_NoTargetOfDocumentUsageFoundInDatabase",
+      "Value": "The document's posible target of usages cannot e found in the database."
+    },
+    {
+      "Key": "Error_CouldNotQueryBecauseOfInvalidGuid",
+      "Value": "The query coldn't be completed, because the given Guid was invalid."
+    },
+    {
+      "Key": "Warning_DocumentCouldNotBeProcessed",
+      "Value": "A document could not be processed."
+    },
+    {
+      "Key": "Warning_TargetOfDocumentUsageCouldNotBeProcessed",
+      "Value": "The document's target of document usage, could not be processed."
+    },
+    {
+      "Key": "Warning_DocumentMetadataCouldNotBeProcessed",
+      "Value": "One of the document metadata's could not be processed."
+    },
+    {
+      "Key": "Warning_DocumentCategoryCouldNotBeProcessed",
+      "Value": "The document's category could not be procesed."
+    },
+    {
+      "Key": "Warning_DocumentMetadataDefinitionCouldNotBeProcessed",
+      "Value": "The requested document's metadata could not be procesed."
+    },
+    {
+      "Key": "Error_CouldNotQueryParameter",
+      "Value": "The query of the parameter could not be completed."
+    }
+  ]
+}

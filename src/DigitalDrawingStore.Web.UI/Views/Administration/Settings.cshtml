@@ -1,7 +1,6 @@
 ﻿@using XperiCad.DigitalDrawingStore.Web.API.Controllers;
 
 @{
-    ViewData["Title"] = "Beállítások";
     var administrationController = new AdministrationController();
     var documentResourceProperties = administrationController.documentResourceProperties;
     var feedbackEntities = await administrationController.GetFeedbackProperties();

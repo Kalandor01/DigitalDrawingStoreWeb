@@ -1,0 +1,61 @@
+﻿{
+  "CultureKey": "i18n-en",
+  "CultureElements": [
+    {
+      "Key": "Error_TargetOfDocumentUsageIsNull",
+      "Value": "The document's type of usage is missing!"
+    },
+    {
+      "Key": "Error_ClientUsernameIsNull",
+      "Value": "The username of the person, who requested this document is missing!"
+    },
+    {
+      "Key": "Error_ClientMachineNameIsNull",
+      "Value": "The name of the computer, that requested the document is missing!"
+    },
+    {
+      "Key": "Error_ClientIpIsNull",
+      "Value": "The IP address of the computer, that requested the document is missing!"
+    },
+    {
+      "Key": "Error_SideWatermarkPositionIsNull",
+      "Value": "The document's page watermark is missing!"
+    },
+    {
+      "Key": "Error_DocumentIdIsEmpty",
+      "Value": "The document's ID is missing!"
+    },
+    {
+      "Key": "Error_CategoryIdIsEmpty",
+      "Value": "The categorie's ID is missing!"
+    },
+    {
+      "Key": "Fatal_Wrong_Document_Database_Connection_String",
+      "Value": "Invalid database connection string!"
+    },
+    {
+      "Key": "Fatal_Wrong_Email_Format",
+      "Value": "Invalid e-mail format!"
+    },
+    {
+      "Key": "Fatal_Not_Number",
+      "Value": "Invalid port format!"
+    },
+    {
+      "Key": "Fatal_Port_Number_Not_In_Range",
+      "Value": "The port number must be between 0 and 65535!"
+    },
+    {
+      "Key": "Information_Successfully_Modified",
+      "Value": "Successfully modified."
+    },
+    {
+      "Key": "Fatal_Couldnt_Modify",
+      "Value": "Could not modify!"
+    },
+    {
+      "Key": "Fatal_Empty_Field",
+      "Value": "All fields need to be filled in!"
+    }
+  ]
+}

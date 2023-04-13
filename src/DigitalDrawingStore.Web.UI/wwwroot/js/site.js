@@ -26,5 +26,12 @@ let toggleMenuElements = (parrent) => {
 
 function changeLang(evt) {
     evt.preventDefault();
-    console.log((evt.target).getAttribute("value"));
+
+    let languageCode = (evt.target).getAttribute("value");
+
+    requestInvoker
+        .executeUpdate('/ChangeLanguage', { languageString: languageCode })
+        .then((response) => {
+            location.reload(); 
+        });
 }

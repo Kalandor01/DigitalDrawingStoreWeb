@@ -1,0 +1,13 @@
+{
+  "CultureKey": "i18n-en",
+  "CultureElements": [
+    {
+      "Key": "Error_DocumentIsNotExists",
+      "Value": "The following document doesn't exist: {0}."
+    },
+    {
+      "Key": "Error_DocumentExtensionIsNotSupported",
+      "Value": "The following document type is not supported: {0}."
+    }
+  ]
+}

@@ -45,8 +45,8 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
             if (documentCategoriesPromise.IsOkay)
             {
-                var selectedCulture = new CultureService().GetSelectedCulture();
-                var documentNameAttributeName = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENT_NAME, selectedCulture) ?? "[Név]";
+                var selectedCulture = CultureService.GetSelectedCulture();
+                var documentNameAttributeName = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENT_NAME_CATEGORY_NAME, selectedCulture) ?? "[Név]";
                 foreach (var documentCategory in documentCategoriesPromise.ResponseObject)
                 {
                     var documentsPromise = await _documentService.QueryDocumentsAsync(documentCategory.Id, _searchText);

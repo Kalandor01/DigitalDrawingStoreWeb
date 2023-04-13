@@ -1,0 +1,41 @@
+{
+  "CultureKey": "i18n-hu-HU",
+  "CultureElements": [
+    {
+      "Key": "Application_Name",
+      "Value": "Digitális Rajztár"
+    },
+    {
+      "Key": "Home_Page_Name",
+      "Value": "Főoldal"
+    },
+    {
+      "Key": "Privacy_Page_Name",
+      "Value": "Adatvédelmi irányelvek"
+    },
+    {
+      "Key": "Error_Page_Name",
+      "Value": "Hiba"
+    },
+    {
+      "Key": "Documents_Page_Name",
+      "Value": "Dokumentumok"
+    },
+    {
+      "Key": "Categories_Page_Name",
+      "Value": "Kategóriák"
+    },
+    {
+      "Key": "Settings_Page_Name",
+      "Value": "Beállítások"
+    },
+    {
+      "Key": "Events_Page_Name",
+      "Value": "Eseménynapló"
+    },
+    {
+      "Key": "Document_Name_Category_Name",
+      "Value": "Név"
+    }
+  ]
+}
