@@ -83,7 +83,7 @@
             if (sharedViewModel.SecurityFacade != null && sharedViewModel.SecurityFacade.IsInGroup(User, Constants.Autorization.Policies.ADMIN))
             {
                 <nav>
-                    <div class="menu xpericad-dropdown-menu">
+                    <div id="xpericad-dropdown-menu" class="menu">
                         <div id="menu" class="bar-container">
                             <div class="bar1"></div>
                             <div class="bar2"></div>
@@ -126,6 +126,26 @@
                 </nav>
             }
         }
+        <div class="language-select-menu">
+            <nav>
+                <div id="language-dropdown-menu" class="menu">
+                    <div id="langMenu" class="bar-container">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <div class="dropdown">
+                        <p>
+                                <a href="" class="changeLang" value="HU">Magyar</a>
+                        </p>
+                        <hr />
+                        <p>
+                                <a href="" class="changeLang" value="EN">English</a>
+                        </p>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <span class="xpericad-header-title">Digitális Rajztár</span>
     </div>
 
