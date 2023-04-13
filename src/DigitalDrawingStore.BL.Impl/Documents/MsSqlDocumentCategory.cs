@@ -1,9 +1,6 @@
 ﻿using System.Data;
-using XperiCad.Common.Infrastructure.Culture.Resource;
 using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.DigitalDrawingStore.BL.Documents;
-using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
-using XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n;
 
 namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
 {
@@ -95,7 +92,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
             return displayName ?? string.Empty;
         }
 
-        public async Task<IDictionary<string, string>> GetAttributesAsync(string? selectedCulture)
+        public async Task<IDictionary<string, string>> GetAttributesAsync()
         {
             var result = new Dictionary<string, string>();
 
@@ -120,28 +117,11 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                 foreach (var documentCategoryEntity in documentCategoryEntities.ResponseObject)
                 {
                     var extractedName = documentCategoryEntity?.Attributes["ExtractedName"]?.ToString();
-                    var actualExtractedName = extractedName ?? string.Empty;
-                    string translatedName;
-                    if (string.IsNullOrWhiteSpace(selectedCulture))
-                    {
-                        translatedName = actualExtractedName;
-                    }
-                    else
-                    {
-                        translatedName = CultureFactory.GetPropertyNameTranslation(actualExtractedName, selectedCulture) ?? actualExtractedName;
-                    }
-                    result.Add(extractedName ?? Guid.NewGuid().ToString(), string.IsNullOrWhiteSpace(translatedName) ? actualExtractedName : translatedName);
+                    result.Add(extractedName ?? Guid.NewGuid().ToString(), extractedName ?? string.Empty);
                 }
             }
 
             return result;
-        }
-        #endregion
-
-        #region Public members
-        public static string GetNameAttributeName(string selectedCulture)
-        {
-            return Property.Property_Name.GetCultureString(selectedCulture).FirstOrDefault().Value;
         }
         #endregion
 

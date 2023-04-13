@@ -3,8 +3,8 @@ using XperiCad.Common.Infrastructure.Behaviours.Queries;
 using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.Common.Infrastructure.Feedback;
 using XperiCad.DigitalDrawingStore.BL.Documents.Queries;
-using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Factories;
+using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 using i18n = XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n;
 
 namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
@@ -76,7 +76,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Queries
 
             var documentCategory = await _documentCategoryFactory.CreateDocumentCategoryAsync(categoryId);
 
-            var documentCategoryAttributeEntities = await documentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture());
+            var documentCategoryAttributeEntities = await documentCategory.GetAttributesAsync();
             if (documentCategoryAttributeEntities == null)
             {
                 return RejectPromise<IDictionary<string, string>>(feedbackQueue);

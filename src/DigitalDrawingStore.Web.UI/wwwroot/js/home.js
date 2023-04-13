@@ -41,6 +41,7 @@ populatePage = () => {
                             record.set(columnKey, document.attributes[columnKey]);
                         });
 
+                        record.set('nameWithExtension', document.nameWithExtension);
                         record.set('documentPath', document.path);
 
                         records.push(record);

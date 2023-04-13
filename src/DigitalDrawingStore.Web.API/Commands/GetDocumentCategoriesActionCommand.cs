@@ -2,9 +2,9 @@
 using XperiCad.DigitalDrawingStore.BL.Documents.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
-using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
+using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 
 namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 {
@@ -21,7 +21,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         #endregion
 
         #region ctor
-        public GetDocumentCategoriesActionCommand(string searchText, string selectedCulture)
+        public GetDocumentCategoriesActionCommand(string searchText)
         {
             var documentServiceFactory = new DocumentServiceFactory(); // TODO: inject
             _documentService = documentServiceFactory.CreateDocumentService(Constants.Documents.Resources.APPLICATION_CONFIGURATION_FILE_PATH);
@@ -45,8 +45,8 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
             if (documentCategoriesPromise.IsOkay)
             {
-                var selectedCulture = new CultureFactory().GetSelectedCulture();
-                var documentNameAttributeName = CultureFactory.GetPropertyNameTranslation("Name", selectedCulture) ?? "Név";
+                var selectedCulture = new CultureService().GetSelectedCulture();
+                var documentNameAttributeName = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENT_NAME, selectedCulture) ?? "[Név]";
                 foreach (var documentCategory in documentCategoriesPromise.ResponseObject)
                 {
                     var documentsPromise = await _documentService.QueryDocumentsAsync(documentCategory.Id, _searchText);
@@ -59,7 +59,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                         foreach (var document in documentsPromise.ResponseObject)
                         {
                             var documentAttributes = new Dictionary<string, string?>();
-                            var documentCategoryAttributes = await documentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture());
+                            var documentCategoryAttributes = await documentCategory.GetAttributesAsync();
                             foreach (var documentCategoryAttribute in documentCategoryAttributes)
                             {
                                 documentAttributes.Add(documentCategoryAttribute.Key, document.GetAttribute<string?>(documentCategoryAttribute.Key).Result);
@@ -68,7 +68,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                             documentDtoCollection.Add(documentDto);
                         }
                     }
-                    var attributesList = await documentCategory.GetAttributesAsync(selectedCulture);
+                    var attributesList = await documentCategory.GetAttributesAsync();
                     var nameAttributesList = new Dictionary<string, string> { ["nameWithExtension"] = documentNameAttributeName };
                     var fullAttributesList = nameAttributesList.Concat(attributesList).GroupBy(d => d.Key)
                         .ToDictionary(d => d.Key, d => d.First().Value);

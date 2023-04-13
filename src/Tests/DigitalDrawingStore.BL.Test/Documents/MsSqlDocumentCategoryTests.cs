@@ -74,8 +74,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                 }
 
 
-                Assert.NotEmpty(await targetDocumentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture()));
-                foreach (var attribute in await targetDocumentCategory.GetAttributesAsync(new CultureFactory().GetSelectedCulture()))
+                Assert.NotEmpty(await targetDocumentCategory.GetAttributesAsync(new CultureService().GetSelectedCulture()));
+                foreach (var attribute in await targetDocumentCategory.GetAttributesAsync(new CultureService().GetSelectedCulture()))
                 {
                     var attributeValue = targetDocument.GetAttribute<string>(attribute.Key).Result;
 

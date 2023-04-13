@@ -15,7 +15,7 @@ namespace DigitalDrawingStore.Web.UI.Controllers
 
 		protected IActionResult SharedView()
 		{
-			return View(SharedViewModel);
+            return View(SharedViewModel);
 		}
     }
 }
