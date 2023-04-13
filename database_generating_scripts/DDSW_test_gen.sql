@@ -1,9 +1,9 @@
 CREATE DATABASE DDSWAutomatedTests
-go
+GO
 ALTER DATABASE DDSWAutomatedTests COLLATE Hungarian_CI_AS
 GO
 use DDSWAutomatedTests
-go
+GO
 
 
 CREATE TABLE DocumentCategoriesTest

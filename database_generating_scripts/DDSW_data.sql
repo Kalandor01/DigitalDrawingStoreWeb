@@ -2,23 +2,17 @@ USE DDSW
 
 
 -- METADATAS
-DECLARE @MetadataDefinitionId1 AS UNIQUEIDENTIFIER;
-SET @MetadataDefinitionId1 = NEWID();
+DECLARE @MetadataDefinitionId1 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @MetadataDefinitionId2 AS UNIQUEIDENTIFIER;
-SET @MetadataDefinitionId2 = NEWID();
+DECLARE @MetadataDefinitionId2 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @MetadataDefinitionId3 AS UNIQUEIDENTIFIER;
-SET @MetadataDefinitionId3 = NEWID();
+DECLARE @MetadataDefinitionId3 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @MetadataDefinitionId4 AS UNIQUEIDENTIFIER;
-SET @MetadataDefinitionId4 = NEWID();
+DECLARE @MetadataDefinitionId4 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @MetadataDefinitionId5 AS UNIQUEIDENTIFIER;
-SET @MetadataDefinitionId5 = NEWID();
+DECLARE @MetadataDefinitionId5 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @MetadataDefinitionId6 AS UNIQUEIDENTIFIER;
-SET @MetadataDefinitionId6 = NEWID();
+DECLARE @MetadataDefinitionId6 AS UNIQUEIDENTIFIER = NEWID();
 
 INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (@MetadataDefinitionId1, 'Document number');
 INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (@MetadataDefinitionId2, 'Part number');
@@ -31,23 +25,17 @@ INSERT INTO DocumentMetadataDefinitions (Id, ExtractedName) VALUES (NEWID(), 'Fr
 
 
 -- CATEGORIES
-DECLARE @CategoryId1 AS UNIQUEIDENTIFIER;
-SET @CategoryId1 = NEWID();
+DECLARE @CategoryId1 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @CategoryId2 AS UNIQUEIDENTIFIER;
-SET @CategoryId2 = NEWID();
+DECLARE @CategoryId2 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @CategoryId3 AS UNIQUEIDENTIFIER;
-SET @CategoryId3 = NEWID();
+DECLARE @CategoryId3 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @CategoryId4 AS UNIQUEIDENTIFIER;
-SET @CategoryId4 = NEWID();
+DECLARE @CategoryId4 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @CategoryId5 AS UNIQUEIDENTIFIER;
-SET @CategoryId5 = NEWID();
+DECLARE @CategoryId5 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @CategoryId6 AS UNIQUEIDENTIFIER;
-SET @CategoryId6 = NEWID();
+DECLARE @CategoryId6 AS UNIQUEIDENTIFIER = NEWID();
 
 INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (@CategoryId1, 1, 'Változások');
 INSERT INTO DocumentCategories (Id, IsDesigned, DisplayName) VALUES (@CategoryId2, 1, 'Szabványok');
@@ -79,23 +67,23 @@ INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDe
 
 
 -- DOCUMENTS
-DECLARE @DodcumentId1 AS UNIQUEIDENTIFIER;
-SET @DodcumentId1 = NEWID();
+DECLARE @DodcumentId1 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @DodcumentId2 AS UNIQUEIDENTIFIER;
-SET @DodcumentId2 = NEWID();
+DECLARE @DodcumentId2 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @DodcumentId3 AS UNIQUEIDENTIFIER;
-SET @DodcumentId3 = NEWID();
+DECLARE @DodcumentId3 AS UNIQUEIDENTIFIER = NEWID();
 
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId1, @CategoryId1, 'C:\TestDocuments\Test.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId1, 'C:\TestDocuments\Test2.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId1, 'C:\TestDocuments\Test3.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId2, @CategoryId1, 'C:\TestDocuments\Test4.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, 'C:\TestDocuments\Test.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, 'C:\TestDocuments\Test2.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId3, @CategoryId2, 'C:\TestDocuments\Test3.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, 'C:\TestDocuments\Test4.pdf');
+
+DECLARE @TestDocumentsFolder AS NVARCHAR(MAX) = 'C:\TestDocuments\';
+
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId1, @CategoryId1, @TestDocumentsFolder + 'Test.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId1, @TestDocumentsFolder + 'Test2.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId1, @TestDocumentsFolder + 'Test3.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId2, @CategoryId1, @TestDocumentsFolder + 'Test4.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, @TestDocumentsFolder + 'Test.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, @TestDocumentsFolder + 'Test2.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId3, @CategoryId2, @TestDocumentsFolder + 'Test3.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, @TestDocumentsFolder + 'Test4.pdf');
 
 
 -- METADATA
@@ -123,8 +111,7 @@ INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('EnableSm
 
 
 -- Target of document usage
-DECLARE @TargetOfUsagePropertyId AS UNIQUEIDENTIFIER;
-SET @TargetOfUsagePropertyId = NEWID();
+DECLARE @TargetOfUsagePropertyId AS UNIQUEIDENTIFIER = NEWID();
 
 INSERT INTO DocumentUsages(Id, UsageName) VALUES (NEWID(), 'Elsõ cél');
 INSERT INTO DocumentUsages(Id, UsageName) VALUES (NEWID(), 'Második cél');
