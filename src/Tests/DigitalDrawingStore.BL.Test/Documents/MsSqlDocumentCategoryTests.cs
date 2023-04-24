@@ -3,6 +3,7 @@ using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.DigitalDrawingStore.BL.Documents;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents;
+using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 
 namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
 {
@@ -74,8 +75,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                 }
 
 
-                Assert.NotEmpty(await targetDocumentCategory.GetAttributesAsync(new CultureService().GetSelectedCulture()));
-                foreach (var attribute in await targetDocumentCategory.GetAttributesAsync(new CultureService().GetSelectedCulture()))
+                Assert.NotEmpty(await targetDocumentCategory.GetAttributesAsync());
+                foreach (var attribute in await targetDocumentCategory.GetAttributesAsync())
                 {
                     var attributeValue = targetDocument.GetAttribute<string>(attribute.Key).Result;
 

@@ -7,6 +7,7 @@ using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.Web.API.Commands;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Set;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using XperiCad.DigitalDrawingStore.Web.API.Resources.i18n;
 

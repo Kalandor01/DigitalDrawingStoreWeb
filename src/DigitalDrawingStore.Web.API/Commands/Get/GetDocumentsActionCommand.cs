@@ -1,14 +1,11 @@
 ﻿using XperiCad.Common.Core.Behaviours.Commands;
-using XperiCad.DigitalDrawingStore.BL.Documents.Factories;
-using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.BL.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
-using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Get
 {
-    public class GetDocumentCategoriesActionCommand : AActionCommand<IEnumerable<DocumentCategory>>
+    public class GetDocumentsActionCommand : AActionCommand<IEnumerable<DocumentWithPath>>
     {
         #region Properties
         public override bool CanExecute => true;
@@ -16,17 +13,15 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
         #region Fields
         private IDocumentService _documentService;
-        private IDocumentWatermarkFactory _documentWatermarkFactory;
         private readonly string _searchText;
         #endregion
 
         #region ctor
-        public GetDocumentCategoriesActionCommand(string searchText)
+        public GetDocumentsActionCommand(string searchText)
         {
             var documentServiceFactory = new DocumentServiceFactory(); // TODO: inject
             _documentService = documentServiceFactory.CreateDocumentService(Constants.Documents.Resources.APPLICATION_CONFIGURATION_FILE_PATH);
-            _documentWatermarkFactory = new DocumentWatermarkFactory();
-            _searchText = string.IsNullOrWhiteSpace(searchText) ? "*" : searchText;
+            _searchText = searchText;
         }
         #endregion
 
@@ -38,41 +33,37 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
         public override async Task ExecuteAsync()
         {
-            var response = new List<DocumentCategory>();
+            var response = new List<DocumentWithPath>();
 
             var documentCategoriesPromise = await _documentService.QueryDocumentCategoriesAsync();
             QueueFeedback(documentCategoriesPromise);
 
             if (documentCategoriesPromise.IsOkay)
             {
-                var selectedCulture = CultureService.GetSelectedCulture();
-                var documentNameAttributeName = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENT_NAME_CATEGORY_NAME, selectedCulture) ?? "[Név]";
                 foreach (var documentCategory in documentCategoriesPromise.ResponseObject)
                 {
                     var documentsPromise = await _documentService.QueryDocumentsAsync(documentCategory.Id, _searchText);
                     QueueFeedback(documentsPromise);
 
-                    var documentDtoCollection = new List<Document>();
+                    var simpleDocumentCategory = new SimpleDocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), await documentCategory.GetAttributesAsync(), documentCategory.IsDesigned);
+
+                    var documentDtoCollection = new List<DocumentWithPath>();
+                    var documentCategoryAttributes = await documentCategory.GetAttributesAsync();
 
                     if (documentsPromise.ResponseObject != null)
                     {
                         foreach (var document in documentsPromise.ResponseObject)
                         {
                             var documentAttributes = new Dictionary<string, string?>();
-                            var documentCategoryAttributes = await documentCategory.GetAttributesAsync();
                             foreach (var documentCategoryAttribute in documentCategoryAttributes)
                             {
                                 documentAttributes.Add(documentCategoryAttribute.Key, document.GetAttribute<string?>(documentCategoryAttribute.Key).Result);
                             }
-                            var documentDto = new Document(document.Id, document.NameWithExtension, documentAttributes);
-                            documentDtoCollection.Add(documentDto);
+
+                            var documentDto = new DocumentWithPath(document.Id, document.NameWithExtension, document.Path, documentAttributes, simpleDocumentCategory);
+                            response.Add(documentDto);
                         }
                     }
-                    var attributesList = await documentCategory.GetAttributesAsync();
-                    var nameAttributesList = new Dictionary<string, string> { ["nameWithExtension"] = documentNameAttributeName };
-                    var fullAttributesList = nameAttributesList.Concat(attributesList).GroupBy(d => d.Key)
-                        .ToDictionary(d => d.Key, d => d.First().Value);
-                    response.Add(new DocumentCategory(documentCategory.Id, await documentCategory.GetDisplayNameAsync(), fullAttributesList, documentDtoCollection, documentCategory.IsDesigned));
                 }
             }
 

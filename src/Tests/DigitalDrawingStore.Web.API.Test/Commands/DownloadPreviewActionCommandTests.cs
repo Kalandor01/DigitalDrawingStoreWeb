@@ -8,7 +8,7 @@ using XperiCad.DigitalDrawingStore.BL.Impl.Documents;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Exporters;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.Factories;
-using XperiCad.DigitalDrawingStore.Web.API.Commands;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Get;
 
 namespace XperiCad.DigitalDrawingStore.Web.API.Test.Commands
 {

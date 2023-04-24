@@ -3,7 +3,7 @@ using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.BL.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Get
 {
     public class GetDocumentCategoryEntitiesActionCommand : AActionCommand<DocumentCategoryEntities>
     {

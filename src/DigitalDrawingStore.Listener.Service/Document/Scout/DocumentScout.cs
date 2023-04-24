@@ -1,5 +1,6 @@
 ﻿using DigitalDrawingStore.Listener.Service.Application;
 using DigitalDrawingStore.Listener.Service.Document.Factories;
+using DigitalDrawingStore.Listener.Service.Services.Factories;
 using System.Collections.Generic;
 using System.IO;
 
@@ -43,7 +44,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Scout
 
                     foreach (var foundFile in foundFiles)
                     {
-                        var filePath = Path.GetFullPath(foundFile.FullName);
+                        var filePath = ServicePath.GetFullPath(foundFile.FullName);
                         var rawDocument = _rawDocumentFactory.CreateRawDocument(filePath);
                         if (rawDocument != null)
                         {

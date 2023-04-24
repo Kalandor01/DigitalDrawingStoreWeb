@@ -292,6 +292,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DocumentListenerService.cs" />
+    <Compile Include="Services\Factories\ServicePath.cs" />
     <Compile Include="Services\Factories\_Interfaces\IListenerServiceFactory.cs" />
     <Compile Include="Services\Factories\ListenerServiceFactory.cs" />
     <Compile Include="Services\_Interfaces\IListenerService.cs" />

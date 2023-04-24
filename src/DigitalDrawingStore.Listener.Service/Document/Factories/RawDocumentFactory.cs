@@ -1,4 +1,5 @@
 ﻿using DigitalDrawingStore.Listener.Service.Document.Extractors;
+using DigitalDrawingStore.Listener.Service.Services.Factories;
 using System.IO;
 
 namespace DigitalDrawingStore.Listener.Service.Document.Factories
@@ -27,7 +28,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Factories
         {
             var fileDirectory = Path.GetDirectoryName(path);
             var fileName = Path.GetFileNameWithoutExtension(path);
-            var metadataPath = Path.GetFullPath(Path.Combine(fileDirectory, fileName + ".txt"));
+            var metadataPath = ServicePath.GetFullPath(Path.Combine(fileDirectory, fileName + ".txt"));
 
             if (File.Exists(metadataPath))
             {

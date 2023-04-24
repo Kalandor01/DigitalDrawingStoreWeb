@@ -36,6 +36,90 @@
     {
       "Key": "Document_Name_Category_Name",
       "Value": "Name"
+    },
+    {
+      "Key": "Search_Button_Text",
+      "Value": "Search"
+    },
+    {
+      "Key": "Show_Empty_Categories_Checkbox_Text",
+      "Value": "Show empty categories: "
+    },
+    {
+      "Key": "Copyright",
+      "Value": "All rights reserved."
+    },
+    {
+      "Key": "Searchable_Fields_Text_1",
+      "Value": "In the search field, you can search for the following fields: "
+    },
+    {
+      "Key": "Searchable_Fields_Text_2",
+      "Value": "document name, category name, property"
+    },
+    {
+      "Key": "Searchable_Fields_Text_3",
+      "Value": " or "
+    },
+    {
+      "Key": "Searchable_Fields_Text_4",
+      "Value": "content"
+    },
+    {
+      "Key": "Empty_Category_Text",
+      "Value": "This category is empty."
+    },
+    {
+      "Key": "Open_Editor_Text",
+      "Value": "Open editor"
+    },
+    {
+      "Key": "Close_Editor_Text",
+      "Value": "Close editor"
+    },
+    {
+      "Key": "Outer_Watermark_Position_Text",
+      "Value": "Outer Watermark Position"
+    },
+    {
+      "Key": "Document_Usage_Text",
+      "Value": "Target of document usage"
+    },
+    {
+      "Key": "Middle_Watermark_Horizontal_Offset_Text",
+      "Value": "Middle watermark horizontal offset"
+    },
+    {
+      "Key": "Middle_Watermark_Vertical_Offset_Text",
+      "Value": "Middle watermark vertical offset"
+    },
+    {
+      "Key": "Font_Size_Text",
+      "Value": "Font size"
+    },
+    {
+      "Key": "Watermark_Transparency_Text",
+      "Value": "Watermark transparency: "
+    },
+    {
+      "Key": "Update_Text",
+      "Value": "Update"
+    },
+    {
+      "Key": "Top_Left_Watermark_Text",
+      "Value": "Top left corner"
+    },
+    {
+      "Key": "Top_Right_Watermark_Text",
+      "Value": "Top right corner"
+    },
+    {
+      "Key": "Bottom_Left_Watermark_Text",
+      "Value": "bottom left corner"
+    },
+    {
+      "Key": "Bottom_Right_Watermark_Text",
+      "Value": "bottom right corner"
     }
   ]
 }

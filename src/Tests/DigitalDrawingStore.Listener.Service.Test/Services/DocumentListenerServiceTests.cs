@@ -27,8 +27,8 @@ namespace XperiCad.DigitalDrawingStore.Listener.Service.Test.Services
             var sqlTableNames = new Dictionary<string, string>()
             {
                 { Constants.DocumentDatabase.DOCUMENTS_TABLE_NAME_KEY, "DocumentsTest" },
-                { Constants.DocumentDatabase.DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY, "DocumentMetadataDefinitionsTest" },
-                { Constants.DocumentDatabase.DOCUMENT_METADATA_TABLE_NAME_KEY, "DocumentMetadataTest" },
+                { Constants.DocumentDatabase.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY, "DocumentMetadataDefinitionsTest" },
+                { Constants.DocumentDatabase.DOCUMENTS_METADATA_TABLE_NAME_KEY, "DocumentMetadataTest" },
                 { Constants.DocumentDatabase.DOCUMENT_CATEGORIES_TABLE_NAME_KEY, "DocumentCategoriesTest" },
                 { Constants.DocumentDatabase.APPLICATION_PROPERTIES_TABLE_NAME_KEY, "ApplicationProperties" },
             };

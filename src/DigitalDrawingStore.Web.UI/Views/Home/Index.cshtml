@@ -1,22 +1,32 @@
 ﻿@using XperiCad.DigitalDrawingStore.Web.API.Extensions
+@using XperiCad.DigitalDrawingStore.BL.Impl.Services
 @using XperiCad.DigitalDrawingStore.Web.API.DTO
 @* TODO: Investigate the proper implementation *@
 @model object
 
-<div class="search">
-    <div id="search-box">
-        <input id="search-txt" name="search-txt" type="text" placeholder="Keresés">
-        <button id="button-addon2">Keresés</button>
+@{
+    var culture = CultureService.GetSelectedCulture();
+    var searchButtonText = CultureService.GetPropertyNameTranslation(CultureProperty.SEARCH_BUTTON_TEXT, culture) ?? "[Keresés]";
+    var showEmptyCategoriesButtonText = CultureService.GetPropertyNameTranslation(CultureProperty.SHOW_EMPTY_CATEGORIES_CHECKBOX_TEXT, culture) ?? "[Üres kategóriák megjelenítése: ]";
+    var searchableText1 = CultureService.GetPropertyNameTranslation(CultureProperty.SEARCHABLE_FIELDS_TEXT_1, culture) ?? "[A keresőmezőben a következő elemekre lehet keresni: ]";
+    var searchableText2 = CultureService.GetPropertyNameTranslation(CultureProperty.SEARCHABLE_FIELDS_TEXT_2, culture) ?? "[dokumentum név, kategória név, tulajdonság]";
+    var searchableText3 = CultureService.GetPropertyNameTranslation(CultureProperty.SEARCHABLE_FIELDS_TEXT_3, culture) ?? "[ vagy ]";
+    var searchableText4 = CultureService.GetPropertyNameTranslation(CultureProperty.SEARCHABLE_FIELDS_TEXT_4, culture) ?? "[tartalom]";
+
+    <div class="search">
+        <div id="search-box">
+            <input id="search-txt" name="search-txt" type="text" placeholder="@searchButtonText">
+            <button id="button-addon2">@searchButtonText</button>
+        </div>
+        <small class="text-break">
+            @searchableText1<b>@searchableText2</b>@searchableText3<b>@searchableText4</b>
+        </small>
+        <span id="showEmptyCategory">
+            <label>@showEmptyCategoriesButtonText</label>
+            <input id="showEmptyCategoriesCheckbox" name="showEmpty" type="checkbox" />
+        </span>
     </div>
-    <small class="text-break">
-        A keresőmezőben a következő elemekre lehet keresni: <b>dokumentum-</b> és <b>kategória név</b>,
-        <b>tulajdonság</b> vagy <b>tartalom</b>
-    </small>
-    <span id="showEmptyCategory">
-        <label>Üres kategóriák megjelenítése: </label>
-        <input id="showEmptyCategoriesCheckbox" name="showEmpty" type="checkbox" />
-    </span>
-</div>
+}
 <hr class="full" />
 <div id="contentContainer" class="content-container"></div>
 

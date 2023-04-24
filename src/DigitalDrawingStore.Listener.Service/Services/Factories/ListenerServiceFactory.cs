@@ -15,7 +15,7 @@ namespace DigitalDrawingStore.Listener.Service.Services.Factories
     {
         public IListenerService CreateDocumentListenerService(string applicationConfigurationFilePath, IDictionary<string, string> sqlTableNames)
         {
-            applicationConfigurationFilePath = Path.GetFullPath(applicationConfigurationFilePath);
+            applicationConfigurationFilePath = ServicePath.GetFullPath(applicationConfigurationFilePath);
 
             var applicationConfigurationCommand = new XmlApplicationConfigurationCommand(applicationConfigurationFilePath);
             var applicationConfigurationQuery = new XmlApplicationConfigurationQuery(applicationConfigurationFilePath);

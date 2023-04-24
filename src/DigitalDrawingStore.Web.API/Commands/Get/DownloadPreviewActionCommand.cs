@@ -3,7 +3,7 @@ using XperiCad.Common.Core.Exceptions;
 using XperiCad.DigitalDrawingStore.BL.Documents;
 using XperiCad.DigitalDrawingStore.BL.Documents.Factories;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Get
 {
     public class DownloadPreviewActionCommand : AActionCommand<string>
     {

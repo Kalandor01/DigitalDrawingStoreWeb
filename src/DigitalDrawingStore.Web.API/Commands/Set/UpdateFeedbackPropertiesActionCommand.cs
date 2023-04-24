@@ -8,7 +8,7 @@ using XperiCad.Common.Infrastructure.Application;
 using XperiCad.DigitalDrawingStore.Web.API.Resources.i18n;
 using System.Text.RegularExpressions;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Set
 {
     public class UpdateFeedbackPropertiesActionCommand : AActionCommand<JsonResponse<string>>
     {
@@ -118,7 +118,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
             var emailRecipients = _emailRecipients.Replace("\n", ",");
             emailRecipients = emailRecipients.Replace(" ", "");
             var emailRecipientsList = emailRecipients.Split(EMAIL_RECIPIENTS_SEP_STRING);
-            
+
             var filteredEmailRecipientsList = new List<string>();
             foreach (var emailRecipient in emailRecipientsList)
             {

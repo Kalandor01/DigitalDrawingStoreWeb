@@ -2,13 +2,17 @@
 {
     internal static class Constants
     {
+
         internal static class DocumentDatabase
         {
             internal const string DOCUMENTS_TABLE_NAME_KEY = "Documents";
-            internal const string DOCUMENT_METADATA_TABLE_NAME_KEY = "DocumentMetadata";
-            internal const string DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY = "DocumentMetadataDefinitions";
+            internal const string DOCUMENTS_METADATA_TABLE_NAME_KEY = "DocumentMetadata";
+            internal const string DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY = "DocumentMetadataDefinitions";
             internal const string DOCUMENT_CATEGORIES_TABLE_NAME_KEY = "DocumentCategories";
-            internal const string APPLICATION_PROPERTIES_TABLE_NAME_KEY = "ApplicationProperties";
+            internal const string DOCUMENT_CATEGORY_ENTITIES_TABLE_NAME_KEY = "DocumentCategoryEntities";
+            public const string APPLICATION_PROPERTIES_TABLE_NAME_KEY = "ApplicationPropertiesTable";
+            public const string APPLICATION_PROPERTIES_DICTIONARY_TABLE_NAME_KEY = "ApplicationPropertiesDictionaryTable";
+            internal const string USER_EVENT_LOGS_TABLE_NAME_KEY = "UserEventLogsTable";
         }
 
         internal static class RawDocumentAttributeNames

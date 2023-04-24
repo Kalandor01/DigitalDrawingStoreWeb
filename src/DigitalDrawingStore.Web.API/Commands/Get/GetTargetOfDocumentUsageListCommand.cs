@@ -1,7 +1,7 @@
 ﻿using XperiCad.Common.Core.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Services;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Get
 {
     public class GetTargetOfDocumentUsageListCommand : AActionCommand<IDictionary<Guid, string>>
     {
@@ -29,7 +29,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         public async override Task ExecuteAsync()
         {
             var result = await _documentService.QueryAllTargetOfDocumentUsageAsync();
-            
+
             QueueFeedback(result);
             ResolveAction(result.ResponseObject);
         }

@@ -3,7 +3,7 @@ using XperiCad.Common.Infrastructure.Feedback;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.BL.Services;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Set
 {
     public class UpdateDocumentCategoryRelationCommand : AActionCommand<bool>
     {

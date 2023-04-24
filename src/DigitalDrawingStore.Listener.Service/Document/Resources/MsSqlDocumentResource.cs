@@ -128,7 +128,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
                                 .GetConfiguredParameters();
 
             var sqlScript = $"SELECT Id"
-                + $" FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY]}"
+                + $" FROM {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]}"
                 + $" WHERE ExtractedName = @ExtractedName";
 
             var queryResult = _msSqlDataSource.PerformQuery(sqlScript, parameters);
@@ -144,7 +144,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
                                 .ConfigureParameter("@ExtractedName", SqlDbType.VarChar, metadataName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                 .GetConfiguredParameters();
 
-            var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY]} (Id, ExtractedName)"
+            var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]} (Id, ExtractedName)"
                         + $"VALUES (@Id, @ExtractedName)";
 
             _msSqlDataSource.PerformCommand(sqlScript, parameters);
@@ -159,7 +159,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
                                 .ConfigureParameter("@Value", SqlDbType.VarChar, value, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
                                 .GetConfiguredParameters();
 
-            var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_METADATA_TABLE_NAME_KEY]} (Id, DocumentId, DocumentMetadataDefinitionId, Value)"
+            var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_METADATA_TABLE_NAME_KEY]} (Id, DocumentId, DocumentMetadataDefinitionId, Value)"
                         + $"VALUES (@Id, @DocumentId, @DocumentMetadataDefinitionId, @Value)";
 
             _msSqlDataSource.PerformCommand(sqlScript, parameters);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalDrawingStore.Listener.Service.Services.Factories;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using XperiCad.Common.Infrastructure.Application.DataSource;
@@ -42,7 +43,7 @@ namespace DigitalDrawingStore.Listener.Service.Application
                 {
                     if (!string.IsNullOrWhiteSpace(location))
                     {
-                        normalizedLocations.Add(Path.GetFullPath(location));
+                        normalizedLocations.Add(ServicePath.GetFullPath(location));
                     }
                 }
             }
@@ -53,7 +54,7 @@ namespace DigitalDrawingStore.Listener.Service.Application
         private string GetDocumentDropDirectory()
         {
             var location = _applicationConfigurationService.Query.GetStringPropertyByName("DropLocation");
-            var normalizedLocation = Path.GetFullPath(location);
+            var normalizedLocation = ServicePath.GetFullPath(location);
 
             return normalizedLocation;
         }

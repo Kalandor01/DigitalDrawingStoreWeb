@@ -36,6 +36,90 @@
     {
       "Key": "Document_Name_Category_Name",
       "Value": "Név"
+    },
+    {
+      "Key": "Search_Button_Text",
+      "Value": "Keresés"
+    },
+    {
+      "Key": "Show_Empty_Categories_Checkbox_Text",
+      "Value": "Üres kategóriák megjelenítése: "
+    },
+    {
+      "Key": "Copyright",
+      "Value": "Minden jog fenntartva."
+    },
+    {
+      "Key": "Searchable_Fields_Text_1",
+      "Value": "A keresőmezőben a következő elemekre lehet keresni: "
+    },
+    {
+      "Key": "Searchable_Fields_Text_2",
+      "Value": "dokumentum név, kategória név, tulajdonság"
+    },
+    {
+      "Key": "Searchable_Fields_Text_3",
+      "Value": " vagy "
+    },
+    {
+      "Key": "Searchable_Fields_Text_4",
+      "Value": "tartalom"
+    },
+    {
+      "Key": "Empty_Category_Text",
+      "Value": "Ez a kategória üres."
+    },
+    {
+      "Key": "Open_Editor_Text",
+      "Value": "Szerkesztő megnyitása"
+    },
+    {
+      "Key": "Close_Editor_Text",
+      "Value": "Szerkesztő bezárása"
+    },
+    {
+      "Key": "Outer_Watermark_Position_Text",
+      "Value": "Szélső vízjel pozíciója"
+    },
+    {
+      "Key": "Document_Usage_Text",
+      "Value": "Dokumentum használatának célja"
+    },
+    {
+      "Key": "Middle_Watermark_Horizontal_Offset_Text",
+      "Value": "Középső vízjel horizontális eltolása"
+    },
+    {
+      "Key": "Middle_Watermark_Vertical_Offset_Text",
+      "Value": "Középső vízjel vertikális eltolása"
+    },
+    {
+      "Key": "Font_Size_Text",
+      "Value": "Betűméret"
+    },
+    {
+      "Key": "Watermark_Transparency_Text",
+      "Value": "Vízjel átlátszóság: "
+    },
+    {
+      "Key": "Update_Text",
+      "Value": "Frissítés"
+    },
+    {
+      "Key": "Top_Left_Watermark_Text",
+      "Value": "Bal felső sarok"
+    },
+    {
+      "Key": "Top_Right_Watermark_Text",
+      "Value": "Jobb felső sarok"
+    },
+    {
+      "Key": "Bottom_Left_Watermark_Text",
+      "Value": "Bal alsó sarok"
+    },
+    {
+      "Key": "Bottom_Right_Watermark_Text",
+      "Value": "Jobb alsó sarok"
     }
   ]
 }

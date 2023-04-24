@@ -5,6 +5,8 @@ using XperiCad.Common.Infrastructure.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 using XperiCad.DigitalDrawingStore.Web.API.Commands;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Get;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Set;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using XperiCad.DigitalDrawingStore.Web.API.Extensions;
 

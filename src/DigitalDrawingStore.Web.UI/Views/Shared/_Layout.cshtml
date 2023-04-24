@@ -28,52 +28,64 @@
 <div id="pdfViewer" class="modal" style="width: 95%; height: 95%;">
     <div>
         <div>
-            <button type="button" class="editor-menu-toggle">Szerkesztő megnyitása</button>
-            <div class="editor-menu">
-                <table class="properties-selector">
-                    <tbody>
-                    <tr>
-                        <td>
-                            <label for="sidedWatermarkPositionSelectMenu">Szélső vízjel pozíciója</label>
-                            <select name="sidedWatermarkPositionSelectMenu" id="sidedWatermarkPositionSelectMenu"></select>
-                        </td>
-                        <td colspan="2">
-                            <label for="targetOfDocumentUsageSelectMenu">Dokumentum használatának célja</label>
-                            <select name="targetOfDocumentUsageSelectMenu" id="targetOfDocumentUsageSelectMenu"></select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="centeredWatermarkHorizontalOffset">Középső vízjel horizontális eltolása</label>
-                            <input name="centeredWatermarkHorizontalOffset" id="centeredWatermarkHorizontalOffset" type="number" min="-100" max="100" value="0"/>
-                        </td>
-                        <td>
-                            <label for="centeredWatermarkVerticalOffset">Középső vízjel vertikális eltolása</label>
-                            <input name="centeredWatermarkVerticalOffset" id="centeredWatermarkVerticalOffset" type="number" min="-100" max="100" value="0"/>
-                        </td>
-                        <td>
-                            <label for="fontSize">Betűméret</label>
-                            <input name="fontSize" id="fontSize" type="number" min="14" max="72" value="40"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>
-                                <label for="watermarkOpacitySlider">Vízjel átlátszóság: <span id="sliderInputSpan">80</span></label>
-                            </p>
-                            <div name="watermarkOpacitySlider" id="watermarkOpacitySlider" class="slider">
-                                <div id="custom-handle" class="ui-slider-handle"></div>
-                            </div>
-                            <input id="sliderInput" type="hidden" value="80"/>
-                        </td>
-                        <td></td>
-                        <td>
-                            <button id="updateWatermarkButton" class="ui-button ui-corner-all ui-widget" style="display: inline;">Frissítés</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                @{
+                    var selectedCulturePdf = CultureService.GetSelectedCulture();
+                    var openEditorText = CultureService.GetPropertyNameTranslation(CultureProperty.OPEN_EDITOR_TEXT, selectedCulturePdf) ?? "[Szerkesztő megnyitása]";
+                    var outerWatermarkPosText = CultureService.GetPropertyNameTranslation(CultureProperty.OUTER_WATERMARK_POSITION_TEXT, selectedCulturePdf) ?? "[Szélső vízjel pozíciója]";
+                    var documentUsageText = CultureService.GetPropertyNameTranslation(CultureProperty.DOCUMENT_USAGE_TEXT, selectedCulturePdf) ?? "[Dokumentum használatának célja]";
+                    var middleWatermarkOffset1Text = CultureService.GetPropertyNameTranslation(CultureProperty.MIDDLE_WATERMARK_HORIZONTAL_OFFSET_TEXT, selectedCulturePdf) ?? "[Középső vízjel horizontális eltolása]";
+                    var middleWatermarkOffset2Text = CultureService.GetPropertyNameTranslation(CultureProperty.MIDDLE_WATERMARK_VARTICAL_OFFSET_TEXT, selectedCulturePdf) ?? "[Középső vízjel vertikális eltolása]";
+                    var fontSizeText = CultureService.GetPropertyNameTranslation(CultureProperty.FONT_SIZE_TEXT, selectedCulturePdf) ?? "[Betűméret]";
+                    var watermarkTransparencyText = CultureService.GetPropertyNameTranslation(CultureProperty.WATERMARK_TRANSPARENCY_TEXT, selectedCulturePdf) ?? "[Vízjel átlátszóság: ]";
+                    var updateText = CultureService.GetPropertyNameTranslation(CultureProperty.UPDATE_TEXT, selectedCulturePdf) ?? "[Frissítés]";
+
+                    <button type="button" class="editor-menu-toggle">@openEditorText</button>
+                    <div class="editor-menu">
+                        <table class="properties-selector">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <label for="sidedWatermarkPositionSelectMenu">@outerWatermarkPosText</label>
+                                    <select name="sidedWatermarkPositionSelectMenu" id="sidedWatermarkPositionSelectMenu"></select>
+                                </td>
+                                <td colspan="2">
+                                    <label for="targetOfDocumentUsageSelectMenu">@documentUsageText</label>
+                                    <select name="targetOfDocumentUsageSelectMenu" id="targetOfDocumentUsageSelectMenu"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="centeredWatermarkHorizontalOffset">@middleWatermarkOffset1Text</label>
+                                    <input name="centeredWatermarkHorizontalOffset" id="centeredWatermarkHorizontalOffset" type="number" min="-100" max="100" value="0"/>
+                                </td>
+                                <td>
+                                    <label for="centeredWatermarkVerticalOffset">@middleWatermarkOffset2Text</label>
+                                    <input name="centeredWatermarkVerticalOffset" id="centeredWatermarkVerticalOffset" type="number" min="-100" max="100" value="0"/>
+                                </td>
+                                <td>
+                                    <label for="fontSize">@fontSizeText</label>
+                                    <input name="fontSize" id="fontSize" type="number" min="14" max="72" value="40"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        <label for="watermarkOpacitySlider">@watermarkTransparencyText<span id="sliderInputSpan">80</span></label>
+                                    </p>
+                                    <div name="watermarkOpacitySlider" id="watermarkOpacitySlider" class="slider">
+                                        <div id="custom-handle" class="ui-slider-handle"></div>
+                                    </div>
+                                    <input id="sliderInput" type="hidden" value="80"/>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <button id="updateWatermarkButton" class="ui-button ui-corner-all ui-widget" style="display: inline;">@updateText</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                }
         </div>
     </div>
     <div class="pdf-wrapper">
@@ -165,7 +177,10 @@
                 </div>
             </nav>
         </div>
-        <span class="xpericad-header-title">Digitális Rajztár</span>
+        @{
+            var appName2 = CultureService.GetPropertyNameTranslation(CultureProperty.APPLICATION_NAME, CultureService.GetSelectedCulture()) ?? "[Digitális Rajztár]";
+            <span class="xpericad-header-title">@appName2</span>
+        }
     </div>
 
     <div class="content-wrapper">
@@ -173,7 +188,10 @@
         <div id="toast-container"></div>
     </div>
     <div class="xpericad-footer">
-        <p>XperiCAD &copy; 2023 Minden jog fenntartva.</p>
+        @{
+            var copyright = CultureService.GetPropertyNameTranslation(CultureProperty.COPYRIGHT, CultureService.GetSelectedCulture()) ?? "[Minden jog fenntartva.]";
+            <p>XperiCAD &copy; 2023 @copyright</p>
+        }
     </div>
 </div>
 <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>

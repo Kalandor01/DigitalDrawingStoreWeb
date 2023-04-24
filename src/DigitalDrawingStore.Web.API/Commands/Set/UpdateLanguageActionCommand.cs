@@ -3,8 +3,9 @@ using XperiCad.Common.Core.Behaviours.Commands;
 using XperiCad.Common.Infrastructure.Application;
 using XperiCad.Common.Infrastructure.Culture;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
+using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Set
 {
     public class UpdateLanguageActionCommand : AActionCommand<bool>
     {
@@ -13,9 +14,8 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         #endregion
 
         #region Fields
-        private readonly string _languageCodeName;
-        private readonly IGeneralApplicationProperties _generalApplicationProperties;
-        private readonly ICultureInformationFactory _cultureInformationFactory;
+        private readonly string _languageCode;
+        private readonly IUnityContainer _container;
 
         private static readonly IDictionary<string, string> _languageCodeDictionary = new Dictionary<string, string>
         {
@@ -33,11 +33,9 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 throw new ArgumentException($"'{nameof(languageCodeName)}' cannot be null or whitespace.", nameof(languageCodeName));
             }
 
-            var container = new ContainerFactory().CreateContainer();
-            _generalApplicationProperties = container.Resolve<ICommonApplicationProperties>().GeneralApplicationProperties;
-            _cultureInformationFactory = container.Resolve<ICultureInformationFactory>();
+            _container = new ContainerFactory().CreateContainer();
 
-            _languageCodeName = languageCodeName;
+            _languageCode = _languageCodeDictionary[languageCodeName];
         }
         #endregion
 
@@ -49,15 +47,9 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
 
         public override async Task ExecuteAsync()
         {
-            var response = false;
+            CultureService.SetSelectedCulture(_container, _languageCode);
 
-            if (_languageCodeDictionary.ContainsKey(_languageCodeName))
-            {
-                var languageCode = _languageCodeDictionary[_languageCodeName];
-                _generalApplicationProperties.SelectedCulture = _cultureInformationFactory.CreateByLanguageCountryCode(languageCode);
-            }
-
-            ResolveAction(response);
+            ResolveAction(true);
         }
         #endregion
     }

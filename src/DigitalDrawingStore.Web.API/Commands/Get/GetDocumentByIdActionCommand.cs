@@ -2,7 +2,7 @@
 using XperiCad.DigitalDrawingStore.BL.Documents;
 using XperiCad.DigitalDrawingStore.BL.Services;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Get
 {
     public class GetDocumentByIdActionCommand : AActionCommand<IDocument>
     {

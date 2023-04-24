@@ -30,25 +30,25 @@
         {
             this.XperiCAD_serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
             this.XperiCADServiceInsatler = new System.ServiceProcess.ServiceInstaller();
-            // 
-            // XperiCAD_serviceProcessInstaller
-            // 
+            // 
+            // XperiCAD_serviceProcessInstaller
+            // 
+            this.XperiCAD_serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalService;
             this.XperiCAD_serviceProcessInstaller.Password = null;
             this.XperiCAD_serviceProcessInstaller.Username = null;
-            // 
-            // XperiCADServiceInsatler
-            // 
-            this.XperiCADServiceInsatler.Description = "XperiCAD Digital Drawing and manufacturing manage CAD file format";
+            // 
+            // XperiCADServiceInsatler
+            // 
+            this.XperiCADServiceInsatler.Description = "XperiCAD Digital Drawing and manufacturing manage CAD file format";
             this.XperiCADServiceInsatler.DisplayName = "XperiCAD - DDSW";
             this.XperiCADServiceInsatler.ServiceName = "DDSW Listener Service";
             this.XperiCADServiceInsatler.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
-            // 
-            // DDSWServiceInstaller
-            // 
-            this.Installers.AddRange(new System.Configuration.Install.Installer[] {
+            // 
+            // DDSWServiceInstaller
+            // 
+            this.Installers.AddRange(new System.Configuration.Install.Installer[] {
             this.XperiCAD_serviceProcessInstaller,
             this.XperiCADServiceInsatler});
-
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using DigitalDrawingStore.Listener.Service.Services;
 using DigitalDrawingStore.Listener.Service.Services.Factories;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.ServiceProcess;
 
 namespace DigitalDrawingStore.Listener.Service
@@ -14,6 +15,9 @@ namespace DigitalDrawingStore.Listener.Service
         #region Constructor
         public ddswListener()
         {
+            // FOR DEBUGGING
+            Debugger.Launch();
+            // FOR DEBUGGING
             InitializeComponent();
             _listenerService = CreateListenerService();
         }
@@ -36,11 +40,14 @@ namespace DigitalDrawingStore.Listener.Service
         {
             var sqlTableNames = new Dictionary<string, string>()
             {
-                { Constants.DocumentDatabase.DOCUMENTS_TABLE_NAME_KEY, "Documents" },
-                { Constants.DocumentDatabase.DOCUMENT_METADATA_DEFINITIONS_TABLE_NAME_KEY, "DocumentMetadataDefinitions" },
-                { Constants.DocumentDatabase.DOCUMENT_METADATA_TABLE_NAME_KEY, "DocumentMetadata" },
                 { Constants.DocumentDatabase.DOCUMENT_CATEGORIES_TABLE_NAME_KEY, "DocumentCategories" },
+                { Constants.DocumentDatabase.DOCUMENT_CATEGORY_ENTITIES_TABLE_NAME_KEY, "DocumentCategoryEntities" },
+                { Constants.DocumentDatabase.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY, "DocumentMetadataDefinitions" },
+                { Constants.DocumentDatabase.DOCUMENTS_METADATA_TABLE_NAME_KEY, "DocumentMetadata" },
+                { Constants.DocumentDatabase.DOCUMENTS_TABLE_NAME_KEY, "Documents" },
                 { Constants.DocumentDatabase.APPLICATION_PROPERTIES_TABLE_NAME_KEY, "ApplicationProperties" },
+                { Constants.DocumentDatabase.USER_EVENT_LOGS_TABLE_NAME_KEY, "UserEventLogs" },
+                { Constants.DocumentDatabase.APPLICATION_PROPERTIES_DICTIONARY_TABLE_NAME_KEY, "ApplicationPropertiesDictionary" },
             };
 
             var listenerServiceFactory = new ListenerServiceFactory();

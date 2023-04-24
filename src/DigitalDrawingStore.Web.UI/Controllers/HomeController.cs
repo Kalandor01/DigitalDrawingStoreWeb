@@ -29,6 +29,48 @@ namespace DigitalDrawingStore.Web.UI.Controllers
         {
             return await _homeController.UpdateLanguage(languageString);
         }
+
+        [Route("GetEmptyCategoryText")]
+        public async Task<IActionResponse<string?>> GetEmptyCategoryText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.EMPTY_CATEGORY_TEXT);
+        }
+
+        [Route("GetOpenEditorText")]
+        public async Task<IActionResponse<string?>> GetOpenEditorText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.OPEN_EDITOR_TEXT);
+        }
+
+        [Route("GetCloseEditorText")]
+        public async Task<IActionResponse<string?>> GetCloseEditorText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.CLOSE_EDITOR_TEXT);
+        }
+
+        [Route("GetTopLeftWatermarkText")]
+        public async Task<IActionResponse<string?>> GetTopLeftWatermarkText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.TOP_LEFT_WATERMARK_TEXT);
+        }
+
+        [Route("GetTopRightWatermarkText")]
+        public async Task<IActionResponse<string?>> GetTopRightWatermarkText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.TOP_RIGHT_WATERMARK_TEXT);
+        }
+
+        [Route("GetBottomLeftWatermarkText")]
+        public async Task<IActionResponse<string?>> GetBottomLeftWatermarkText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.BOTTOM_LEFT_WATERMARK_TEXT);
+        }
+
+        [Route("GetBottomRightWatermarkText")]
+        public async Task<IActionResponse<string?>> GetBottomRightWatermarkText()
+        {
+            return await _homeController.GetTranslationStringText(CultureProperty.BOTTOM_RIGHT_WATERMARK_TEXT);
+        }
         #endregion
 
         public IActionResult Index()

@@ -7,6 +7,8 @@ using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Documents.Watermark.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
 using XperiCad.DigitalDrawingStore.Web.API.Commands;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Get;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Set;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using XperiCad.DigitalDrawingStore.Web.API.Extensions;
 

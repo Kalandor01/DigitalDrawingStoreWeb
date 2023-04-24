@@ -1,6 +1,74 @@
 ﻿'use strict';
 
+var emptyCategoryText = "";
+
+var topLeftWatermarkText = null;
+var topRightWatermarkText = null;
+var borromLeftWatermarkText = null;
+var bottomRightWatermarkText = null;
+
 $(document).ready(() => {
+    requestInvoker
+        .executeQuery('/GetEmptyCategoryText', {})
+        .then((response) => {
+            if (response.responseObject != null)
+            {
+                emptyCategoryText = response.responseObject;
+            }
+            else
+            {
+                emptyCategoryText = "[Üres kategória.]";
+            }
+        });
+
+    requestInvoker
+        .executeQuery('/GetTopLeftWatermarkText', {})
+        .then((response) => {
+            if (response.responseObject != null) {
+                topLeftWatermarkText = response.responseObject;
+            }
+            else {
+                topLeftWatermarkText = "[Bal felső sarok]";
+            }
+            tryMakeWatermarkPosComboBox();
+        });
+
+    requestInvoker
+        .executeQuery('/GetTopRightWatermarkText', {})
+        .then((response) => {
+            if (response.responseObject != null) {
+                topRightWatermarkText = response.responseObject;
+            }
+            else {
+                topRightWatermarkText = "[Jobb felső sarok]";
+            }
+            tryMakeWatermarkPosComboBox();
+        });
+
+    requestInvoker
+        .executeQuery('/GetBottomLeftWatermarkText', {})
+        .then((response) => {
+            if (response.responseObject != null) {
+                borromLeftWatermarkText = response.responseObject;
+            }
+            else {
+                borromLeftWatermarkText = "[Bal alsó sarok]";
+            }
+            tryMakeWatermarkPosComboBox();
+        });
+
+    requestInvoker
+        .executeQuery('/GetBottomRightWatermarkText', {})
+        .then((response) => {
+            if (response.responseObject != null) {
+                bottomRightWatermarkText = response.responseObject;
+            }
+            else {
+                bottomRightWatermarkText = "[Jobb alsó sarok]";
+            }
+            tryMakeWatermarkPosComboBox();
+        });
+
     var handle = $("#custom-handle"), handleWidth = handle.width();
     $("#watermarkOpacitySlider").slider({
         min: 35, max: 99, value: 80,
@@ -9,13 +77,6 @@ $(document).ready(() => {
             $("#sliderInputSpan").text(ui.value);
         }
     });
-
-    createCombobox($("#sidedWatermarkPositionSelectMenu"), [
-        { key: 'upperLeftCorner', value: 'Bal felső sarok' },
-        { key: 'upperRightCorner', value: 'Jobb felső sarok' },
-        { key: 'bottomLeftCorner', value: 'Bal alsó sarok' },
-        { key: 'bottomRightCorner', value: 'Jobb alsó sarok' }]);
-    $("#updateWatermarkButton").button();
 
     requestInvoker
         .executeQuery('/Documents/TargetOfDocumentUsages', {})
@@ -29,6 +90,23 @@ $(document).ready(() => {
             createCombobox($("#targetOfDocumentUsageSelectMenu"), tartgetOfUsageCollection);
         });
 });
+
+function tryMakeWatermarkPosComboBox() {
+    if (
+        topLeftWatermarkText != null &&
+        topRightWatermarkText != null &&
+        borromLeftWatermarkText != null &&
+        bottomRightWatermarkText != null
+    )
+    {
+        createCombobox($("#sidedWatermarkPositionSelectMenu"), [
+            { key: 'upperLeftCorner', value: topLeftWatermarkText },
+            { key: 'upperRightCorner', value: topRightWatermarkText },
+            { key: 'bottomLeftCorner', value: borromLeftWatermarkText },
+            { key: 'bottomRightCorner', value: bottomRightWatermarkText }]);
+        $("#updateWatermarkButton").button();
+    }
+}
 
 const feedbackChannel = {
     showInformation: (title, message) => { b5toast.show('info', title, message); },
@@ -147,7 +225,7 @@ const documentTableBuilder = {
             let emptyContentElement = $(document.createElement('td'));
             emptyContentElement.addClass('empty');
             
-            emptyContentElement.text('Ez a kategória üres.');  //TODO: consider renaming this
+            emptyContentElement.text(emptyCategoryText);
 
             emptyContentRow.append(emptyContentElement);
             attributeWrapperElement.append(emptyContentRow);

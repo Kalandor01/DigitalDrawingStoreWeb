@@ -30,5 +30,49 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n
         #region Document properties
         internal static ICultureResource Document_Name_Category_Name = new JsonCultureResource("Document_Name_Category_Name", LANGUAGE_PRPERTY_RESOURCES_PATH);
         #endregion
+
+        #region Page text
+        internal static ICultureResource Search_Button_Text = new JsonCultureResource("Search_Button_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        
+        internal static ICultureResource Show_Empty_Categories_Checkbox_Text = new JsonCultureResource("Show_Empty_Categories_Checkbox_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Copyright = new JsonCultureResource("Copyright", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Searchable_Fields_Text_1 = new JsonCultureResource("Searchable_Fields_Text_1", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Searchable_Fields_Text_2 = new JsonCultureResource("Searchable_Fields_Text_2", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Searchable_Fields_Text_3 = new JsonCultureResource("Searchable_Fields_Text_3", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Searchable_Fields_Text_4 = new JsonCultureResource("Searchable_Fields_Text_4", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Empty_Category_Text = new JsonCultureResource("Empty_Category_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Open_Editor_Text = new JsonCultureResource("Open_Editor_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Close_Editor_Text = new JsonCultureResource("Close_Editor_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Outer_Watermark_Position_Text = new JsonCultureResource("Outer_Watermark_Position_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        
+        internal static ICultureResource Document_Usage_Text = new JsonCultureResource("Document_Usage_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Middle_Watermark_Horizontal_Offset_Text = new JsonCultureResource("Middle_Watermark_Horizontal_Offset_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Middle_Watermark_Vertical_Offset_Text = new JsonCultureResource("Middle_Watermark_Vertical_Offset_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Font_Size_Text = new JsonCultureResource("Font_Size_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Watermark_Transparency_Text = new JsonCultureResource("Watermark_Transparency_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        
+        internal static ICultureResource Update_Text = new JsonCultureResource("Update_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Top_Left_Watermark_Text = new JsonCultureResource("Top_Left_Watermark_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Top_Right_Watermark_Text = new JsonCultureResource("Top_Right_Watermark_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Bottom_Left_Watermark_Text = new JsonCultureResource("Bottom_Left_Watermark_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Bottom_Right_Watermark_Text = new JsonCultureResource("Bottom_Right_Watermark_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        #endregion
     }
 }

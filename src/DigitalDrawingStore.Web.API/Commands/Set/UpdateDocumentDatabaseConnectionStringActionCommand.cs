@@ -8,7 +8,7 @@ using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Set
 {
     public class UpdateDocumentDatabaseConnectionStringActionCommand : AActionCommand<JsonResponse<string>>
     {
@@ -23,8 +23,8 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
         #endregion
 
         #region ctor
-        public UpdateDocumentDatabaseConnectionStringActionCommand (
-            string documentDatabaseConnectionString, 
+        public UpdateDocumentDatabaseConnectionStringActionCommand(
+            string documentDatabaseConnectionString,
             string applicationConfigurationFilePath
             )
         {

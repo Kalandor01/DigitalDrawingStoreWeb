@@ -5,6 +5,8 @@ using XperiCad.Common.Infrastructure.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 using XperiCad.DigitalDrawingStore.Web.API.Commands;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Get;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Set;
 
 namespace XperiCad.DigitalDrawingStore.Web.API.Controllers
 {
@@ -22,6 +24,21 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Controllers
             var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<bool>();
 
             var command = new UpdateLanguageActionCommand(languageCodeString);
+            commandInvoker.AddCommand(command);
+            await commandInvoker.ExecuteAllAsync();
+
+            return commandInvoker.ActionResponse;
+        }
+        
+        [Route("")]
+        public async Task<IActionResponse<string?>> GetTranslationStringText(CultureProperty culture)
+        {
+            var container = new ContainerFactory().CreateContainer();
+
+            var commandInvokerFactory = container.Resolve<ICommandInvokerFactory>();
+            var commandInvoker = commandInvokerFactory.CreateActionCommandInvoker<string?>();
+
+            var command = new GetTranslationStringActionCommand(culture);
             commandInvoker.AddCommand(command);
             await commandInvoker.ExecuteAllAsync();
 

@@ -6,7 +6,7 @@ using XperiCad.DigitalDrawingStore.BL.Services;
 using XperiCad.DigitalDrawingStore.Web.API.DTO;
 using i18n = XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n;
 
-namespace XperiCad.DigitalDrawingStore.Web.API.Commands
+namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Set
 {
     public class UpdateDocumentCategoryEntitiesActionCommand : AActionCommand<bool>
     {
@@ -68,7 +68,7 @@ namespace XperiCad.DigitalDrawingStore.Web.API.Commands
                 }
             }
 
-            if(response)
+            if (response)
             {
                 //QueueFeedback(_feedbackMessageFactory.CreateFeedbackMessage(i18n.Feedback.));
             }
