@@ -1,4 +1,6 @@
-﻿$(document).ready(() => {
+﻿var isShowEmptyCategories = false;
+
+$(document).ready(() => {
     let searchButton = $('#button-addon2');
     searchButton.on('click', (e) => {
         e.stopPropagation();
@@ -8,8 +10,16 @@
         populatePage();
     });
 
+    $("#showEmptyCategoriesCheckbox").on("click", clickIsShowEmptyCategories)
+    $('#contentContainer').empty();
     populatePage();
 });
+
+function clickIsShowEmptyCategories(evt) {
+    isShowEmptyCategories = evt.target.checked;
+    $('#contentContainer').empty();
+    populatePage();
+}
 
 populatePage = () => {
     requestInvoker
@@ -47,25 +57,27 @@ populatePage = () => {
                         records.push(record);
                     });
 
-                    let table;
+                    if (isShowEmptyCategories || records.length > 0) {
+                        let table;
 
-                    let actions = {
-                        refresh: (newTable) => {
-                            table.remove();
-                            table = newTable;
-                            tableContainerElement.append(table);
-                        }
-                    };
+                        let actions = {
+                            refresh: (newTable) => {
+                                table.remove();
+                                table = newTable;
+                                tableContainerElement.append(table);
+                            }
+                        };
 
-                    let sortState = {
-                        sortBy: 'nameWithExtension',
-                        ascending: true
-                    };
+                        let sortState = {
+                            sortBy: 'nameWithExtension',
+                            ascending: true
+                        };
 
-                    table = documentTableBuilder.createTable(tableName, columns, documentTableBuilder.sortElements(records, sortState), actions, 1, sortState);
-                    tableContainerElement.append(table);
+                        table = documentTableBuilder.createTable(tableName, columns, documentTableBuilder.sortElements(records, sortState), actions, 1, sortState);
+                        tableContainerElement.append(table);
 
-                    tableContainer.append(tableContainerElement);
+                        tableContainer.append(tableContainerElement);
+                    }
                 }
             });
 
