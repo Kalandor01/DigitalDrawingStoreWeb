@@ -115,11 +115,11 @@
     },
     {
       "Key": "Bottom_Left_Watermark_Text",
-      "Value": "bottom left corner"
+      "Value": "Bottom left corner"
     },
     {
       "Key": "Bottom_Right_Watermark_Text",
-      "Value": "bottom right corner"
+      "Value": "Bottom right corner"
     }
   ]
 }

@@ -36,40 +36,26 @@ namespace DigitalDrawingStore.Web.UI.Controllers
             return await _homeController.GetTranslationStringText(CultureProperty.EMPTY_CATEGORY_TEXT);
         }
 
-        [Route("GetOpenEditorText")]
-        public async Task<IActionResponse<string?>> GetOpenEditorText()
+        [Route("GetEditorTexts")]
+        public async Task<IActionResponse<Dictionary<string, string?>>> GetEditorTexts()
         {
-            return await _homeController.GetTranslationStringText(CultureProperty.OPEN_EDITOR_TEXT);
+            return await _homeController.GetTranslationStringTextDictionary(new Dictionary<string, CultureProperty>
+            {
+                ["open"] = CultureProperty.OPEN_EDITOR_TEXT,
+                ["close"] = CultureProperty.CLOSE_EDITOR_TEXT
+            });
         }
 
-        [Route("GetCloseEditorText")]
-        public async Task<IActionResponse<string?>> GetCloseEditorText()
+        [Route("GetWatermarkTexts")]
+        public async Task<IActionResponse<Dictionary<string, string?>>> GetWatermarkTexts()
         {
-            return await _homeController.GetTranslationStringText(CultureProperty.CLOSE_EDITOR_TEXT);
-        }
-
-        [Route("GetTopLeftWatermarkText")]
-        public async Task<IActionResponse<string?>> GetTopLeftWatermarkText()
-        {
-            return await _homeController.GetTranslationStringText(CultureProperty.TOP_LEFT_WATERMARK_TEXT);
-        }
-
-        [Route("GetTopRightWatermarkText")]
-        public async Task<IActionResponse<string?>> GetTopRightWatermarkText()
-        {
-            return await _homeController.GetTranslationStringText(CultureProperty.TOP_RIGHT_WATERMARK_TEXT);
-        }
-
-        [Route("GetBottomLeftWatermarkText")]
-        public async Task<IActionResponse<string?>> GetBottomLeftWatermarkText()
-        {
-            return await _homeController.GetTranslationStringText(CultureProperty.BOTTOM_LEFT_WATERMARK_TEXT);
-        }
-
-        [Route("GetBottomRightWatermarkText")]
-        public async Task<IActionResponse<string?>> GetBottomRightWatermarkText()
-        {
-            return await _homeController.GetTranslationStringText(CultureProperty.BOTTOM_RIGHT_WATERMARK_TEXT);
+            return await _homeController.GetTranslationStringTextDictionary(new Dictionary<string, CultureProperty>
+            {
+                ["topLeft"] = CultureProperty.TOP_LEFT_WATERMARK_TEXT,
+                ["topRight"] = CultureProperty.TOP_RIGHT_WATERMARK_TEXT,
+                ["bottomLeft"] = CultureProperty.BOTTOM_LEFT_WATERMARK_TEXT,
+                ["bottomRight"] = CultureProperty.BOTTOM_RIGHT_WATERMARK_TEXT
+            });
         }
         #endregion
 

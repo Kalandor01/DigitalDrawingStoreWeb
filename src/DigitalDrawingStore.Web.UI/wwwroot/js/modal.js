@@ -4,21 +4,17 @@ var openEditorText = "";
 var closeEditorText = "";
 
 requestInvoker
-    .executeQuery('/GetOpenEditorText', {})
+    .executeQuery('/GetEditorTexts', {})
     .then((response) => {
-        if (response.responseObject != null) {
-            openEditorText = response.responseObject;
+        let translationDict = response.responseObject;
+        if (translationDict["open"] != null) {
+            openEditorText = translationDict["open"];
         }
         else {
             openEditorText = "[Szerkesztő megnyitása.]";
         }
-    });
-
-requestInvoker
-    .executeQuery('/GetCloseEditorText', {})
-    .then((response) => {
-        if (response.responseObject != null) {
-            closeEditorText = response.responseObject;
+        if (translationDict["close"] != null) {
+            closeEditorText = translationDict["close"];
         }
         else {
             closeEditorText = "[Szerkesztő bezárása.]";

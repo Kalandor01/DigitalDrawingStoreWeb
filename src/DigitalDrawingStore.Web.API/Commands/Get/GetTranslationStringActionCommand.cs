@@ -1,7 +1,5 @@
 ﻿using XperiCad.Common.Core.Behaviours.Commands;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services;
-using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
-using XperiCad.DigitalDrawingStore.BL.Services;
 
 namespace XperiCad.DigitalDrawingStore.Web.API.Commands.Get
 {

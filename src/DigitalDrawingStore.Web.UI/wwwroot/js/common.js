@@ -4,7 +4,7 @@ var emptyCategoryText = "";
 
 var topLeftWatermarkText = null;
 var topRightWatermarkText = null;
-var borromLeftWatermarkText = null;
+var bottomLeftWatermarkText = null;
 var bottomRightWatermarkText = null;
 
 $(document).ready(() => {
@@ -22,51 +22,34 @@ $(document).ready(() => {
         });
 
     requestInvoker
-        .executeQuery('/GetTopLeftWatermarkText', {})
+        .executeQuery('/GetWatermarkTexts', {})
         .then((response) => {
-            if (response.responseObject != null) {
-                topLeftWatermarkText = response.responseObject;
+            let translations = response.responseObject;
+            if (translations["topLeft"] != null) {
+                topLeftWatermarkText = translations["topLeft"];
             }
             else {
                 topLeftWatermarkText = "[Bal felső sarok]";
             }
-            tryMakeWatermarkPosComboBox();
-        });
-
-    requestInvoker
-        .executeQuery('/GetTopRightWatermarkText', {})
-        .then((response) => {
-            if (response.responseObject != null) {
-                topRightWatermarkText = response.responseObject;
+            if (translations["topRight"] != null) {
+                topRightWatermarkText = translations["topRight"];
             }
             else {
                 topRightWatermarkText = "[Jobb felső sarok]";
             }
-            tryMakeWatermarkPosComboBox();
-        });
-
-    requestInvoker
-        .executeQuery('/GetBottomLeftWatermarkText', {})
-        .then((response) => {
-            if (response.responseObject != null) {
-                borromLeftWatermarkText = response.responseObject;
+            if (translations["bottomLeft"] != null) {
+                bottomLeftWatermarkText = translations["bottomLeft"];
             }
             else {
-                borromLeftWatermarkText = "[Bal alsó sarok]";
+                bottomLeftWatermarkText = "[Bal alsó sarok]";
             }
-            tryMakeWatermarkPosComboBox();
-        });
-
-    requestInvoker
-        .executeQuery('/GetBottomRightWatermarkText', {})
-        .then((response) => {
-            if (response.responseObject != null) {
-                bottomRightWatermarkText = response.responseObject;
+            if (translations["bottomRight"] != null) {
+                bottomRightWatermarkText = translations["bottomRight"];
             }
             else {
                 bottomRightWatermarkText = "[Jobb alsó sarok]";
             }
-            tryMakeWatermarkPosComboBox();
+            MakeWatermarkPosComboBox();
         });
 
     var handle = $("#custom-handle"), handleWidth = handle.width();
@@ -91,21 +74,13 @@ $(document).ready(() => {
         });
 });
 
-function tryMakeWatermarkPosComboBox() {
-    if (
-        topLeftWatermarkText != null &&
-        topRightWatermarkText != null &&
-        borromLeftWatermarkText != null &&
-        bottomRightWatermarkText != null
-    )
-    {
-        createCombobox($("#sidedWatermarkPositionSelectMenu"), [
-            { key: 'upperLeftCorner', value: topLeftWatermarkText },
-            { key: 'upperRightCorner', value: topRightWatermarkText },
-            { key: 'bottomLeftCorner', value: borromLeftWatermarkText },
-            { key: 'bottomRightCorner', value: bottomRightWatermarkText }]);
-        $("#updateWatermarkButton").button();
-    }
+function MakeWatermarkPosComboBox() {
+    createCombobox($("#sidedWatermarkPositionSelectMenu"), [
+        { key: 'upperLeftCorner', value: topLeftWatermarkText },
+        { key: 'upperRightCorner', value: topRightWatermarkText },
+        { key: 'bottomLeftCorner', value: bottomLeftWatermarkText },
+        { key: 'bottomRightCorner', value: bottomRightWatermarkText }]);
+    $("#updateWatermarkButton").button();
 }
 
 const feedbackChannel = {
