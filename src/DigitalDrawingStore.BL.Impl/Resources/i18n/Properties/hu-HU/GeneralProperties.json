@@ -120,6 +120,94 @@
     {
       "Key": "Bottom_Right_Watermark_Text",
       "Value": "Jobb alsó sarok"
+    },
+    {
+      "Key": "Categories_Table_Name_Text",
+      "Value": "Kategóriák"
+    },
+    {
+      "Key": "Document_Categories_Column_Text",
+      "Value": "Dokumentum kategóriák"
+    },
+    {
+      "Key": "Is_Designed_Column_Text",
+      "Value": "Tervezett kategória"
+    },
+    {
+      "Key": "Table_Actions_Column_Text",
+      "Value": "Műveletek"
+    },
+    {
+      "Key": "Is_Designed_Yes_Text",
+      "Value": "Igen"
+    },
+    {
+      "Key": "Is_Designed_No_Text",
+      "Value": "Nem"
+    },
+    {
+      "Key": "Edit_Category_Text",
+      "Value": "Szerkesztés"
+    },
+    {
+      "Key": "Added_Metadata_Column_Text",
+      "Value": "Hozzáadott tulajdonság"
+    },
+    {
+      "Key": "Not_Added_Metadata_Column_Text",
+      "Value": "Szabad tulajdonság"
+    },
+    {
+      "Key": "Close_Editor_Window_Text",
+      "Value": "Bezárás"
+    },
+    {
+      "Key": "Save_Editor_Window_Text",
+      "Value": "Mentés"
+    },
+    {
+      "Key": "Unknown_Error_Title_Text",
+      "Value": "Ismeretlen hiba"
+    },
+    {
+      "Key": "Unknown_Error_Text",
+      "Value": "Ismeretlen hiba történt. Kérjük jelezze kapcsolattartóink felé."
+    },
+    {
+      "Key": "Error_Title_Text",
+      "Value": "Hiba"
+    },
+    {
+      "Key": "Warning_Title_Text",
+      "Value": "Figyelem"
+    },
+    {
+      "Key": "Information_Title_Text",
+      "Value": "Információ"
+    },
+    {
+      "Key": "Attributes_Not_Found_Text",
+      "Value": "Nem találhatóak a kért attribútumok."
+    },
+    {
+      "Key": "Changes_Will_Be_Lost_Text",
+      "Value": "Esetleges változtatások mentés nélkül elveszhetnek, folytatja?"
+    },
+    {
+      "Key": "Dialog_Edit_Text",
+      "Value": "Szerkesztés"
+    },
+    {
+      "Key": "Dialog_Save_Text",
+      "Value": "Mentés"
+    },
+    {
+      "Key": "Dialog_Cancel_Text",
+      "Value": "Mégse"
+    },
+    {
+      "Key": "Dialog_Yes_Check_Value",
+      "Value": "Igen"
     }
   ]
 }

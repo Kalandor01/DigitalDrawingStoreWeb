@@ -1,12 +1,79 @@
 let openedRow = null;
 let clickedRow = null;
 
+
+// transaltion texts
+var categoriesTableNameText = "[Kategóriák]";
+var documentCategoriesColumnText = "[Dokumentum kategóriák]";
+var isDesignedColumnText = "[Tervezett kategória]";
+var tableActionsColumnText = "[Műveletek]";
+var isDesignedYesText = "[Igen]";
+var isDesignedNoText = "[Nem]";
+var editCategoryText = "[Szerkesztés]";
+var addedMetadataColumnText = "[Hozzáadott tulajdonság]";
+var notAddedMetadataColumnText = "[Szabad tulajdonság]";
+var closeEditorWindowText = "[Bezárás]";
+var saveEditorWindowText = "[Mentés]";
+
+
 let mainTableSortState = {
     sortBy: 'categories',
     ascending: true
 };
 
-$(document).ready(() => populatePage());
+$(document).ready(() => {
+    requestInvoker
+        .executeQuery('/GetCategoriesTexts', {})
+        .then((response) => {
+            let translations = response.responseObject;
+            // categories table name
+            if (translations["categoriesTableName"] != null) {
+                categoriesTableNameText = translations["categoriesTableName"];
+            }
+            // document categories column
+            if (translations["documentCategoriesColumn"] != null) {
+                documentCategoriesColumnText = translations["documentCategoriesColumn"];
+            }
+            // is designed column
+            if (translations["isDesignedColumn"] != null) {
+                isDesignedColumnText = translations["isDesignedColumn"];
+            }
+            // table actions column
+            if (translations["tableActionsColumn"] != null) {
+                tableActionsColumnText = translations["tableActionsColumn"];
+            }
+            // is Designed yes
+            if (translations["isDesignedYes"] != null) {
+                isDesignedYesText = translations["isDesignedYes"];
+            }
+            // is designed no
+            if (translations["isDesignedNo"] != null) {
+                isDesignedNoText = translations["isDesignedNo"];
+            }
+            // edit category
+            if (translations["editCategory"] != null) {
+                editCategoryText = translations["editCategory"];
+            }
+            // added metadata column
+            if (translations["addedMetadataColumn"] != null) {
+                addedMetadataColumnText = translations["addedMetadataColumn"];
+            }
+            // not added metadata column
+            if (translations["notAddedMetadataColumn"] != null) {
+                notAddedMetadataColumnText = translations["notAddedMetadataColumn"];
+            }
+            // close editor
+            if (translations["closeEditorWindow"] != null) {
+                closeEditorWindowText = translations["closeEditorWindow"];
+            }
+            // save editor
+            if (translations["saveEditorWindow"] != null) {
+                saveEditorWindowText = translations["saveEditorWindow"];
+            }
+            // then
+            populatePage();
+        });
+});
 
 populatePage = () => {
     requestInvoker
@@ -15,12 +82,12 @@ populatePage = () => {
             let contentContainerElement = $('#categoriesContentContainer');
             let categories = response.responseObject;
 
-            let tableName = 'Kategóriák';
+            let tableName = categoriesTableNameText;
 
             let columns = new Map();
-            columns.set('categories', 'Dokumentum kategóriák');
-            columns.set('isDesigned', 'Tervezett kategória');
-            columns.set('actions', 'Műveletek');
+            columns.set("categories", documentCategoriesColumnText);
+            columns.set("isDesigned", isDesignedColumnText);
+            columns.set("actions", tableActionsColumnText);
 
             let table;
 
@@ -30,13 +97,13 @@ populatePage = () => {
 
                 record.set('categories', category.categoryName);
                 if (category.isDesigned) {
-                    record.set('isDesigned', 'Igen');
+                    record.set('isDesigned', isDesignedYesText);
                 } else {
-                    record.set('isDesigned', 'Nem');
+                    record.set('isDesigned', isDesignedNoText);
                 }
                 record.set('id', category.id);
 
-                let button = buttonBuilder.createButton('Szerkesztés');
+                let button = buttonBuilder.createButton(editCategoryText);
                 button.onclick = (e) => {
                     e.stopPropagation();
                     editCategory(record, columns);
@@ -103,8 +170,8 @@ getDetails = (record, row, numParentColumns) => {
                 }
 
                 let columns = [
-                    { title: 'Hozzáadott tulajdonság', content: usedEntities },
-                    { title: 'Szabad tulajdonság', content: unusedEntities }
+                    { title: addedMetadataColumnText, content: usedEntities },
+                    { title: notAddedMetadataColumnText, content: unusedEntities }
                 ]
 
                 openDetails(record, row, numParentColumns, columns);
@@ -157,7 +224,7 @@ openDetails = (record, row, numParentColumns, columns, sortState) => {
 
     detailsContainer.append(table);
 
-    let closeButton = buttonBuilder.createButton('Bezárás');
+    let closeButton = buttonBuilder.createButton(closeEditorWindowText);
     closeButton.onclick = () => {
         if (documentTableBuilder.closeDropDownView(openedRow, 'updated' in openedRow && openedRow.updated)) {
             openedRow = null;
@@ -166,7 +233,7 @@ openDetails = (record, row, numParentColumns, columns, sortState) => {
     };
     detailsContainer.append(closeButton);
 
-    let saveButton = buttonBuilder.createButton('Mentés');
+    let saveButton = buttonBuilder.createButton(saveEditorWindowText);
     saveButton.onclick = () => {
         if (openedRow.updated) {
             updateCategoryEntities(columns, record);

@@ -1,53 +1,93 @@
 ﻿'use strict';
 
-var emptyCategoryText = "";
+var emptyCategoryText = "[Üres kategória.]";
 
-var topLeftWatermarkText = null;
-var topRightWatermarkText = null;
-var bottomLeftWatermarkText = null;
-var bottomRightWatermarkText = null;
+var topLeftWatermarkText = "[Bal felső sarok]";
+var topRightWatermarkText = "[Jobb felsó sarok]";
+var bottomLeftWatermarkText = "[Bal alsó sarok]";
+var bottomRightWatermarkText = "[Jobb alsó sarok]";
+
+var unknownErrorTitleText = "[Ismeretlen hiba]";
+var unknownErrorText = "[Ismeretlen hiba történt. Kérjük jelezze kapcsolattartóink felé.]";
+var errorTitleText = "[Hiba]";
+var warningTitleText = "[Figyelem]";
+var informationTitleText = "[Információ]";
+var attributesNotFoundText = "[Nem találhatóak a kért attribútumok.]";
+var changesWillBeLostText = "[Esetleges változtatások mentés nélkül elveszhetnek, folytatja?]";
+var dialogEditText = "[Szerkesztés]";
+var dialogSaveText = "[Mentés]";
+var dialogCancelText = "[Mégse]";
+var dialogYesCheckValue = "[Igen]";
+
 
 $(document).ready(() => {
     requestInvoker
-        .executeQuery('/GetEmptyCategoryText', {})
-        .then((response) => {
-            if (response.responseObject != null)
-            {
-                emptyCategoryText = response.responseObject;
-            }
-            else
-            {
-                emptyCategoryText = "[Üres kategória.]";
-            }
-        });
-
-    requestInvoker
-        .executeQuery('/GetWatermarkTexts', {})
+        .executeQuery('/GetCommonTexts', {})
         .then((response) => {
             let translations = response.responseObject;
-            if (translations["topLeft"] != null) {
-                topLeftWatermarkText = translations["topLeft"];
+            // empty category
+            if (translations["emptyCategory"] != null) {
+                emptyCategoryText = translations["emptyCategory"];
             }
-            else {
-                topLeftWatermarkText = "[Bal felső sarok]";
+            // top left watermark
+            if (translations["topLeftWatermark"] != null) {
+                topLeftWatermarkText = translations["topLeftWatermark"];
             }
-            if (translations["topRight"] != null) {
-                topRightWatermarkText = translations["topRight"];
+            // top left watermark
+            if (translations["topRightWatermark"] != null) {
+                topRightWatermarkText = translations["topRightWatermark"];
             }
-            else {
-                topRightWatermarkText = "[Jobb felső sarok]";
+            // top left watermark
+            if (translations["bottomLeftWatermark"] != null) {
+                bottomLeftWatermarkText = translations["bottomLeftWatermark"];
             }
-            if (translations["bottomLeft"] != null) {
-                bottomLeftWatermarkText = translations["bottomLeft"];
+            // top left watermark
+            if (translations["bottomRightWatermark"] != null) {
+                bottomRightWatermarkText = translations["bottomRightWatermark"];
             }
-            else {
-                bottomLeftWatermarkText = "[Bal alsó sarok]";
+            // unknown error title
+            if (translations["unknownErrorTitle"] != null) {
+                unknownErrorTitleText = translations["unknownErrorTitle"];
             }
-            if (translations["bottomRight"] != null) {
-                bottomRightWatermarkText = translations["bottomRight"];
+            // unknown error
+            if (translations["unknownError"] != null) {
+                unknownErrorText = translations["unknownError"];
             }
-            else {
-                bottomRightWatermarkText = "[Jobb alsó sarok]";
+            // error title
+            if (translations["errorTitle"] != null) {
+                errorTitleText = translations["errorTitle"];
+            }
+            // warning title
+            if (translations["warningTitle"] != null) {
+                warningTitleText = translations["warningTitle"];
+            }
+            // information title
+            if (translations["informationTitle"] != null) {
+                informationTitleText = translations["informationTitle"];
+            }
+            // attributes not found
+            if (translations["attributesNotFound"] != null) {
+                attributesNotFoundText = translations["attributesNotFound"];
+            }
+            // changes will be lost
+            if (translations["changesWillBeLost"] != null) {
+                changesWillBeLostText = translations["changesWillBeLost"];
+            }
+            // dialog edit
+            if (translations["dialogEdit"] != null) {
+                dialogEditText = translations["dialogEdit"];
+            }
+            // dialog save
+            if (translations["dialogSave"] != null) {
+                dialogSaveText = translations["dialogSave"];
+            }
+            // dialog cancel
+            if (translations["dialogCancel"] != null) {
+                dialogCancelText = translations["dialogCancel"];
+            }
+            // dialog yes check value
+            if (translations["dialogYesCheckValue"] != null) {
+                dialogYesCheckValue = translations["dialogYesCheckValue"];
             }
             MakeWatermarkPosComboBox();
         });
@@ -113,15 +153,15 @@ const requestInvoker = {
                         }
                     };
                     if (!displayedFeedback) {
-                        feedbackChannel.showError('Ismeretlen hiba', 'Ismeretlen hiba történt. Kérjük jelezze kapcsolattartóink felé.');
+                        feedbackChannel.showError(unknownErrorTitleText, unknownErrorText);
                     } else if (displayedFeedback.severity < 1) {
-                        feedbackChannel.showError('Hiba', displayedFeedback.message);
+                        feedbackChannel.showError(errorTitleText, displayedFeedback.message);
                     }
                     else if (displayedFeedback.severity === 2) {
-                        feedbackChannel.showWarning('Figyelem', displayedFeedback.message);
+                        feedbackChannel.showWarning(warningTitleText, displayedFeedback.message);
                     }
                     else if (displayedFeedback.severity === 3) {
-                        feedbackChannel.showInformation('Információ', displayedFeedback.message);
+                        feedbackChannel.showInformation(informationTitleText, displayedFeedback.message);
                     }
                 }
 
@@ -133,7 +173,7 @@ const requestInvoker = {
                 console.error('xhr: ', xhr);
                 console.error('status: ', status);
                 console.error('error: ', error);
-                feedbackChannel.showError('Ismeretlen hiba', 'Ismeretlen hiba történt. Kérjük jelezze kapcsolattartóink felé.');
+                feedbackChannel.showError(unknownErrorTitleText, unknownErrorText);
             },
         });
 
@@ -290,7 +330,7 @@ const documentTableBuilder = {
 
             emptyContentElement.addClass('empty');
             emptyContentElement.addClass('attributes');
-            emptyContentElement.text('Nem találhatóak a kért attribútumok.');
+            emptyContentElement.text(attributesNotFoundText);
 
             attributeWrapperElement.append(emptyContentElement);
         }
@@ -443,7 +483,7 @@ const documentTableBuilder = {
     },
 
     closeDropDownView: (openedRow, requireApprovement) => {
-        if (requireApprovement && !confirm('Esetleges változtatások mentés nélkül elveszhetnek, folytatja?')) {
+        if (requireApprovement && !confirm(changesWillBeLostText)) {
             return false;
         }
 
@@ -527,7 +567,7 @@ const editDialogBuilder = {
 
         let dialog = $(document.createElement('div')).dialog({
             modal: true,
-            title: 'Szerkesztés',
+            title: dialogEditText,
             autoOpen: false,
             dialogClass: 'edit-dialog',
             height: 300,
@@ -536,7 +576,7 @@ const editDialogBuilder = {
                 $(this).append(form.obj);
             },
             buttons: {
-                'Mentés': function () {
+                [dialogSaveText]: function () {
                     let results = new Map();
 
                     for (let [key, field] of form.fields) {
@@ -554,7 +594,7 @@ const editDialogBuilder = {
                     update(results, record);
                     $(this).dialog('close');
                 },
-                'Mégse': function () {
+                [dialogCancelText]: function () {
                     $(this).dialog('close');
                 }
             }
@@ -600,7 +640,7 @@ const editDialogBuilder = {
     },
     
     generateInputs: (data, key, value) => {
-        if (data.type === 'select') {
+        if (data.type == 'select') {
             let input = $(document.createElement('select'));
             input.attr('name', key);
 
@@ -609,7 +649,7 @@ const editDialogBuilder = {
                 option.attr('value', id);
                 option.html(name);
 
-                if (value === name) {
+                if (value == name) {
                     option.attr('selected', 'selected');
                 }
 
@@ -623,8 +663,8 @@ const editDialogBuilder = {
         input.attr('type', data.type);
         input.attr('name', key);
 
-        if (data.type === 'checkbox') {
-            input.prop('checked', value === 'Igen');
+        if (data.type == 'checkbox') {
+            input.prop('checked', value == dialogYesCheckValue);
         }
         else {
             input.attr('value', value);
@@ -663,11 +703,11 @@ const storageHandler = {
         for (let i = 0; i < cookies.length; i++) {
             let cookie = cookies[i];
 
-            while (cookie.charAt(0) === ' ') {
+            while (cookie.charAt(0) == ' ') {
                 cookie = cookie.substring(1);
             }
 
-            if (cookie.indexOf(name) === 0) {
+            if (cookie.indexOf(name) == 0) {
                 return cookie.substring(name.length, cookie.length);
             }
         }

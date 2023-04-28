@@ -45,7 +45,31 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Services
             [CultureProperty.TOP_LEFT_WATERMARK_TEXT] = Property.Top_Left_Watermark_Text,
             [CultureProperty.TOP_RIGHT_WATERMARK_TEXT] = Property.Top_Right_Watermark_Text,
             [CultureProperty.BOTTOM_LEFT_WATERMARK_TEXT] = Property.Bottom_Left_Watermark_Text,
-            [CultureProperty.BOTTOM_RIGHT_WATERMARK_TEXT] = Property.Bottom_Right_Watermark_Text
+            [CultureProperty.BOTTOM_RIGHT_WATERMARK_TEXT] = Property.Bottom_Right_Watermark_Text,
+
+            [CultureProperty.CATEGORIES_TABLE_NAME_TEXT] = Property.Categories_Table_Name_Text,
+            [CultureProperty.DOCUMENT_CATEGORIES_COLUMN_TEXT] = Property.Document_Categories_Column_Text,
+            [CultureProperty.IS_DESIGNED_COLUMN_TEXT] = Property.Is_Designed_Column_Text,
+            [CultureProperty.TABLE_ACTIONS_COLUMN_TEXT] = Property.Table_Actions_Column_Text,
+            [CultureProperty.IS_DESIGNED_YES_TEXT] = Property.Is_Designed_Yes_Text,
+            [CultureProperty.IS_DESIGNED_NO_TEXT] = Property.Is_Designed_No_Text,
+            [CultureProperty.EDIT_CATEGORY_TEXT] = Property.Edit_Category_Text,
+            [CultureProperty.ADDED_METADATA_COLUMN_TEXT] = Property.Added_Metadata_Column_Text,
+            [CultureProperty.NOT_ADDED_METADATA_COLUMN_TEXT] = Property.Not_Added_Metadata_Column_Text,
+            [CultureProperty.CLOSE_EDITOR_WINDOW_TEXT] = Property.Close_Editor_Window_Text,
+            [CultureProperty.SAVE_EDITOR_WINDOW_TEXT] = Property.Save_Editor_Window_Text,
+
+            [CultureProperty.UNKNOWN_ERROR_TITLE_TEXT] = Property.Unknown_Error_Title_Text,
+            [CultureProperty.UNKNOWN_ERROR_TEXT] = Property.Unknown_Error_Text,
+            [CultureProperty.ERROR_TITLE_TEXT] = Property.Error_Title_Text,
+            [CultureProperty.WARNING_TITLE_TEXT] = Property.Warning_Title_Text,
+            [CultureProperty.INFORMATION_TITLE_TEXT] = Property.Information_Title_Text,
+            [CultureProperty.ATTRIBUTES_NOT_FOUND_TEXT] = Property.Attributes_Not_Found_Text,
+            [CultureProperty.CHANGES_WILL_BE_LOST_TEXT] = Property.Changes_Will_Be_Lost_Text,
+            [CultureProperty.DIALOG_EDIT_TEXT] = Property.Dialog_Edit_Text,
+            [CultureProperty.DIALOG_SAVE_TEXT] = Property.Dialog_Save_Text,
+            [CultureProperty.DIALOG_CANCEL_TEXT] = Property.Dialog_Cancel_Text,
+            [CultureProperty.DIALOG_YES_CHECK_VALUE] = Property.Dialog_Yes_Check_Value,
         };
         #endregion
 

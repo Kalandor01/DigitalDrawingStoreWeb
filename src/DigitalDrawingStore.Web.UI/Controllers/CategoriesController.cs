@@ -19,6 +19,7 @@ namespace DigitalDrawingStore.Web.UI.Controllers
         {
             // TODO: implement DI for ApiModule
             _categoriesController = new CategoriesApiController();
+
         }
         #endregion
 

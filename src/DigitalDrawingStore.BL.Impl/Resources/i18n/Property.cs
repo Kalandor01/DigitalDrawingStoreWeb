@@ -47,7 +47,9 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n
         internal static ICultureResource Searchable_Fields_Text_4 = new JsonCultureResource("Searchable_Fields_Text_4", LANGUAGE_PRPERTY_RESOURCES_PATH);
 
         internal static ICultureResource Empty_Category_Text = new JsonCultureResource("Empty_Category_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        #endregion
 
+        #region PDF viewer text
         internal static ICultureResource Open_Editor_Text = new JsonCultureResource("Open_Editor_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
 
         internal static ICultureResource Close_Editor_Text = new JsonCultureResource("Close_Editor_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
@@ -73,6 +75,54 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n
         internal static ICultureResource Bottom_Left_Watermark_Text = new JsonCultureResource("Bottom_Left_Watermark_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
 
         internal static ICultureResource Bottom_Right_Watermark_Text = new JsonCultureResource("Bottom_Right_Watermark_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        #endregion
+
+        #region Categories page text
+        internal static ICultureResource Categories_Table_Name_Text = new JsonCultureResource("Categories_Table_Name_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Document_Categories_Column_Text = new JsonCultureResource("Document_Categories_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Is_Designed_Column_Text = new JsonCultureResource("Is_Designed_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Table_Actions_Column_Text = new JsonCultureResource("Table_Actions_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Is_Designed_Yes_Text = new JsonCultureResource("Is_Designed_Yes_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Is_Designed_No_Text = new JsonCultureResource("Is_Designed_No_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Edit_Category_Text = new JsonCultureResource("Edit_Category_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Added_Metadata_Column_Text = new JsonCultureResource("Added_Metadata_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Not_Added_Metadata_Column_Text = new JsonCultureResource("Not_Added_Metadata_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Close_Editor_Window_Text = new JsonCultureResource("Close_Editor_Window_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Save_Editor_Window_Text = new JsonCultureResource("Save_Editor_Window_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        #endregion
+
+        #region Other common text
+        internal static ICultureResource Unknown_Error_Title_Text = new JsonCultureResource("Unknown_Error_Title_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Unknown_Error_Text = new JsonCultureResource("Unknown_Error_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Error_Title_Text = new JsonCultureResource("Error_Title_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Warning_Title_Text = new JsonCultureResource("Warning_Title_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Information_Title_Text = new JsonCultureResource("Information_Title_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Attributes_Not_Found_Text = new JsonCultureResource("Attributes_Not_Found_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Changes_Will_Be_Lost_Text = new JsonCultureResource("Changes_Will_Be_Lost_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Dialog_Edit_Text = new JsonCultureResource("Dialog_Edit_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Dialog_Save_Text = new JsonCultureResource("Dialog_Save_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Dialog_Cancel_Text = new JsonCultureResource("Dialog_Cancel_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Dialog_Yes_Check_Value = new JsonCultureResource("Dialog_Yes_Check_Value", LANGUAGE_PRPERTY_RESOURCES_PATH);
         #endregion
     }
 }

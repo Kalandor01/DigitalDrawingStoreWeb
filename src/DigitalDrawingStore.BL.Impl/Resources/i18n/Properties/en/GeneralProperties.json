@@ -120,6 +120,94 @@
     {
       "Key": "Bottom_Right_Watermark_Text",
       "Value": "Bottom right corner"
+    },
+    {
+      "Key": "Categories_Table_Name_Text",
+      "Value": "Categories"
+    },
+    {
+      "Key": "Document_Categories_Column_Text",
+      "Value": "Document categories"
+    },
+    {
+      "Key": "Is_Designed_Column_Text",
+      "Value": "Planned category"
+    },
+    {
+      "Key": "Table_Actions_Column_Text",
+      "Value": "Actions"
+    },
+    {
+      "Key": "Is_Designed_Yes_Text",
+      "Value": "Yes"
+    },
+    {
+      "Key": "Is_Designed_No_Text",
+      "Value": "No"
+    },
+    {
+      "Key": "Edit_Category_Text",
+      "Value": "Edit"
+    },
+    {
+      "Key": "Added_Metadata_Column_Text",
+      "Value": "Added property"
+    },
+    {
+      "Key": "Not_Added_Metadata_Column_Text",
+      "Value": "Free property"
+    },
+    {
+      "Key": "Close_Editor_Window_Text",
+      "Value": "Close"
+    },
+    {
+      "Key": "Save_Editor_Window_Text",
+      "Value": "Save"
+    },
+    {
+      "Key": "Unknown_Error_Title_Text",
+      "Value": "Unknown error"
+    },
+    {
+      "Key": "Unknown_Error_Text",
+      "Value": "An unknown error occured. Please Please let our contacts know."
+    },
+    {
+      "Key": "Error_Title_Text",
+      "Value": "Error"
+    },
+    {
+      "Key": "Warning_Title_Text",
+      "Value": "Warning"
+    },
+    {
+      "Key": "Information_Title_Text",
+      "Value": "Information"
+    },
+    {
+      "Key": "Attributes_Not_Found_Text",
+      "Value": "The requested attributes could not be found."
+    },
+    {
+      "Key": "Changes_Will_Be_Lost_Text",
+      "Value": "Incidental changes might be lost, without saving. Do you want to continue?"
+    },
+    {
+      "Key": "Dialog_Edit_Text",
+      "Value": "Edit"
+    },
+    {
+      "Key": "Dialog_Save_Text",
+      "Value": "Save"
+    },
+    {
+      "Key": "Dialog_Cancel_Text",
+      "Value": "Cancel"
+    },
+    {
+      "Key": "Dialog_Yes_Check_Value",
+      "Value": "Yes"
     }
   ]
 }
