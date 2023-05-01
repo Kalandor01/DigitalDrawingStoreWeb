@@ -208,6 +208,86 @@
     {
       "Key": "Dialog_Yes_Check_Value",
       "Value": "Igen"
+    },
+    {
+      "Key": "Documents_Table_Name_Text",
+      "Value": "Dokumentumok"
+    },
+    {
+      "Key": "Name_Table_Column_Text",
+      "Value": "Név"
+    },
+    {
+      "Key": "Category_Table_Column_Text",
+      "Value": "Kategória"
+    },
+    {
+      "Key": "Actions_Table_Column_Text",
+      "Value": "Műveletek"
+    },
+    {
+      "Key": "Edit_Action_Button_Text",
+      "Value": "Szerkesztés"
+    },
+    {
+      "Key": "Close_Button_Text",
+      "Value": "Bezárás"
+    },
+    {
+      "Key": "Metadata_Name_Table_Column_Text",
+      "Value": "Metaadat neve"
+    },
+    {
+      "Key": "Metadata_Value_Table_Column_Text",
+      "Value": "Értéke"
+    },
+    {
+      "Key": "App_Configuration_Text",
+      "Value": "Alkalmazás konfiguráció"
+    },
+    {
+      "Key": "Database_Path_Text",
+      "Value": "Adatbázis elérési útvonal"
+    },
+    {
+      "Key": "Save_Changes_Text",
+      "Value": "Módosítások mentése"
+    },
+    {
+      "Key": "Feedback_Settings_Text",
+      "Value": "Visszajelzés beállítások"
+    },
+    {
+      "Key": "Sender_Email_Text",
+      "Value": "Küldő e-mail"
+    },
+    {
+      "Key": "Email_Recipients_Text",
+      "Value": "E-mail címzettek"
+    },
+    {
+      "Key": "Smtp_Host_Text",
+      "Value": "Smtp Host"
+    },
+    {
+      "Key": "Smtp_Port_Text",
+      "Value": "Smtp Port"
+    },
+    {
+      "Key": "Smtp_Username_Text",
+      "Value": "Smtp felhasználónév"
+    },
+    {
+      "Key": "Smtp_Password_Text",
+      "Value": "Smtp jelszó"
+    },
+    {
+      "Key": "Is_Use_Default_Credentials_Text",
+      "Value": "Használja az alapértelmezett bizonyítványt"
+    },
+    {
+      "Key": "Is_Enable_Ssl_Text",
+      "Value": "Ssl használata"
     }
   ]
 }

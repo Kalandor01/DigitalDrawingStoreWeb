@@ -1,57 +1,72 @@
 ﻿@using XperiCad.DigitalDrawingStore.Web.API.Controllers;
+@using XperiCad.DigitalDrawingStore.BL.Impl.Services;
 
 @{
     var administrationController = new AdministrationController();
     var documentResourceProperties = administrationController.documentResourceProperties;
     var feedbackEntities = await administrationController.GetFeedbackProperties();
+
+    var culture = CultureService.GetSelectedCulture();
+    var appConfigurationText = CultureService.GetPropertyNameTranslation(CultureProperty.APP_CONFIGURATION_TEXT, culture) ?? "[Alkalmazás konfiguráció]";
+    var databasePathText = CultureService.GetPropertyNameTranslation(CultureProperty.DATABASE_PATH_TEXT, culture) ?? "[Adatbázis elérési útvonal]";
+    var saveChangesText = CultureService.GetPropertyNameTranslation(CultureProperty.SAVE_CHANGES_TEXT, culture) ?? "[Módosítások mentése]";
+    var feedbackSettingsText = CultureService.GetPropertyNameTranslation(CultureProperty.FEEDBACK_SETTINGS_TEXT, culture) ?? "[Visszajelzés beállítások]";
+    var senderEmailText = CultureService.GetPropertyNameTranslation(CultureProperty.SENDER_EMAIL_TEXT, culture) ?? "[Küldő e-mail]";
+    var emailRecipientsText = CultureService.GetPropertyNameTranslation(CultureProperty.EMAIL_RECIPIENTS_TEXT, culture) ?? "[E-mail címzettek]";
+    var smtpHostText = CultureService.GetPropertyNameTranslation(CultureProperty.SMTP_HOST_TEXT, culture) ?? "[Smtp Host]";
+    var smtpPortText = CultureService.GetPropertyNameTranslation(CultureProperty.SMTP_PORT_TEXT, culture) ?? "[Smtp Port]";
+    var smtpUsernameText = CultureService.GetPropertyNameTranslation(CultureProperty.SMTP_USERNAME_TEXT, culture) ?? "[Smtp felhasználónév]";
+    var smtpPasswordText = CultureService.GetPropertyNameTranslation(CultureProperty.SMTP_PASSWORD_TEXT, culture) ?? "[Smtp jelszó]";
+    var isUseDefaultCredentialsText = CultureService.GetPropertyNameTranslation(CultureProperty.IS_USE_DEFAULT_CREDENTIALS_TEXT, culture) ?? "[Használja az alapértelmezett bizonyítványt]";
+    var isEnableSslText = CultureService.GetPropertyNameTranslation(CultureProperty.IS_ENABLE_SSL_TEXT, culture) ?? "[Ssl használata]";
 }
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <script src="~/js/settings.js"></script>
 <div id="contentContainer" class="content-container">
-    <p class="category-title">Alkalmazás konfiguráció</p>
+    <p class="category-title">@appConfigurationText</p>
     @{
         <div id="appConfig">
             <div class="setting">
-                <label>Adatbázis elérési útvonal</label>
+                <label>@databasePathText</label>
                 <input name="DocumentDatabaseConnectionString" type="text" value="@documentResourceProperties.ResourcePath" />
             </div>
-            <button id="saveChangesAppConfig" onclick="updateConfigSettings()">Módosítások mentése</button>
+            <button id="saveChangesAppConfig" onclick="updateConfigSettings()">@saveChangesText</button>
         </div>
     }
-    <p class="category-title">Visszajelzés beállítások</p>
+    <p class="category-title">@feedbackSettingsText</p>
     @{
         <div id="feedback">
             <div class="setting">
-                <label>Küldő e-mail</label>
+                <label>@senderEmailText</label>
 
                 <input name="SenderEmail" type="text" value="@feedbackEntities.SenderEmail" />
             </div>
             <div class="setting align-m">
-                <label>E-mail címzettek</label>
+                <label>@emailRecipientsText</label>
                 <textarea name="EmailRecipients" rows="5">@feedbackEntities.EmailRecipients</textarea>
             </div>
             <div class="setting">
-                <label>Smtp Host</label>
+                <label>@smtpHostText</label>
                 <input name="SmtpHost" type="text" value="@feedbackEntities.SmtpHost" />
             </div>
             <div class="setting">
-                <label>Smtp Port</label>
+                <label>@smtpPortText</label>
                 <input name="SmtpPort" type="text" value="@feedbackEntities.SmtpPort" />
             </div>
             <div class="setting">
-                <label>Smtp felhasználónév</label>
+                <label>@smtpUsernameText</label>
                 <input name="SmtpUsername" type="text" value="@feedbackEntities.SmtpUsername" />
             </div>
             <div class="setting">
-                <label>Smtp jelszó</label>
+                <label>@smtpPasswordText</label>
                 <div id="passwordField">
                     <input id="smtpPass" name="SmtpPassword" type="password" value="@feedbackEntities.SmtpPassword" style="width: 100%" />
                     <i class="far fa-eye-slash" id="togglePassword"></i>
                 </div>
             </div>
             <div class="settingChb">
-                <label>Használja az alapértelmezett bizonyítványt</label>
+                <label>@isUseDefaultCredentialsText</label>
                 @if (feedbackEntities.IsUseDefaultCredentials)
                 {
                     <input name="IsUseDefaultCredentials" type="checkbox" checked />
@@ -62,7 +77,7 @@
                 }
             </div>
             <div class="settingChb">
-                <label>Ssl használata</label>
+                <label>@isEnableSslText</label>
                 @if (feedbackEntities.IsUseSsl)
                 {
                     <input name="IsEnableSsl" type="checkbox" checked />
@@ -72,7 +87,7 @@
                     <input name="IsEnableSsl" type="checkbox" />
                 }
             </div>
-            <button id="saveChangesFeedback" onclick="updateEmailSettings()">Módosítások mentése</button>
+            <button id="saveChangesFeedback" onclick="updateEmailSettings()">@saveChangesText</button>
         </div>
     }
 </div>

@@ -124,5 +124,49 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Resources.i18n
 
         internal static ICultureResource Dialog_Yes_Check_Value = new JsonCultureResource("Dialog_Yes_Check_Value", LANGUAGE_PRPERTY_RESOURCES_PATH);
         #endregion
+
+        #region Documents page text
+        internal static ICultureResource Documents_Table_Name_Text = new JsonCultureResource("Documents_Table_Name_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Name_Table_Column_Text = new JsonCultureResource("Name_Table_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Category_Table_Column_Text = new JsonCultureResource("Category_Table_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Actions_Table_Column_Text = new JsonCultureResource("Actions_Table_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Edit_Action_Button_Text = new JsonCultureResource("Edit_Action_Button_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Close_Button_Text = new JsonCultureResource("Close_Button_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Metadata_Name_Table_Column_Text = new JsonCultureResource("Metadata_Name_Table_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Metadata_Value_Table_Column_Text = new JsonCultureResource("Metadata_Value_Table_Column_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        #endregion
+
+        #region Settings page text
+        internal static ICultureResource App_Configuration_Text = new JsonCultureResource("App_Configuration_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Database_Path_Text = new JsonCultureResource("Database_Path_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Save_Changes_Text = new JsonCultureResource("Save_Changes_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Feedback_Settings_Text = new JsonCultureResource("Feedback_Settings_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Sender_Email_Text = new JsonCultureResource("Sender_Email_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Email_Recipients_Text = new JsonCultureResource("Email_Recipients_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Smtp_Host_Text = new JsonCultureResource("Smtp_Host_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Smtp_Port_Text = new JsonCultureResource("Smtp_Port_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Smtp_Username_Text = new JsonCultureResource("Smtp_Username_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Smtp_Password_Text = new JsonCultureResource("Smtp_Password_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Is_Use_Default_Credentials_Text = new JsonCultureResource("Is_Use_Default_Credentials_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+
+        internal static ICultureResource Is_Enable_Ssl_Text = new JsonCultureResource("Is_Enable_Ssl_Text", LANGUAGE_PRPERTY_RESOURCES_PATH);
+        #endregion
     }
 }

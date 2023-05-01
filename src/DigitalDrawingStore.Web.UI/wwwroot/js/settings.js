@@ -2,11 +2,22 @@
 var appConfigFormChanged = false;
 var feedbackFormChanged = false;
 
+var changesNotSavedText = "[Esetleges változtatások mentés nélkül elveszhetnek, folytatja?]";
+
 $(document).ready(function () {
 
     $('#togglePassword').on("click", togglePasswordHidden);
 
-     $(window).on("beforeunload", unsavedChangesPopup);
+    $(window).on("beforeunload", unsavedChangesPopup);
+
+    requestInvoker
+        .executeQuery('/GetNotSavedText', {})
+        .then((response) => {
+            let translation = response.responseObject;
+            if (translation != null) {
+                changesNotSavedText = translation;
+            }
+    });
 
     startCheckingAppConfigMod();
     startCheckingFeedbackMod();
@@ -16,7 +27,7 @@ function unsavedChangesPopup()
 {
     if (appConfigFormChanged || feedbackFormChanged)
     {
-        return confirm('Esetleges változtatások mentés nélkül elveszhetnek, folytatja?');
+        return confirm(changesNotSavedText);
     }
 }
 

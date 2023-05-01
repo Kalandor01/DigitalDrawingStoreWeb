@@ -208,6 +208,86 @@
     {
       "Key": "Dialog_Yes_Check_Value",
       "Value": "Yes"
+    },
+    {
+      "Key": "Documents_Table_Name_Text",
+      "Value": "Documents"
+    },
+    {
+      "Key": "Name_Table_Column_Text",
+      "Value": "Name"
+    },
+    {
+      "Key": "Category_Table_Column_Text",
+      "Value": "Category"
+    },
+    {
+      "Key": "Actions_Table_Column_Text",
+      "Value": "Actions"
+    },
+    {
+      "Key": "Edit_Action_Button_Text",
+      "Value": "Edit"
+    },
+    {
+      "Key": "Close_Button_Text",
+      "Value": "Colse"
+    },
+    {
+      "Key": "Metadata_Name_Table_Column_Text",
+      "Value": "Metadata name"
+    },
+    {
+      "Key": "Metadata_Value_Table_Column_Text",
+      "Value": "Value"
+    },
+    {
+      "Key": "App_Configuration_Text",
+      "Value": "Application configuration"
+    },
+    {
+      "Key": "Database_Path_Text",
+      "Value": "Database path"
+    },
+    {
+      "Key": "Save_Changes_Text",
+      "Value": "Save changes"
+    },
+    {
+      "Key": "Feedback_Settings_Text",
+      "Value": "Feedback settings"
+    },
+    {
+      "Key": "Sender_Email_Text",
+      "Value": "Sender email"
+    },
+    {
+      "Key": "Email_Recipients_Text",
+      "Value": "Email recipients"
+    },
+    {
+      "Key": "Smtp_Host_Text",
+      "Value": "Smtp Host"
+    },
+    {
+      "Key": "Smtp_Port_Text",
+      "Value": "Smtp Port"
+    },
+    {
+      "Key": "Smtp_Username_Text",
+      "Value": "Smtp username"
+    },
+    {
+      "Key": "Smtp_Password_Text",
+      "Value": "Smtp password"
+    },
+    {
+      "Key": "Is_Use_Default_Credentials_Text",
+      "Value": "Use default credentials"
+    },
+    {
+      "Key": "Is_Enable_Ssl_Text",
+      "Value": "Enable ssl"
     }
   ]
 }

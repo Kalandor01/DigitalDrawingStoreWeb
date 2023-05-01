@@ -67,45 +67,45 @@ INSERT INTO DocumentCategoryEntities (Id, DocumentCategoryId, DocumentMetadataDe
 
 
 -- DOCUMENTS
-DECLARE @DodcumentId1 AS UNIQUEIDENTIFIER = NEWID();
+DECLARE @DocumentId1 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @DodcumentId2 AS UNIQUEIDENTIFIER = NEWID();
+DECLARE @DocumentId2 AS UNIQUEIDENTIFIER = NEWID();
 
-DECLARE @DodcumentId3 AS UNIQUEIDENTIFIER = NEWID();
+DECLARE @DocumentId3 AS UNIQUEIDENTIFIER = NEWID();
 
 
 DECLARE @TestDocumentsFolder AS NVARCHAR(MAX) = 'C:\TestDocuments\';
 
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId1, @CategoryId1, @TestDocumentsFolder + 'Test.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DocumentId1, @CategoryId1, @TestDocumentsFolder + 'Test.pdf');
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId1, @TestDocumentsFolder + 'Test2.pdf');
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId1, @TestDocumentsFolder + 'Test3.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId2, @CategoryId1, @TestDocumentsFolder + 'Test4.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DocumentId2, @CategoryId1, @TestDocumentsFolder + 'Test4.pdf');
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, @TestDocumentsFolder + 'Test.pdf');
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, @TestDocumentsFolder + 'Test2.pdf');
-INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DodcumentId3, @CategoryId2, @TestDocumentsFolder + 'Test3.pdf');
+INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (@DocumentId3, @CategoryId2, @TestDocumentsFolder + 'Test3.pdf');
 INSERT INTO Documents (Id, DocumentCategoryId, Path) VALUES (NEWID(), @CategoryId2, @TestDocumentsFolder + 'Test4.pdf');
 
 
 -- METADATA
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId1, @MetadataDefinitionId1, 'Dokumentum szám A');
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId1, @MetadataDefinitionId2, 'Alkatrész szám A');
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId1, @MetadataDefinitionId3, 'Készítõ A');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId1, @MetadataDefinitionId1, '37246171234');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId1, @MetadataDefinitionId2, '342');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId1, @MetadataDefinitionId3, 'Nagy Csaba');
 
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId2, @MetadataDefinitionId1, 'Dokumentum szám B');
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId2, @MetadataDefinitionId3, 'Készítõ B');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId2, @MetadataDefinitionId1, '82137119045');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId2, @MetadataDefinitionId3, 'Kis Béla');
 
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId3, @MetadataDefinitionId1, 'Dokumentum szám C');
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId3, @MetadataDefinitionId2, 'Alkatrész szám C');
-INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DodcumentId3, @MetadataDefinitionId3, 'Készítõ C');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId3, @MetadataDefinitionId1, '97914275315');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId3, @MetadataDefinitionId2, '215');
+INSERT INTO DocumentMetadata (Id, DocumentId, DocumentMetadataDefinitionId, Value) VALUES (NEWID(), @DocumentId3, @MetadataDefinitionId3, 'Kovács Ádám');
 
 
 -- ApplicationProperties
-INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SenderEmail', '<sender-email>');
-INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('EmailRecipients', '<recipient-email>;<recipient-email>;<recipient-email>;');
+INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SenderEmail', 'sender@gmail.com');
+INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('EmailRecipients', 'recipient1@smail.hu;recipient2@gmail.com;recipient3@mmail.hu;');
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpHost', 'smtp.gmail.com');
-INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpPort', '587');
-INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpUsername', '<sender-email>');
-INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpPassword', '<sender-password>');
+INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpPort', '5873');
+INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpUsername', 'adminuser');
+INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('SmtpPassword', 'Secretpassword123');
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('UseDefaultSmtpCredentials', 'false');
 INSERT INTO ApplicationProperties (PropertyKey, PropertyValue) VALUES ('EnableSmtpSsl', 'true');
 

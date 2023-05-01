@@ -1,4 +1,6 @@
-﻿namespace XperiCad.DigitalDrawingStore.BL.Impl.Services
+﻿using static XperiCad.Common.Core.Constants;
+
+namespace XperiCad.DigitalDrawingStore.BL.Impl.Services
 {
     public enum CultureProperty
     {
@@ -59,5 +61,27 @@
         DIALOG_SAVE_TEXT,
         DIALOG_CANCEL_TEXT,
         DIALOG_YES_CHECK_VALUE,
+
+        DOCUMENTS_TABLE_NAME_TEXT,
+        NAME_TABLE_COLUMN_TEXT,
+        CATEGORY_TABLE_COLUMN_TEXT,
+        ACTIONS_TABLE_COLUMN_TEXT,
+        EDIT_ACTION_BUTTON_TEXT,
+        CLOSE_BUTTON_TEXT,
+        METADATA_NAME_COLUMN_TEXT,
+        METADATA_VALUE_COLUMN_TEXT,
+
+        APP_CONFIGURATION_TEXT,
+        DATABASE_PATH_TEXT,
+        SAVE_CHANGES_TEXT,
+        FEEDBACK_SETTINGS_TEXT,
+        SENDER_EMAIL_TEXT,
+        EMAIL_RECIPIENTS_TEXT,
+        SMTP_HOST_TEXT,
+        SMTP_PORT_TEXT,
+        SMTP_USERNAME_TEXT,
+        SMTP_PASSWORD_TEXT,
+        IS_USE_DEFAULT_CREDENTIALS_TEXT,
+        IS_ENABLE_SSL_TEXT,
     }
 }

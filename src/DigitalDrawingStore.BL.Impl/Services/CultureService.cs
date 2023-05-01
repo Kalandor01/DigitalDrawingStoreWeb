@@ -70,6 +70,28 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Services
             [CultureProperty.DIALOG_SAVE_TEXT] = Property.Dialog_Save_Text,
             [CultureProperty.DIALOG_CANCEL_TEXT] = Property.Dialog_Cancel_Text,
             [CultureProperty.DIALOG_YES_CHECK_VALUE] = Property.Dialog_Yes_Check_Value,
+
+            [CultureProperty.DOCUMENTS_TABLE_NAME_TEXT] = Property.Documents_Table_Name_Text,
+            [CultureProperty.NAME_TABLE_COLUMN_TEXT] = Property.Name_Table_Column_Text,
+            [CultureProperty.CATEGORY_TABLE_COLUMN_TEXT] = Property.Category_Table_Column_Text,
+            [CultureProperty.ACTIONS_TABLE_COLUMN_TEXT] = Property.Actions_Table_Column_Text,
+            [CultureProperty.EDIT_ACTION_BUTTON_TEXT] = Property.Edit_Action_Button_Text,
+            [CultureProperty.CLOSE_BUTTON_TEXT] = Property.Close_Button_Text,
+            [CultureProperty.METADATA_NAME_COLUMN_TEXT] = Property.Metadata_Name_Table_Column_Text,
+            [CultureProperty.METADATA_VALUE_COLUMN_TEXT] = Property.Metadata_Value_Table_Column_Text,
+
+            [CultureProperty.APP_CONFIGURATION_TEXT] = Property.App_Configuration_Text,
+            [CultureProperty.DATABASE_PATH_TEXT] = Property.Database_Path_Text,
+            [CultureProperty.SAVE_CHANGES_TEXT] = Property.Save_Changes_Text,
+            [CultureProperty.FEEDBACK_SETTINGS_TEXT] = Property.Feedback_Settings_Text,
+            [CultureProperty.SENDER_EMAIL_TEXT] = Property.Sender_Email_Text,
+            [CultureProperty.EMAIL_RECIPIENTS_TEXT] = Property.Email_Recipients_Text,
+            [CultureProperty.SMTP_HOST_TEXT] = Property.Smtp_Host_Text,
+            [CultureProperty.SMTP_PORT_TEXT] = Property.Smtp_Port_Text,
+            [CultureProperty.SMTP_USERNAME_TEXT] = Property.Smtp_Username_Text,
+            [CultureProperty.SMTP_PASSWORD_TEXT] = Property.Smtp_Password_Text,
+            [CultureProperty.IS_USE_DEFAULT_CREDENTIALS_TEXT] = Property.Is_Use_Default_Credentials_Text,
+            [CultureProperty.IS_ENABLE_SSL_TEXT] = Property.Is_Enable_Ssl_Text,
         };
         #endregion
 

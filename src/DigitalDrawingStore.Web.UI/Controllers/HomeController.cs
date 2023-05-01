@@ -86,6 +86,28 @@ namespace DigitalDrawingStore.Web.UI.Controllers
                 ["saveEditorWindow"] = CultureProperty.SAVE_EDITOR_WINDOW_TEXT
             });
         }
+
+        [Route("GetDocumentsTexts")]
+        public async Task<IActionResponse<Dictionary<string, string?>>> GetDocumentsTexts()
+        {
+            return await _baseController.GetTranslationStringTextDictionary(new Dictionary<string, CultureProperty>
+            {
+                ["tableName"] = CultureProperty.DOCUMENTS_TABLE_NAME_TEXT,
+                ["nameTableColumn"] = CultureProperty.NAME_TABLE_COLUMN_TEXT,
+                ["categoryTableColumn"] = CultureProperty.CATEGORY_TABLE_COLUMN_TEXT,
+                ["actionsTableColumn"] = CultureProperty.ACTIONS_TABLE_COLUMN_TEXT,
+                ["editActionButton"] = CultureProperty.EDIT_ACTION_BUTTON_TEXT,
+                ["closeButton"] = CultureProperty.CLOSE_BUTTON_TEXT,
+                ["metadataNameTableColumn"] = CultureProperty.METADATA_NAME_COLUMN_TEXT,
+                ["metadataValueTableColumn"] = CultureProperty.METADATA_VALUE_COLUMN_TEXT,
+            });
+        }
+
+        [Route("GetNotSavedText")]
+        public async Task<IActionResponse<string?>> GetNotSavedText()
+        {
+            return await _baseController.GetTranslationStringText(CultureProperty.CHANGES_WILL_BE_LOST_TEXT);
+        }
         #endregion
 
         public IActionResult Index()

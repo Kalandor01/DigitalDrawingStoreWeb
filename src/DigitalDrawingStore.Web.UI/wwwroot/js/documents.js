@@ -11,7 +11,56 @@ let detailsTableSortState = {
     ascending: true
 };
 
+var tableNameText = "[Dokumentumok]";
+var nameTableColumnText = "[Név]";
+var categoryTableColumnText = "[Kategória]";
+var actionsTableColumnText = "[Műveletek]";
+var editActionButtonText = "[Szerkesztés]";
+var closeButtonText = "[Bezárás]";
+var metadataNameTableColumnText = "[Metaadat neve]";
+var metadataValueTableColumnText = "[Értéke]";
+
 $(document).ready(() => {
+    requestInvoker
+        .executeQuery('/GetDocumentsTexts', {})
+        .then((response) => {
+            let translations = response.responseObject;
+            // table name
+            if (translations["tableName"] != null) {
+                tableNameText = translations["tableName"];
+            }
+            // name column
+            if (translations["nameTableColumn"] != null) {
+                nameTableColumnText = translations["nameTableColumn"];
+            }
+            // category column
+            if (translations["categoryTableColumn"] != null) {
+                categoryTableColumnText = translations["categoryTableColumn"];
+            }
+            // actions column
+            if (translations["actionsTableColumn"] != null) {
+                actionsTableColumnText = translations["actionsTableColumn"];
+            }
+            // edit button
+            if (translations["editActionButton"] != null) {
+                editActionButtonText = translations["editActionButton"];
+            }
+            // close button
+            if (translations["closeButton"] != null) {
+                closeButtonText = translations["closeButton"];
+            }
+            // metadata name column
+            if (translations["metadataNameTableColumn"] != null) {
+                metadataNameTableColumnText = translations["metadataNameTableColumn"];
+            }
+            // metadata value column
+            if (translations["metadataValueTableColumn"] != null) {
+                metadataValueTableColumnText = translations["metadataValueTableColumn"];
+            }
+            // then
+            populatePage();
+        });
+
     let searchButton = $('#button-addon2');
     searchButton.on('click', (e) => {
         e.stopPropagation();
@@ -20,8 +69,6 @@ $(document).ready(() => {
         content.remove();
         populatePage();
     });
-
-    populatePage();
 });
 
 function populatePage() {
@@ -31,12 +78,12 @@ function populatePage() {
             let contentContainerElement = $('#contentContainer');
             let documents = response.responseObject;
 
-            let tableName = 'Dokumentumok';
+            let tableName = tableNameText;
 
             let columns = new Map();
-            columns.set('nameWithExtension', 'Név');
-            columns.set('category', 'Kategória');
-            columns.set('actions', 'Műveletek');
+            columns.set('nameWithExtension', nameTableColumnText);
+            columns.set('category', categoryTableColumnText);
+            columns.set('actions', actionsTableColumnText);
 
             let records = [];
 
@@ -52,7 +99,7 @@ function populatePage() {
                 record.set('categoryId', document.category.id)
                 record.set('attributes', document.attributes);
 
-                let button = buttonBuilder.createButton('Szerkesztés');
+                let button = buttonBuilder.createButton(editActionButtonText);
                 button.onclick = (e) => {
                     e.stopPropagation();
                     editDocumentCategory(record, columns);
@@ -91,9 +138,9 @@ function onRowClick(record, row, numParentColumns) {
             .executeQuery('/Documents/Metadata', { documentId: record.get('id') })
             .then((response) => {
                 let columns = new Map();
-                columns.set('metadataName', 'Metaadat neve');
-                columns.set('metadataValue', 'Értéke');
-                columns.set('actions', 'Műveletek');
+                columns.set('metadataName', metadataNameTableColumnText);
+                columns.set('metadataValue', metadataValueTableColumnText);
+                columns.set('actions', actionsTableColumnText);
 
                 let attributes = [];
 
@@ -103,7 +150,7 @@ function onRowClick(record, row, numParentColumns) {
                     attribute.set('metadataValue', value);
                     attribute.set('documentId', record.get('id'));
 
-                    let button = buttonBuilder.createButton('Szerkesztés');
+                    let button = buttonBuilder.createButton(editActionButtonText);
                     button.onclick = (e) => {
                         e.stopPropagation();
                         editAttribute(attribute, columns, () => onRowClick(record, row, numParentColumns));
@@ -147,7 +194,7 @@ function openDetails(record, row, numParentColumns, details) {
     tableContainer.append(table)
     detailsContainer.append(tableContainer);
 
-    let closeButton = buttonBuilder.createButton('Bezárás');
+    let closeButton = buttonBuilder.createButton(closeButtonText);
     closeButton.onclick = () => {
         documentTableBuilder.closeDropDownView(openedRow, false);
         openedRow = null;
