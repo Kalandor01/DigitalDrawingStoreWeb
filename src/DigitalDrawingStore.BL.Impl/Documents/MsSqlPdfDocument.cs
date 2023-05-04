@@ -99,7 +99,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
 
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@DocumentId", SqlDbType.UniqueIdentifier, Id)
-                                .ConfigureParameter("@Attribute", SqlDbType.VarChar, attribute, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@Attribute", SqlDbType.NVarChar, attribute, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $" SELECT dm.Id, Value"
@@ -209,15 +209,15 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@DocumentId", SqlDbType.UniqueIdentifier, Id)
                                 .ConfigureParameter("@AttributeId", SqlDbType.UniqueIdentifier, metadataDefinitionId)
-                                .ConfigureParameter("@AttributeValue", SqlDbType.VarChar, value.ToString(), SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@AttributeValue", SqlDbType.NVarChar, value.ToString(), -1)
                                 .GetConfiguredParameters();
 
-            _ = _msSqlDataSource.PerformCommand(
-                $"   UPDATE {documentMetadataTableName}"
+            var script = $"UPDATE {documentMetadataTableName}"
                 + $" SET Value = @AttributeValue"
                 + $" WHERE DocumentId = @DocumentId"
-                + $"   AND DocumentMetadataDefinitionId = @AttributeId",
-                parameters);
+                + $" AND DocumentMetadataDefinitionId = @AttributeId";
+
+            _ = _msSqlDataSource.PerformCommand(script, parameters);
         }
 
         private void InsertMetadata(Guid metadataDefinitionId, string value)
@@ -228,7 +228,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
                         .ConfigureParameter("@Id", SqlDbType.UniqueIdentifier, Guid.NewGuid())
                         .ConfigureParameter("@DocumentId", SqlDbType.UniqueIdentifier, Id)
                         .ConfigureParameter("@DocumentMetadataDefinitionId", SqlDbType.UniqueIdentifier, metadataDefinitionId)
-                        .ConfigureParameter("@AttributeValue", SqlDbType.VarChar, value, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                        .ConfigureParameter("@AttributeValue", SqlDbType.NVarChar, value, -1)
                         .GetConfiguredParameters();
 
                 _ = _msSqlDataSource.PerformCommand(
@@ -272,7 +272,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
             if (CheckNecessaryTablesAreExists(out _, out _, out var documentMetadataDefinitionsTableName))
             {
                 var parameters = _dataParameterFactory
-                                    .ConfigureParameter("@MetadataDefinitionName", SqlDbType.VarChar, metadataDefinitionName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                    .ConfigureParameter("@MetadataDefinitionName", SqlDbType.NVarChar, metadataDefinitionName, -1)
                                     .GetConfiguredParameters();
 
                 var sqlScript = $" SELECT Id FROM {documentMetadataDefinitionsTableName}"
@@ -296,14 +296,14 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents
             {
                 var documentParameters = _dataParameterFactory
                         .ConfigureParameter("@Id", SqlDbType.UniqueIdentifier, Guid.NewGuid())
-                        .ConfigureParameter("@ExtractedName", SqlDbType.VarChar, name, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                        .ConfigureParameter("@ExtractedName", SqlDbType.NVarChar, name)
                         .GetConfiguredParameters();
 
-                _msSqlDataSource.PerformCommand(
-                    $"   INSERT INTO {documentMetadataDefinitionsTableName}"
+                var script = $"INSERT INTO {documentMetadataDefinitionsTableName}"
                     + $" (Id, ExtractedName)"
-                    + $" VALUES (@Id, @ExtractedName)",
-                    documentParameters);
+                    + $" VALUES (@Id, @ExtractedName)";
+
+                _msSqlDataSource.PerformCommand(script, documentParameters);
             }
         }
 

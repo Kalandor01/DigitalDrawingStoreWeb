@@ -67,8 +67,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands
             if (oldMetadataName != metadataName)
             {
                 var parameters = _dataParameterFactory
-                                .ConfigureParameter("@OldMetadataName", SqlDbType.VarChar, oldMetadataName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
-                                .ConfigureParameter("@MetadataName", SqlDbType.VarChar, metadataName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@OldMetadataName", SqlDbType.NVarChar, oldMetadataName, -1)
+                                .ConfigureParameter("@MetadataName", SqlDbType.NVarChar, metadataName, -1)
                                 .GetConfiguredParameters();
 
                 _ = _msSqlDataSource.PerformCommand(

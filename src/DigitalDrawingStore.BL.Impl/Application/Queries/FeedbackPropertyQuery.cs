@@ -78,7 +78,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application.Queries
                 + $" WHERE PropertyKey = @PropertyKey";
 
             var parameters = _dataParameterFactory
-                .ConfigureParameter("@PropertyKey", SqlDbType.VarChar, propertyKey, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                .ConfigureParameter("@PropertyKey", SqlDbType.NVarChar, propertyKey, -1)
                 .GetConfiguredParameters();
 
             var result = await _msSqlDataSource.PerformQueryAsync(sqlScript, parameters, "PropertyValue");

@@ -68,7 +68,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@Id", SqlDbType.UniqueIdentifier, Guid.NewGuid())
                                 .ConfigureParameter("@IsDesigned", SqlDbType.Bit, 0)
-                                .ConfigureParameter("@DisplayName", SqlDbType.VarChar, categoryName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@DisplayName", SqlDbType.NVarChar, categoryName, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENT_CATEGORIES_TABLE_NAME_KEY]} (Id, IsDesigned, DisplayName)"
@@ -84,7 +84,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@Id", SqlDbType.UniqueIdentifier, documentId)
                                 .ConfigureParameter("@DocumentCategoryId", SqlDbType.UniqueIdentifier, categoryId)
-                                .ConfigureParameter("@Path", SqlDbType.VarChar, documentPath, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@Path", SqlDbType.NVarChar, documentPath, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_TABLE_NAME_KEY]} (Id, DocumentCategoryId, Path)"
@@ -103,7 +103,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
             }
 
             var parameters = _dataParameterFactory
-                                .ConfigureParameter("@DisplayName", SqlDbType.VarChar, categoryName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@DisplayName", SqlDbType.NVarChar, categoryName, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"SELECT Id"
@@ -124,7 +124,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
             }
 
             var parameters = _dataParameterFactory
-                                .ConfigureParameter("@ExtractedName", SqlDbType.VarChar, metadataName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@ExtractedName", SqlDbType.NVarChar, metadataName, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"SELECT Id"
@@ -141,7 +141,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
         {
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@Id", SqlDbType.UniqueIdentifier, Guid.NewGuid())
-                                .ConfigureParameter("@ExtractedName", SqlDbType.VarChar, metadataName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@ExtractedName", SqlDbType.NVarChar, metadataName, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_METADATA_DEFINITIONS_TABLE_NAME_KEY]} (Id, ExtractedName)"
@@ -156,7 +156,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources
                                 .ConfigureParameter("@Id", SqlDbType.UniqueIdentifier, Guid.NewGuid())
                                 .ConfigureParameter("@DocumentId", SqlDbType.UniqueIdentifier, documentId)
                                 .ConfigureParameter("@DocumentMetadataDefinitionId", SqlDbType.UniqueIdentifier, metadataDefinitionId)
-                                .ConfigureParameter("@Value", SqlDbType.VarChar, value, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@Value", SqlDbType.NVarChar, value, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"INSERT INTO {_sqlTableNames[Constants.DocumentDatabase.DOCUMENTS_METADATA_TABLE_NAME_KEY]} (Id, DocumentId, DocumentMetadataDefinitionId, Value)"

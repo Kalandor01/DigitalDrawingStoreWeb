@@ -131,19 +131,19 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                 + $" ("
                 + $"  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),"
                 + $"  IsDesigned BIT DEFAULT 0,"
-                + $"  DisplayName VARCHAR(MAX)"
+                + $"  DisplayName NVARCHAR(MAX)"
                 + $");"
                 + $"CREATE TABLE Documents{testNamespace}"
                 + $"("
                 + $"  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),"
                 + $"  DocumentCategoryId UNIQUEIDENTIFIER,"
-                + $"  Path VARCHAR(MAX),"
+                + $"  Path NVARCHAR(MAX),"
                 + $"  FOREIGN KEY (DocumentCategoryId) REFERENCES DocumentCategories{testNamespace} (Id)"
                 + $");"
                 + $"CREATE TABLE DocumentMetadataDefinitions{testNamespace}"
                 + $"("
                 + $"  Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),"
-                + $"  ExtractedName VARCHAR(MAX)"
+                + $"  ExtractedName NVARCHAR(MAX)"
                 + $");"
                 + $"CREATE TABLE DocumentCategoryEntities{testNamespace}"
                 + $"("
@@ -174,7 +174,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
             IEnumerable<CategorizedDocument> categorizedDocuments,
             IEnumerable<object[]> documentMetadata)
         {
-            if (documentCategories.Count() == 0)
+            if (!documentCategories.Any())
             {
                 var categories = categorizedDocuments.GroupBy(d => d.DocumentCategory.Id);
                 foreach (var category in categories)
@@ -198,7 +198,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                     var documentCategoryParameters = dataParameterFactory
                         .ConfigureParameter("@Id", System.Data.SqlDbType.UniqueIdentifier, category.Key)
                         .ConfigureParameter("@IsDesigned", System.Data.SqlDbType.Bit, 1)
-                        .ConfigureParameter("@DisplayName", System.Data.SqlDbType.VarChar, categoryName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                        .ConfigureParameter("@DisplayName", System.Data.SqlDbType.NVarChar, categoryName, -1)
                         .GetConfiguredParameters();
 
                     msSqlDataSource.PerformCommand(
@@ -215,7 +215,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                     var documentCategoryParameters = dataParameterFactory
                         .ConfigureParameter("@Id", System.Data.SqlDbType.UniqueIdentifier, documentCategory.CategoryId)
                         .ConfigureParameter("@IsDesigned", System.Data.SqlDbType.Bit, 1)
-                        .ConfigureParameter("@DisplayName", System.Data.SqlDbType.VarChar, documentCategory.DisplayName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                        .ConfigureParameter("@DisplayName", System.Data.SqlDbType.NVarChar, documentCategory.DisplayName, -1)
                         .GetConfiguredParameters();
 
                     msSqlDataSource.PerformCommand(
@@ -232,7 +232,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                 var documentParameters = dataParameterFactory
                     .ConfigureParameter("@Id", System.Data.SqlDbType.UniqueIdentifier, categorizedDocument.Document.Id)
                     .ConfigureParameter("@DocumentCategoryId", System.Data.SqlDbType.UniqueIdentifier, categorizedDocument.DocumentCategory.Id)
-                    .ConfigureParameter("@Path", System.Data.SqlDbType.VarChar, categorizedDocument.Document.Path, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                    .ConfigureParameter("@Path", System.Data.SqlDbType.NVarChar, categorizedDocument.Document.Path, -1)
                     .GetConfiguredParameters();
 
                 msSqlDataSource.PerformCommand(
@@ -246,7 +246,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
             {
                 var documentParameters = dataParameterFactory
                     .ConfigureParameter("@Id", System.Data.SqlDbType.UniqueIdentifier, metadataDefinition[0])
-                    .ConfigureParameter("@ExtractedName", System.Data.SqlDbType.VarChar, metadataDefinition[1], SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                    .ConfigureParameter("@ExtractedName", System.Data.SqlDbType.NVarChar, metadataDefinition[1], -1)
                     .GetConfiguredParameters();
 
                 msSqlDataSource.PerformCommand(
@@ -262,14 +262,14 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents
                     .ConfigureParameter("@Id", System.Data.SqlDbType.UniqueIdentifier, metadata[0])
                     .ConfigureParameter("@DocumentMetadataDefinitionId", System.Data.SqlDbType.UniqueIdentifier, metadata[1])
                     .ConfigureParameter("@DocumentId", System.Data.SqlDbType.UniqueIdentifier, metadata[2])
-                    .ConfigureParameter("@Value", System.Data.SqlDbType.VarChar, metadata[3], SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                    .ConfigureParameter("@Value", System.Data.SqlDbType.NVarChar, metadata[3], -1)
                     .GetConfiguredParameters();
 
-                msSqlDataSource.PerformCommand(
-                    $"   INSERT INTO DocumentMetadata{testNamespace}"
+                var script = $"INSERT INTO DocumentMetadata{testNamespace}"
                     + $" (Id, DocumentId, DocumentMetadataDefinitionId, Value)"
-                    + $" VALUES (@Id, @DocumentId, @DocumentMetadataDefinitionId, @Value)",
-                    documentParameters);
+                    + $" VALUES (@Id, @DocumentId, @DocumentMetadataDefinitionId, @Value)";
+
+                msSqlDataSource.PerformCommand(script, documentParameters);
             }
         }
 

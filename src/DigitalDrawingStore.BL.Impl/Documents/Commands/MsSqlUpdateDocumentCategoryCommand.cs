@@ -35,7 +35,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Documents.Commands
 
             var parameters = _dataParameterFactory
                                 .ConfigureParameter("@CategoryId", SqlDbType.UniqueIdentifier, id)
-                                .ConfigureParameter("@CategoryName", SqlDbType.VarChar, categoryName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@CategoryName", SqlDbType.NVarChar, categoryName, -1)
                                 .ConfigureParameter("@IsDesigned", SqlDbType.Bit, isDesigned)
                                 .GetConfiguredParameters();
 

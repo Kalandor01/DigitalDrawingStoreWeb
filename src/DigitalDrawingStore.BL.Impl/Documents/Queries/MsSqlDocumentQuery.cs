@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using XperiCad.Common.Core.Behaviours.Queries;
-using XperiCad.Common.Core.DataSource;
 using XperiCad.Common.Infrastructure.Behaviours.Queries;
 using XperiCad.Common.Infrastructure.DataSource;
 using XperiCad.Common.Infrastructure.Feedback;
@@ -145,7 +144,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
 
             var documentEntity = result.ResponseObject.FirstOrDefault();
 
-            var id = documentEntity?.Id ?? default(Guid);
+            var id = documentEntity?.Id ?? default;
             var documentPath = documentEntity?.Attributes[Constants.Documents.AttributeKeys.DOCUMENT_PATH]?.ToString() ?? null;
 
             if (documentEntity == null || id == Guid.Empty || string.IsNullOrWhiteSpace(documentPath))
@@ -180,8 +179,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
                 if (!(string.IsNullOrWhiteSpace(searchText) || string.Equals(searchText, "*", StringComparison.OrdinalIgnoreCase)))
                 {
                     _dataParameterFactory
-                        .ConfigureParameter("@SearchText", SqlDbType.VarChar, searchText, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
-                        .ConfigureParameter("@NormalizedSearchText", SqlDbType.VarChar, normalizedSearchText, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH);
+                        .ConfigureParameter("@SearchText", SqlDbType.NVarChar, searchText, -1)
+                        .ConfigureParameter("@NormalizedSearchText", SqlDbType.NVarChar, normalizedSearchText, -1);
 
                     sqlScript += $" WHERE d.Path LIKE CONCAT('%', @SearchText, '%')"
                                + $"   OR d.Id IN ("
@@ -212,10 +211,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
                 if (!(string.IsNullOrWhiteSpace(searchText) || string.Equals(searchText, "*", StringComparison.OrdinalIgnoreCase)))
                 {
                     _dataParameterFactory
-                        .ConfigureParameter("@SearchText", SqlDbType.VarChar, searchText, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
-                        .ConfigureParameter("@NormalizedSearchText", SqlDbType.VarChar, normalizedSearchText, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH);
-
-                    var test = _sqlTableNames[Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY];
+                        .ConfigureParameter("@SearchText", SqlDbType.NVarChar, searchText, -1)
+                        .ConfigureParameter("@NormalizedSearchText", SqlDbType.NVarChar, normalizedSearchText, -1);
 
                     sqlScript += $" WHERE d.Path LIKE CONCAT('%', @SearchText, '%')"
                                + $"   AND d.DocumentCategoryId = @DocumentCategoryId"
@@ -288,7 +285,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Documents.Queries
         {
             var result = new Dictionary<string, string>();
 
-            if (documentMetadataResult != null && documentMetadataResult.Count() > 0)
+            if (documentMetadataResult != null && documentMetadataResult.Any())
             {
                 foreach (var entity in documentMetadataResult)
                 {

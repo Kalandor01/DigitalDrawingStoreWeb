@@ -122,7 +122,7 @@ namespace DigitalDrawingStore.Listener.Service.Application
         private string GetProperty(string propertyKey)
         {
             var parameters = _dataParameterFactory
-                               .ConfigureParameter("@PropertyKey", SqlDbType.VarChar, propertyKey, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                               .ConfigureParameter("@PropertyKey", SqlDbType.NVarChar, propertyKey, -1)
                                .GetConfiguredParameters();
 
             var sqlScript = $"SELECT Id, PropertyValue"

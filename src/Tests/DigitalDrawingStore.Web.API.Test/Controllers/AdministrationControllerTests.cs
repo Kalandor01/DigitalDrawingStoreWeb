@@ -5,7 +5,7 @@ using XperiCad.DigitalDrawingStore.BL.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application;
 using XperiCad.DigitalDrawingStore.BL.Impl.Application.Factories;
 using XperiCad.DigitalDrawingStore.BL.Impl.Services.Factories;
-using XperiCad.DigitalDrawingStore.Web.API.Commands;
+using XperiCad.DigitalDrawingStore.Web.API.Commands.Set;
 
 namespace XperiCad.DigitalDrawingStore.Web.API.Test.Controllers
 {

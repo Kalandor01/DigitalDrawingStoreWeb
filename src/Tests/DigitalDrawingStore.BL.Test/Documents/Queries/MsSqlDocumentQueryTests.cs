@@ -210,6 +210,7 @@ namespace XperiCad.DigitalDrawingStore.BL.Test.Documents.Queries
             {
                 { Impl.Constants.Documents.Resources.DatabaseTables.DOCUMENTS_TABLE_NAME_KEY, $"Documents{testNamespace}" },
                 { Impl.Constants.Documents.Resources.DatabaseTables.DOCUMENTS_METADATA_TABLE_NAME_KEY, $"DocumentMetadata{testNamespace}" },
+                { Impl.Constants.Documents.Resources.DatabaseTables.DOCUMENT_CATEGORIES_TABLE_NAME_KEY, $"DocumentCategories{testNamespace}" },
             };
 
             return new MsSqlDocumentQuery(dataSource, dataParameterFactory, sqlTableNames, documentFactory, feedbackMessageFactory);

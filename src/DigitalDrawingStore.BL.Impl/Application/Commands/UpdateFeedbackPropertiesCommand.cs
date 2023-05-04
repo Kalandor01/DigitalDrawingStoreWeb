@@ -33,8 +33,8 @@ namespace XperiCad.DigitalDrawingStore.BL.Impl.Application.Commands
             propertyValue = propertyValue ?? throw new ArgumentNullException(nameof(propertyValue));
 
             var parameters = _dataParameterFactory
-                                .ConfigureParameter("@PropertyKey", SqlDbType.VarChar, propertyKey, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
-                                .ConfigureParameter("@PropertyValue", SqlDbType.VarChar, propertyValue, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@PropertyKey", SqlDbType.NVarChar, propertyKey, -1)
+                                .ConfigureParameter("@PropertyValue", SqlDbType.NVarChar, propertyValue, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"UPDATE {_sqlTableNames[Constants.Documents.Resources.DatabaseTables.APPLICATION_PROPERTIES_TABLE_NAME_KEY]}"

@@ -72,7 +72,7 @@ namespace DigitalDrawingStore.Listener.Service.Document.Resources.Validator
         private bool IsDocumentExistsInDatabase(string documentName)
         {
             var parameters = _dataParameterFactory
-                                .ConfigureParameter("@Path", SqlDbType.VarChar, documentName, SqlTypeLengthConstants.VARCHAR_MAX_LENGTH)
+                                .ConfigureParameter("@Path", SqlDbType.NVarChar, documentName, -1)
                                 .GetConfiguredParameters();
 
             var sqlScript = $"SELECT Id"
